@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="ASCII"?>
+<wtc:MainSubsystem xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wtc="http://WTSpec4M/5.0" sysId="new_file.subsytem" description="Mydescription">
+  <itsWTCs xsi:type="wtc:CtrlUnit31"/>
+</wtc:MainSubsystem>

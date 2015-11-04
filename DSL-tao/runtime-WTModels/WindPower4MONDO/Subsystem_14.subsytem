@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="ASCII"?>
+<wtc:MainSubsystem xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wtc="http://WTSpec4M/5.0" sysId="Subsystem_14" description="Description for Subsystem_14">
+  <itsWTCs xsi:type="wtc:CtrlUnit31" sysId="CtrlUnit_1370" description="Description for CtrlUnit_1370" cycle="100" priority="1" enabled="true">
+    <Input__iInput1 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.1406"/>
+    <Output__oOutput1 xsi:type="wtc:SystemOutput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsOutput.634"/>
+    <Parameter__pParam1 xsi:type="wtc:SystemParam" href="platform:/resource/WindPower4MONDO/WindPower4MONDO.xmi#//@itsParams.25"/>
+  </itsWTCs>
+  <itsWTCs xsi:type="wtc:CtrlUnit31" sysId="CtrlUnit_1371" description="Description for CtrlUnit_1371" cycle="100" priority="1" enabled="true">
+    <Input__iInput1 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.1406"/>
+    <Output__oOutput1 xsi:type="wtc:SystemOutput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsOutput.635"/>
+    <Parameter__pParam1 xsi:type="wtc:SystemParam" href="platform:/resource/WindPower4MONDO/WindPower4MONDO.xmi#//@itsParams.26"/>
+  </itsWTCs>
+  <itsWTCs xsi:type="wtc:CtrlUnit31" sysId="CtrlUnit_1372" description="Description for CtrlUnit_1372" cycle="100" priority="1" enabled="true">
+    <Input__iInput1 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.1406"/>
+    <Output__oOutput1 xsi:type="wtc:SystemOutput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsOutput.636"/>
+    <Parameter__pParam1 xsi:type="wtc:SystemParam" href="platform:/resource/WindPower4MONDO/WindPower4MONDO.xmi#//@itsParams.27"/>
+  </itsWTCs>
+  <itsWTCs xsi:type="wtc:CtrlUnit31" sysId="CtrlUnit_1373" description="Description for CtrlUnit_1373" cycle="100" priority="1" enabled="true">
+    <Input__iInput1 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.1407"/>
+    <Output__oOutput1 xsi:type="wtc:SystemOutput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsOutput.637"/>
+    <Parameter__pParam1 xsi:type="wtc:SystemParam" href="platform:/resource/WindPower4MONDO/WindPower4MONDO.xmi#//@itsParams.25"/>
+  </itsWTCs>
+  <itsWTCs xsi:type="wtc:CtrlUnit31" sysId="CtrlUnit_1374" description="Description for CtrlUnit_1374" cycle="100" priority="1" enabled="true">
+    <Input__iInput1 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.1407"/>
+    <Output__oOutput1 xsi:type="wtc:SystemOutput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsOutput.638"/>
+    <Parameter__pParam1 xsi:type="wtc:SystemParam" href="platform:/resource/WindPower4MONDO/WindPower4MONDO.xmi#//@itsParams.26"/>
+  </itsWTCs>
+  <itsWTCs xsi:type="wtc:CtrlUnit31" sysId="CtrlUnit_1375" description="Description for CtrlUnit_1375" cycle="100" priority="1" enabled="true">
+    <Input__iInput1 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.1407"/>
+    <Output__oOutput1 xsi:type="wtc:SystemOutput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsOutput.639"/>
+    <Parameter__pParam1 xsi:type="wtc:SystemParam" href="platform:/resource/WindPower4MONDO/WindPower4MONDO.xmi#//@itsParams.27"/>
+  </itsWTCs>
+  <itsWTCs xsi:type="wtc:CtrlUnit71" sysId="CtrlUnit_1376" description="Description for CtrlUnit_1376" cycle="100" priority="2" enabled="true">
+    <Input__iInput1 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.1408"/>
+    <Input__iInput2 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.1409"/>
+    <Input__iInput3 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.1410"/>
+    <Input__iInput4 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.1411"/>
+    <Input__iInput5 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.1412"/>
+    <Input__iInput6 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.1413"/>
+    <Output__oOutput1 xsi:type="wtc:SystemOutput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsOutput.640"/>
+    <Output__oOutput2 xsi:type="wtc:SystemOutput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsOutput.641"/>
+  </itsWTCs>
+  <itsWTCs xsi:type="wtc:CtrlUnit71" sysId="CtrlUnit_1377" description="Description for CtrlUnit_1377" cycle="100" priority="2" enabled="true">
+    <Input__iInput1 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.1414"/>
+    <Input__iInput2 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.1415"/>
+    <Input__iInput3 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.1416"/>
+    <Input__iInput4 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.1417"/>
+    <Input__iInput5 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.1418"/>
+    <Input__iInput6 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.1419"/>
+    <Output__oOutput1 xsi:type="wtc:SystemOutput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsOutput.642"/>
+    <Output__oOutput2 xsi:type="wtc:SystemOutput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsOutput.643"/>
+  </itsWTCs>
+  <itsWTCs xsi:type="wtc:CtrlUnit78" sysId="CtrlUnit_1378" description="Description for CtrlUnit_1378" cycle="100" priority="3" enabled="true">
+    <Input__iInput1 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.1420"/>
+    <Input__iInput2 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.1421"/>
+    <Output__oOutput1 xsi:type="wtc:SystemOutput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsOutput.644"/>
+  </itsWTCs>
+  <itsWTCs xsi:type="wtc:CtrlUnit9" sysId="CtrlUnit_1382" description="Description for CtrlUnit_1382" cycle="100" priority="4" enabled="true">
+    <Input__iInput1 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.1422"/>
+    <Output__oOutput1 xsi:type="wtc:SystemOutput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsOutput.652"/>
+    <Parameter__pParam1 xsi:type="wtc:SystemParam" href="platform:/resource/WindPower4MONDO/WindPower4MONDO.xmi#//@itsParams.187"/>
+  </itsWTCs>
+  <itsWTCs xsi:type="wtc:CtrlUnit9" sysId="CtrlUnit_1383" description="Description for CtrlUnit_1383" cycle="100" priority="4" enabled="true">
+    <Input__iInput1 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.1423"/>
+    <Output__oOutput1 xsi:type="wtc:SystemOutput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsOutput.653"/>
+    <Parameter__pParam1 xsi:type="wtc:SystemParam" href="platform:/resource/WindPower4MONDO/WindPower4MONDO.xmi#//@itsParams.189"/>
+  </itsWTCs>
+  <itsWTCs xsi:type="wtc:CtrlUnit73" sysId="CtrlUnit_1384" description="Description for CtrlUnit_1384" cycle="100" priority="5" enabled="true">
+    <Input__iInput1 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.1426"/>
+    <Output__oOutput1 xsi:type="wtc:SystemOutput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsOutput.654"/>
+  </itsWTCs>
+  <itsWTCs xsi:type="wtc:CtrlUnit11" sysId="CtrlUnit_1385" description="Description for CtrlUnit_1385" cycle="100" priority="6" enabled="true">
+    <Input__iInput1 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.1427"/>
+    <Input__iInput2 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.1428"/>
+    <Output__oOutput1 xsi:type="wtc:SystemOutput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsOutput.655"/>
+  </itsWTCs>
+  <itsWTCs xsi:type="wtc:CtrlUnit73" sysId="CtrlUnit_1386" description="Description for CtrlUnit_1386" cycle="100" priority="7" enabled="true">
+    <Input__iInput1 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.1429"/>
+    <Output__oOutput1 xsi:type="wtc:SystemOutput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsOutput.656"/>
+  </itsWTCs>
+  <itsWTCs xsi:type="wtc:CtrlUnit11" sysId="CtrlUnit_1387" description="Description for CtrlUnit_1387" cycle="100" priority="8" enabled="true">
+    <Input__iInput1 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.1430"/>
+    <Input__iInput2 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.31"/>
+    <Output__oOutput1 xsi:type="wtc:SystemOutput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsOutput.656"/>
+  </itsWTCs>
+  <itsWTCs xsi:type="wtc:CtrlUnit78" sysId="CtrlUnit_1388" description="Description for CtrlUnit_1388" cycle="100" priority="9" enabled="true">
+    <Input__iInput1 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.1426"/>
+    <Input__iInput2 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.1430"/>
+    <Output__oOutput1 xsi:type="wtc:SystemOutput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsOutput.657"/>
+  </itsWTCs>
+  <itsWTCs xsi:type="wtc:CtrlUnit36" sysId="CtrlUnit_1389" description="Description for CtrlUnit_1389" cycle="100" priority="10" enabled="true">
+    <Input__iInput1 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.1431"/>
+    <Output__oOutput1 xsi:type="wtc:SystemOutput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsOutput.658"/>
+    <Parameter__pParam1 xsi:type="wtc:SystemParam" href="platform:/resource/WindPower4MONDO/WindPower4MONDO.xmi#//@itsParams.190"/>
+    <Parameter__pParam2 xsi:type="wtc:SystemParam" href="platform:/resource/WindPower4MONDO/WindPower4MONDO.xmi#//@itsParams.191"/>
+  </itsWTCs>
+  <itsWTCs xsi:type="wtc:CtrlUnit29" sysId="CtrlUnit_1390" description="Description for CtrlUnit_1390" cycle="100" priority="11" enabled="true">
+    <Input__iInput1 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.1432"/>
+    <Fault__fFault1 xsi:type="wtc:SystemFault" href="platform:/resource/WindPower4MONDO/WindPower4MONDO.xmi#//@itsFaults.734"/>
+  </itsWTCs>
+  <itsWTCs xsi:type="wtc:CtrlUnit50" sysId="CtrlUnit_1391" description="Description for CtrlUnit_1391" cycle="100" priority="12" enabled="true">
+    <Output__oOutput1 xsi:type="wtc:SystemOutput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsOutput.659"/>
+    <Fault__fFault1 xsi:type="wtc:SystemFault" href="platform:/resource/WindPower4MONDO/WindPower4MONDO.xmi#//@itsFaults.734"/>
+  </itsWTCs>
+  <itsWTCs xsi:type="wtc:CtrlUnit9" sysId="CtrlUnit_1392" description="Description for CtrlUnit_1392" cycle="100" priority="4" enabled="true">
+    <Input__iInput1 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.1423"/>
+    <Output__oOutput1 xsi:type="wtc:SystemOutput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsOutput.660"/>
+    <Parameter__pParam1 xsi:type="wtc:SystemParam" href="platform:/resource/WindPower4MONDO/WindPower4MONDO.xmi#//@itsParams.189"/>
+  </itsWTCs>
+  <itsWTCs xsi:type="wtc:CtrlUnit9" sysId="CtrlUnit_1393" description="Description for CtrlUnit_1393" cycle="100" priority="4" enabled="true">
+    <Input__iInput1 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.1423"/>
+    <Output__oOutput1 xsi:type="wtc:SystemOutput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsOutput.661"/>
+    <Parameter__pParam1 xsi:type="wtc:SystemParam" href="platform:/resource/WindPower4MONDO/WindPower4MONDO.xmi#//@itsParams.186"/>
+  </itsWTCs>
+  <itsWTCs xsi:type="wtc:CtrlUnit9" sysId="CtrlUnit_1394" description="Description for CtrlUnit_1394" cycle="100" priority="4" enabled="true">
+    <Input__iInput1 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.1422"/>
+    <Output__oOutput1 xsi:type="wtc:SystemOutput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsOutput.662"/>
+    <Parameter__pParam1 xsi:type="wtc:SystemParam" href="platform:/resource/WindPower4MONDO/WindPower4MONDO.xmi#//@itsParams.186"/>
+  </itsWTCs>
+  <itsWTCs xsi:type="wtc:CtrlUnit11" sysId="CtrlUnit_1395" description="Description for CtrlUnit_1395" cycle="100" priority="5" enabled="true">
+    <Input__iInput1 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.1433"/>
+    <Input__iInput2 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.1434"/>
+    <Output__oOutput1 xsi:type="wtc:SystemOutput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsOutput.663"/>
+  </itsWTCs>
+  <itsWTCs xsi:type="wtc:CtrlUnit73" sysId="CtrlUnit_1396" description="Description for CtrlUnit_1396" cycle="100" priority="6" enabled="true">
+    <Input__iInput1 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.1435"/>
+    <Output__oOutput1 xsi:type="wtc:SystemOutput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsOutput.664"/>
+  </itsWTCs>
+  <itsWTCs xsi:type="wtc:CtrlUnit11" sysId="CtrlUnit_1397" description="Description for CtrlUnit_1397" cycle="100" priority="7" enabled="true">
+    <Input__iInput1 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.1436"/>
+    <Input__iInput2 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.30"/>
+    <Output__oOutput1 xsi:type="wtc:SystemOutput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsOutput.664"/>
+  </itsWTCs>
+  <itsWTCs xsi:type="wtc:CtrlUnit78" sysId="CtrlUnit_1398" description="Description for CtrlUnit_1398" cycle="100" priority="8" enabled="true">
+    <Input__iInput1 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.1437"/>
+    <Input__iInput2 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.1436"/>
+    <Output__oOutput1 xsi:type="wtc:SystemOutput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsOutput.665"/>
+  </itsWTCs>
+  <itsWTCs xsi:type="wtc:CtrlUnit36" sysId="CtrlUnit_1399" description="Description for CtrlUnit_1399" cycle="100" priority="9" enabled="true">
+    <Input__iInput1 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.1438"/>
+    <Output__oOutput1 xsi:type="wtc:SystemOutput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsOutput.666"/>
+    <Parameter__pParam1 xsi:type="wtc:SystemParam" href="platform:/resource/WindPower4MONDO/WindPower4MONDO.xmi#//@itsParams.190"/>
+    <Parameter__pParam2 xsi:type="wtc:SystemParam" href="platform:/resource/WindPower4MONDO/WindPower4MONDO.xmi#//@itsParams.191"/>
+  </itsWTCs>
+  <itsWTCs xsi:type="wtc:CtrlUnit29" sysId="CtrlUnit_1400" description="Description for CtrlUnit_1400" cycle="100" priority="10" enabled="true">
+    <Input__iInput1 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.1439"/>
+    <Fault__fFault1 xsi:type="wtc:SystemFault" href="platform:/resource/WindPower4MONDO/WindPower4MONDO.xmi#//@itsFaults.735"/>
+  </itsWTCs>
+  <itsWTCs xsi:type="wtc:CtrlUnit50" sysId="CtrlUnit_1401" description="Description for CtrlUnit_1401" cycle="100" priority="11" enabled="true">
+    <Output__oOutput1 xsi:type="wtc:SystemOutput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsOutput.667"/>
+    <Fault__fFault1 xsi:type="wtc:SystemFault" href="platform:/resource/WindPower4MONDO/WindPower4MONDO.xmi#//@itsFaults.735"/>
+  </itsWTCs>
+  <itsWTCs xsi:type="wtc:CtrlUnit9" sysId="CtrlUnit_1402" description="Description for CtrlUnit_1402" cycle="100" priority="4" enabled="true">
+    <Input__iInput1 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.1422"/>
+    <Output__oOutput1 xsi:type="wtc:SystemOutput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsOutput.668"/>
+    <Parameter__pParam1 xsi:type="wtc:SystemParam" href="platform:/resource/WindPower4MONDO/WindPower4MONDO.xmi#//@itsParams.192"/>
+    <Timer__tTimer1 xsi:type="wtc:SystemTimer" href="platform:/resource/WindPower4MONDO/WindPower4MONDO.xmi#//@itsTimers.54"/>
+  </itsWTCs>
+  <itsWTCs xsi:type="wtc:CtrlUnit9" sysId="CtrlUnit_1403" description="Description for CtrlUnit_1403" cycle="100" priority="4" enabled="true">
+    <Input__iInput1 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.1423"/>
+    <Output__oOutput1 xsi:type="wtc:SystemOutput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsOutput.669"/>
+    <Parameter__pParam1 xsi:type="wtc:SystemParam" href="platform:/resource/WindPower4MONDO/WindPower4MONDO.xmi#//@itsParams.193"/>
+    <Parameter__pParam2 xsi:type="wtc:SystemParam" href="platform:/resource/WindPower4MONDO/WindPower4MONDO.xmi#//@itsParams.194"/>
+    <Timer__tTimer1 xsi:type="wtc:SystemTimer" href="platform:/resource/WindPower4MONDO/WindPower4MONDO.xmi#//@itsTimers.54"/>
+  </itsWTCs>
+  <itsWTCs xsi:type="wtc:CtrlUnit78" sysId="CtrlUnit_1404" description="Description for CtrlUnit_1404" cycle="100" priority="5" enabled="true">
+    <Input__iInput1 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.1440"/>
+    <Input__iInput2 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.1441"/>
+    <Output__oOutput1 xsi:type="wtc:SystemOutput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsOutput.670"/>
+  </itsWTCs>
+  <itsWTCs xsi:type="wtc:CtrlUnit29" sysId="CtrlUnit_1405" description="Description for CtrlUnit_1405" cycle="100" priority="8" enabled="true">
+    <Input__iInput1 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.1442"/>
+    <Fault__fFault1 xsi:type="wtc:SystemFault" href="platform:/resource/WindPower4MONDO/WindPower4MONDO.xmi#//@itsFaults.736"/>
+  </itsWTCs>
+  <itsWTCs xsi:type="wtc:CtrlUnit50" sysId="CtrlUnit_1406" description="Description for CtrlUnit_1406" cycle="100" priority="9" enabled="true">
+    <Output__oOutput1 xsi:type="wtc:SystemOutput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsOutput.671"/>
+    <Fault__fFault1 xsi:type="wtc:SystemFault" href="platform:/resource/WindPower4MONDO/WindPower4MONDO.xmi#//@itsFaults.736"/>
+  </itsWTCs>
+  <itsWTCs xsi:type="wtc:CtrlUnit29" sysId="CtrlUnit_1408" description="Description for CtrlUnit_1408" cycle="100" priority="8" enabled="true">
+    <Input__iInput1 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.1444"/>
+    <Fault__fFault1 xsi:type="wtc:SystemFault" href="platform:/resource/WindPower4MONDO/WindPower4MONDO.xmi#//@itsFaults.5"/>
+  </itsWTCs>
+  <itsWTCs xsi:type="wtc:CtrlUnit50" sysId="CtrlUnit_1409" description="Description for CtrlUnit_1409" cycle="100" priority="9" enabled="true">
+    <Output__oOutput1 xsi:type="wtc:SystemOutput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsOutput.673"/>
+    <Fault__fFault1 xsi:type="wtc:SystemFault" href="platform:/resource/WindPower4MONDO/WindPower4MONDO.xmi#//@itsFaults.5"/>
+  </itsWTCs>
+  <itsWTCs xsi:type="wtc:CtrlUnit78" sysId="CtrlUnit_1410" description="Description for CtrlUnit_1410" cycle="100" priority="20" enabled="true">
+    <Input__iInput1 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.31"/>
+    <Input__iInput2 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.30"/>
+    <Output__oOutput1 xsi:type="wtc:SystemOutput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsOutput.674"/>
+  </itsWTCs>
+  <itsWTCs xsi:type="wtc:CtrlUnit78" sysId="CtrlUnit_1411" description="Description for CtrlUnit_1411" cycle="100" priority="20" enabled="true">
+    <Input__iInput1 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.33"/>
+    <Input__iInput2 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.32"/>
+    <Output__oOutput1 xsi:type="wtc:SystemOutput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsOutput.675"/>
+  </itsWTCs>
+  <itsWTCs xsi:type="wtc:CtrlUnit78" sysId="CtrlUnit_1412" description="Description for CtrlUnit_1412" cycle="100" priority="21" enabled="true">
+    <Input__iInput1 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.1445"/>
+    <Input__iInput2 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.1446"/>
+    <Output__oOutput1 xsi:type="wtc:SystemOutput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsOutput.676"/>
+  </itsWTCs>
+  <itsWTCs xsi:type="wtc:CtrlUnit78" sysId="CtrlUnit_1413" description="Description for CtrlUnit_1413" cycle="100" priority="22" enabled="true">
+    <Input__iInput1 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.1447"/>
+    <Input__iInput2 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.1448"/>
+    <Output__oOutput1 xsi:type="wtc:SystemOutput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsOutput.677"/>
+  </itsWTCs>
+  <itsWTCs xsi:type="wtc:CtrlUnit29" sysId="CtrlUnit_1414" description="Description for CtrlUnit_1414" cycle="1000" priority="1" enabled="true">
+    <Input__iInput1 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.1449"/>
+    <Fault__fFault1 xsi:type="wtc:SystemFault" href="platform:/resource/WindPower4MONDO/WindPower4MONDO.xmi#//@itsFaults.737"/>
+  </itsWTCs>
+  <itsWTCs xsi:type="wtc:CtrlUnit29" sysId="CtrlUnit_1415" description="Description for CtrlUnit_1415" cycle="1000" priority="1" enabled="true">
+    <Input__iInput1 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.1447"/>
+    <Fault__fFault1 xsi:type="wtc:SystemFault" href="platform:/resource/WindPower4MONDO/WindPower4MONDO.xmi#//@itsFaults.738"/>
+  </itsWTCs>
+  <itsWTCs xsi:type="wtc:CtrlUnit29" sysId="CtrlUnit_1416" description="Description for CtrlUnit_1416" cycle="1000" priority="1" enabled="true">
+    <Input__iInput1 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.1450"/>
+    <Fault__fFault1 xsi:type="wtc:SystemFault" href="platform:/resource/WindPower4MONDO/WindPower4MONDO.xmi#//@itsFaults.739"/>
+  </itsWTCs>
+  <itsWTCs xsi:type="wtc:CtrlUnit29" sysId="CtrlUnit_1417" description="Description for CtrlUnit_1417" cycle="1000" priority="1" enabled="true">
+    <Input__iInput1 xsi:type="wtc:SystemInput" href="platform:/resource/WindPower4MONDO/collectionInputOutput.inputoutput#//@itsInput.1451"/>
+    <Fault__fFault1 xsi:type="wtc:SystemFault" href="platform:/resource/WindPower4MONDO/WindPower4MONDO.xmi#//@itsFaults.740"/>
+  </itsWTCs>
+</wtc:MainSubsystem>

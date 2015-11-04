@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="ASCII"?>
+<wtc:WT xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:wtc="http://WTSpec4M/5.0" xmi:id="_YghtEIIdEeWFFY5m-RDWQg" sysId="test" model="test" version="testModels">
+  <itsSubsystems href="platform:/resource/test/new_file.subsytem#/"/>
+  <itsSubsystems href="platform:/resource/test/testvo.subsytem#/"/>
+  <itsInputOutput href="platform:/resource/test/collection.inputoutput#/"/>
+</wtc:WT>

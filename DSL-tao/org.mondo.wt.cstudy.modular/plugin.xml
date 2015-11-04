@@ -1,0 +1,231 @@
+<plugin>
+   <extension
+         point="org.eclipse.ui.newWizards">
+	  <!-- PROJECT CATEGORY -->
+      <category
+            id="org.mondo.wt.cstudy.projectWT"
+            name="WT">
+      </category>
+	  <!-- PACKAGE CATEGORY -->	
+	<category
+            id="org.mondo.wt.cstudy.projectWT.Packages"
+            name="WT Folders"
+			parentCategory="org.mondo.wt.cstudy.projectWT">
+      </category> 
+	  <!-- FILE CATEGORY -->
+	  <category
+            id="org.mondo.wt.cstudy.projectWT.Files"
+            name="WT Files"
+			parentCategory="org.mondo.wt.cstudy.projectWT">
+      </category>	  
+     <wizard
+            category="org.mondo.wt.cstudy.projectWT"
+            class="org.mondo.wt.cstudy.modular.wizard.WTNewProjectWizard"
+            id="org.mondo.wt.cstudy.wt.WTNewProject"
+            name="WT Project"
+            project="true"
+			icon="icons/wt.png">
+      </wizard>
+	<!--WIZARD PACKAGE CATEGORY -->
+	<!--WIZARD FILE CATEGORY -->
+	  <wizard
+			category="org.mondo.wt.cstudy.projectWT/org.mondo.wt.cstudy.projectWT.Files"
+			icon="icons/collectionio.png"
+			class="org.mondo.wt.cstudy.modular.wizard.file.CollectionInputOutputCreateFileWizard"
+			name="CollectionInputOutput File"
+			id="org.mondo.wt.cstudy.collectioninputoutput.collectioninputoutputNewFile"
+			project="false"
+	 		>	
+	 </wizard>		
+	  <wizard
+			category="org.mondo.wt.cstudy.projectWT/org.mondo.wt.cstudy.projectWT.Files"
+			icon="icons/mainsubsystem.png"
+			class="org.mondo.wt.cstudy.modular.wizard.file.MainSubsystemCreateFileWizard"
+			name="MainSubsystem File"
+			id="org.mondo.wt.cstudy.mainsubsystem.mainsubsystemNewFile"
+			project="false"
+	 		>	
+	 </wizard>		
+   </extension>
+   <!--MULTI-PAGE EDITOR PAGE EXTENSION-->  
+	<extension
+         point="org.eclipse.ui.editors"> 
+	<editor
+		name = "Inputoutput  Model Editor"
+		extensions = "inputoutput"
+		icon = "icons/collectionio.png"	
+		contributorClass="org.mondo.wt.cstudy.modular.editors.MultiPageEditorContributor"
+		class = "org.mondo.wt.cstudy.modular.editors.MultiPageEditor"
+		id="org.mondo.wt.cstudy.projectwt.editors.FigureEditorInputoutput"
+		default="true">
+	</editor>
+	<editor
+		name = "Subsytem  Model Editor"
+		extensions = "subsytem"
+		icon = "icons/mainsubsystem.png"	
+		contributorClass="org.mondo.wt.cstudy.modular.editors.MultiPageEditorContributor"
+		class = "org.mondo.wt.cstudy.modular.editors.MultiPageEditor"
+		id="org.mondo.wt.cstudy.projectwt.editors.FigureEditorSubsytem"
+		default="true">
+	</editor>
+	</extension>
+	<!--XMI FILE EXTENSION PARSER-->
+	<extension
+       point="org.eclipse.emf.ecore.extension_parser">
+	<parser
+          class="org.mondo.wt.cstudy.modular.resource.XMIModularResourceFactory"
+          type="inputoutput">
+    </parser>
+	<parser
+          class="org.mondo.wt.cstudy.modular.resource.XMIModularResourceFactory"
+          type="subsytem">
+    </parser>
+	</extension>
+	<!--PROJECT MODULAR NATURE-->
+   <extension
+         id="ModularNature"
+         name="Modular Nature"
+         point="org.eclipse.core.resources.natures">
+         <runtime>
+        	 <run class="org.mondo.wt.cstudy.modular.wizard.WTNewProjectNature">
+         </run>
+      </runtime>
+   </extension>
+   <extension
+         point="org.eclipse.ui.ide.projectNatureImages">
+         <image
+            icon="icons/wt.png"
+            id="org.mondo.wt.cstudywt.image.Folder"
+            natureId="org.mondo.wt.cstudy.modular.ModularNature">
+      </image>
+   </extension> 
+   <!-- PROJECT DECORATOR -->
+	<extension
+         point="org.eclipse.ui.decorators">
+      <decorator 
+       	adaptable="true"
+            icon="icons/wt.png"
+            id="resources.folder.decorator"
+            label="Folder Resource Decorator"
+            lightweight="true"
+            location="REPLACE"
+            state="true"
+            objectClass="org.eclipse.core.resources.IResource"
+            class="org.mondo.wt.cstudy.modular.decorator.ModularProjectDecorator">
+      </decorator>
+   </extension> 
+    <!-- PROPERTIES VIEW-->
+   <extension
+		point = "org.eclipse.jdt.ui.javaElementFilters" >
+		<filter
+            class="org.mondo.wt.cstudy.modular.Package_Explorer_Selection"
+            description="Package_Explorer_Selection"
+            enabled="true"
+            id="org.mondo.wt.cstudy.filter"
+            name="Selection_Package"
+            targetId="org.eclipse.jdt.ui.PackageExplorer">
+      </filter>
+   </extension>
+	<!-- POPUPMENUS FOR THE PROJECT-->
+	 <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.eclipse.jdt.ui.PackageExplorer?after=group.new">
+         <menu
+               id="org.mondo.wt.cstudy.wt.Menu"
+               label="WT"
+               mnemonic="L">
+            <command
+                  commandId="org.mondo.wt.cstudy.modular.command.gendiag"
+                  id="org.mondo.wt.cstudy.modular.gendiag"
+                  label="Generate Model"
+                  mnemonic="L"
+                  style="push">
+            </command>
+            <visibleWhen
+                  checkEnabled="true">
+            	 <with
+                     variable="activeMenuSelection">
+                  <iterate
+                        operator="and">
+                     <test
+                           property="org.eclipse.core.resources.projectNature"
+                           value="org.mondo.wt.cstudy.modular.ModularNature">
+                     </test>
+                  </iterate>
+                  <count
+                        value="1">
+                  </count>
+               </with>
+            </visibleWhen>
+         </menu>
+      </menuContribution>
+      <menuContribution
+            allPopups="true"
+            class="org.mondo.wt.cstudy.modular.CreateMenu"
+            locationURI="popup:org.eclipse.jdt.ui.PackageExplorer?after=group.new">
+         <menu
+               id="New"
+               label="New WT"
+               mnemonic="L">
+            <visibleWhen
+                  checkEnabled="true">
+               <with
+                     variable="activeMenuSelection">
+                  <count
+                        value="1">
+                  </count>
+                  <iterate
+                        operator="and">
+                     <test
+                           property="org.eclipse.core.resources.projectNature"
+                           value="org.mondo.wt.cstudy.modular.ModularNature">
+                     </test>
+                  </iterate>
+               </with>
+            </visibleWhen>
+         </menu>        
+      </menuContribution>
+   </extension>	
+	<!-- COMMANDS-->
+	 <extension
+         point="org.eclipse.ui.commands">
+      <command
+            id="org.mondo.wt.cstudy.modular.command.gendiag"
+            name="Generate Model">
+      </command>     
+   </extension>
+   <!-- HANDLERS-->
+	<extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="org.mondo.wt.cstudy.modular.actions.Generate_Diagram"
+            commandId="org.mondo.wt.cstudy.modular.command.gendiag">
+      </handler>     
+   </extension>
+   <!-- MODEL CROSS REFERENCES -->
+    <extension
+       point="org.model.references.definition.ext">
+    <client
+          Id="WTModularCrossReferences"
+          class="org.mondo.wt.cstudy.modular.editors.WTModularCrossReferences">
+    </client>
+   </extension>
+   <!-- MODEL PAGE  PREFERENCES -->
+    <extension
+       point="org.eclipse.ui.preferencePages">
+    <page
+          class="org.mondo.wt.cstudy.modular.preferences.WTPreferencePage"
+          id="org.mondo.wt.cstudy.modular.preferences.WTPreferencePage"
+          name="WT Preferences">
+    </page>
+ </extension>
+ <!-- MODEL PAGE  PREFERENCES INITIALIZER-->
+ <extension
+       point="org.eclipse.core.runtime.preferences">
+    <initializer
+          class="org.mondo.wt.cstudy.modular.preferences.WTPreferenceInitializer">
+    </initializer>
+ </extension>	
+</plugin> 	

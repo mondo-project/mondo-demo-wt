@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated WTSpec4M50 -->
+      <package
+            uri="http://WTSpec4M/5.0"
+            class="WTSpec4M.WTSpec4MPackage"/>
+   </extension>
+
+</plugin>

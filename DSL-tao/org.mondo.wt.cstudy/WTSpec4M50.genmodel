@@ -1,0 +1,760 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.mondo.wt.cstudy/src" modelPluginID="org.mondo.wt.cstudy" modelName="WTSpec4M50" containmentProxies="true" complianceLevel="7.0" copyrightFields="false">
+  <foreignModel>WTSpec4M50.ecore</foreignModel>
+  <genPackages prefix="WTSpec4M" disposableProviderFactory="true">
+    <ecorePackage href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#/"/>
+    <genClasses>
+      <ecoreClass href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//WT"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//WT/sysId"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//WT/model"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//WT/version"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//WT/itsSubsystems"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//WT/itsParams"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//WT/itsTimers"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//WT/itsFaults"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//WT/itsVariables"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//WT/itsInputOutput"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//SystemInput"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//SystemInput/sysId"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//SystemInput/description"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//SystemOutput"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//SystemOutput/sysId"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//SystemOutput/description"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//SystemFault"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//SystemFault/sysId"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//SystemFault/description"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//SystemFault/value"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//SystemParam"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//SystemParam/sysId"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//SystemParam/description"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//SystemParam/value"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//SystemParam/settable"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//SystemTimer"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//SystemTimer/sysId"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//SystemTimer/description"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//SystemTimer/value"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//SystemVariable"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//SystemVariable/sysId"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//SystemVariable/description"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses image="false">
+      <ecoreClass href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//WTCInput"/>
+    </genClasses>
+    <genClasses image="false">
+      <ecoreClass href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//WTCOutput"/>
+    </genClasses>
+    <genClasses image="false">
+      <ecoreClass href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//WTCParam"/>
+    </genClasses>
+    <genClasses image="false">
+      <ecoreClass href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//WTCTimer"/>
+    </genClasses>
+    <genClasses image="false">
+      <ecoreClass href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//WTCFault"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//Subsystem"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//Subsystem/sysId"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//Subsystem/description"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//Subsystem/itsWTCs"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//Subsystem/itsSubsystems"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses image="false">
+      <ecoreClass href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//wtc"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//wtc/sysId"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//wtc/description"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//wtc/cycle"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//wtc/priority"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//wtc/enabled"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit5"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit5/Input__iInput1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit5/Input__iInput2"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit5/Output__oOutput1"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit9"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit9/Input__iInput1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit9/Input__iInput2"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit9/Input__iInput3"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit9/Input__iInput4"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit9/Output__oOutput1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit9/Parameter__pParam1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit9/Parameter__pParam2"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit9/Timer__tTimer1"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit9/BhvParam__BhvParam1"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit9/BhvParam__BhvParam2"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit10"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit10/Input__iInput1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit10/Output__oOutput1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit10/Parameter__pParam1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit10/Parameter__pParam2"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit10/Parameter__pParam3"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit10/Parameter__pParam4"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit10/Parameter__pParam5"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit10/Parameter__pParam6"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit10/BhvParam__BhvParam1"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit11"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit11/Input__iInput1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit11/Input__iInput2"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit11/Output__oOutput1"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit13"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit13/Input__iInput1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit13/Input__iInput2"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit13/Input__iInput3"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit13/Output__oOutput1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit13/Parameter__pParam1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit13/Parameter__pParam2"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit13/BhvParam__BhvParam1"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit13/BhvParam__BhvParam2"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit15"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit15/Input__iInput1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit15/Output__oOutput1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit15/Parameter__pParam1"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit18"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit18/Input__iInput1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit18/Input__iInput2"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit18/Input__iInput3"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit18/Input__iInput4"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit18/Input__iInput5"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit18/Input__iInput6"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit18/Output__oOutput1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit18/Parameter__pParam1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit18/Parameter__pParam2"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit18/Parameter__pParam3"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit18/Parameter__pParam4"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit18/Parameter__pParam5"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit18/Parameter__pParam6"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit18/Parameter__pParam7"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit18/Timer__tTimer1"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit27"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit27/Input__iInput1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit27/Input__iInput2"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit27/Output__oOutput1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit27/Output__oOutput2"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit27/Parameter__pParam1"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit29"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit29/Input__iInput1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit29/Input__iInput2"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit29/Fault__fFault1"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit29/BhvParam__BhvParam1"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit31"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit31/Input__iInput1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit31/Output__oOutput1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit31/Parameter__pParam1"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit34"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit34/Input__iInput1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit34/Input__iInput2"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit34/Output__oOutput1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit34/Output__oOutput2"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit34/Timer__tTimer1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit34/Timer__tTimer2"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit34/BhvParam__BhvParam1"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit36"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit36/Input__iInput1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit36/Output__oOutput1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit36/Parameter__pParam1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit36/Parameter__pParam2"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit37"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit37/Input__iInput1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit37/Input__iInput2"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit37/Input__iInput3"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit37/Output__oOutput1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit37/Fault__fFault1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit37/Timer__tTimer1"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit37/BhvParam__BhvParam1"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit39"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit39/Input__iInput1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit39/Input__iInput2"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit39/Fault__fFault1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit39/Timer__tTimer1"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit39/BhvParam__BhvParam1"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit40"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit40/Input__iInput1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit40/Output__oOutput1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit40/Timer__tTimer1"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit44"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit44/Input__iInput1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit44/Output__oOutput1"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit46"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit46/Output__oOutput1"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit47"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit47/Input__iInput1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit47/Fault__fFault1"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit49"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit49/Input__iInput1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit49/Input__iInput2"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit49/Input__iInput3"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit49/Input__iInput4"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit49/Output__oOutput1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit49/Output__oOutput2"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit49/Parameter__pParam1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit49/Parameter__pParam2"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit49/Parameter__pParam3"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit49/Parameter__pParam4"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit49/Fault__fFault1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit49/Timer__tTimer1"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit50"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit50/Output__oOutput1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit50/Fault__fFault1"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit58"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit58/Input__iInput1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit58/Output__oOutput1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit58/Parameter__pParam1"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit58/BhvParam__BhvParam1"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit59"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit59/Input__iInput1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit59/Output__oOutput1"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit65"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit65/Output__oOutput1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit65/Fault__fFault1"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit68"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit68/Input__iInput1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit68/Input__iInput2"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit68/Output__oOutput1"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit68/BhvParam__BhvParam1"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit71"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit71/Input__iInput1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit71/Input__iInput2"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit71/Input__iInput3"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit71/Input__iInput4"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit71/Input__iInput5"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit71/Input__iInput6"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit71/Output__oOutput1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit71/Output__oOutput2"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit73"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit73/Input__iInput1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit73/Output__oOutput1"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit78"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit78/Input__iInput1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit78/Input__iInput2"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit78/Output__oOutput1"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit80"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit80/Input__iInput1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit80/Input__iInput2"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit80/Input__iInput3"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit80/Input__iInput4"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit80/Input__iInput5"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit80/Output__oOutput1"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit92"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit92/Input__iInput1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit92/Input__iInput2"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit92/Parameter__pParam1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit92/Parameter__pParam2"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit92/Fault__fFault1"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit92/BhvParam__BhvParam1"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit94"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit94/Input__iInput1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit94/Output__oOutput1"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit102"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit102/Input__iInput1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit102/Input__iInput2"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit102/Output__oOutput1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit102/Fault__fFault1"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit124"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit124/Input__iInput1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit124/Input__iInput2"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit124/Output__oOutput1"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit125"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit125/Input__iInput1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit125/Output__oOutput1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit125/Parameter__pParam1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit125/Parameter__pParam2"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit126"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit126/Input__iInput1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit126/Input__iInput2"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit126/Output__oOutput1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit126/Output__oOutput2"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit126/Parameter__pParam1"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CtrlUnit126/Parameter__pParam2"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//MainSubsystem"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CollectionInputOutput"/>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CollectionInputOutput/itsInput"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CollectionInputOutput/itsOutput"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="file:/C:/workspaceGitHub/3.CaseeStudyIkerlanv01/org.mondo.wt.cstudy/WTSpec4M50.ecore#//CollectionInputOutput/sysId"/>
+      </genFeatures>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
