@@ -19,7 +19,6 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.mondo.modular.references.ext.IEditorCrossReferences;
-
 import org.mondo.wt.cstudy.modular.wizard.WTNewProjectNature;
 
 public class WTModularCrossReferences implements IEditorCrossReferences {
@@ -102,7 +101,7 @@ public class WTModularCrossReferences implements IEditorCrossReferences {
 		// TODO Auto-generated method stub
 		return true;
 	}
-	
+
 	@Override
 	public boolean isGlobal() {
 		// TODO Auto-generated method stub

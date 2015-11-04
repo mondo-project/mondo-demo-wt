@@ -3,7 +3,6 @@ package org.mondo.wt.cstudy.modular.preferences;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.EList;
 import org.mondo.modular.references.ext.EvaluateCrossReferencesContributor;
-
 import org.mondo.wt.cstudy.modular.wizard.WTNewProjectNature;
 
 /**

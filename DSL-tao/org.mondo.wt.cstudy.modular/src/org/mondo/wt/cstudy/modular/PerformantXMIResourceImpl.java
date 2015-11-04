@@ -3,6 +3,8 @@ package org.mondo.wt.cstudy.modular;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.xmi.XMLHelper;
+import org.eclipse.emf.ecore.xmi.impl.XMIHelperImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 
 public class PerformantXMIResourceImpl extends XMIResourceImpl{
@@ -11,14 +13,14 @@ public class PerformantXMIResourceImpl extends XMIResourceImpl{
 
 	public PerformantXMIResourceImpl() {
 		super();
-		modelUUIDs = true;
+		modelUUIDs = false;
 		// TODO Auto-generated constructor stub
 	}
 
 	public PerformantXMIResourceImpl(URI uri) {
 		super(uri);
 		// TODO Auto-generated constructor stub
-		modelUUIDs = true;
+		modelUUIDs = false;
 	}	
 	
 	@Override
@@ -37,6 +39,23 @@ public class PerformantXMIResourceImpl extends XMIResourceImpl{
 
 	public void setModelUUIDs(boolean modelUUIDs) {
 		this.modelUUIDs = modelUUIDs;
+	}
+
+	@Override
+	protected XMLHelper createXMLHelper() {
+		// TODO Auto-generated method stub
+		XMLHelper helper = new XMIHelperImpl(this){
+
+			@Override
+			public URI deresolve(URI uri) {
+				// TODO Auto-generated method stub
+				return uri;
+			}
+				
+		};
+		return helper;
 	}	
+	
+	
 }
 

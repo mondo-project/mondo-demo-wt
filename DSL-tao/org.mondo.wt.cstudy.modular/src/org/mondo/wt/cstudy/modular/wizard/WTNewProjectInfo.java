@@ -9,6 +9,7 @@ import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.Path;
 import org.osgi.service.prefs.BackingStoreException;
 import org.mondo.wt.cstudy.modular.PerformantXMIResourceFactoryImpl;
 import org.eclipse.emf.common.util.URI;
@@ -73,12 +74,16 @@ public class WTNewProjectInfo {
 	}
 
 	public IFolder Create_Folder(String path) throws CoreException
-	{
-		IFolder fol = project.getFolder(path);
-		if(!fol.exists()){
-			fol.create(IResource.NONE, true, null);			
+	{	
+		IFolder fol = null;
+		if(path.equals("/"))
+			fol = ResourcesPlugin.getWorkspace().getRoot().getFolder(getProject().getLocation());
+			else{
+			fol = project.getFolder(path);
+			if(!fol.exists()){
+				fol.create(IResource.NONE, true, null);			
+			}
 		}
-		
 		return fol;
 	}
 
