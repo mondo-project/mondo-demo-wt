@@ -100,21 +100,7 @@ public class WTModularCrossReferences implements IEditorCrossReferences {
 	public boolean finish(String modularNature) {
 		// TODO Auto-generated method stub
 		return true;
-	}
-
-	@Override
-	public boolean isGlobal() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean isNature(String modularNature) {
-		// TODO Auto-generated method stub
-		if(modularNature.equals(WTNewProjectNature.ID))
-			return true;
-		return false;
-	}
+	}	
 
 }
 
