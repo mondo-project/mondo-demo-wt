@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: WT Case-Study Lens Application
+Bundle-SymbolicName: org.mondo.wt.cstudy.lens;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Require-Bundle: org.mondo.wt.cstudy;bundle-version="1.0.0",
+ org.mondo.collaboration.security.lens;bundle-version="1.0.0"

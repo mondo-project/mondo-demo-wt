@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><?eclipse version="3.4"?><plugin>
+  <extension point="org.eclipse.viatra.dse.merge.configuration">
+    <configuration class="org.mondo.wt.cstudy.merge.WTMergeConfigurator" epackageURI="http://www.ikerlan.es/domains/WTSpec4M/benchmark" extension="wtspec4m"/>
+  </extension>
+  <extension point="org.eclipse.compare.structureMergeViewers">
+    <viewer class="org.eclipse.viatra.dse.merge.ui.DSEStructureMergeViewerCreator" extensions="xmi" id="org.eclipse.viatra.dse.merge.ui.structureMergeViewer" label="DSE Structure Merge Viewer"/>
+    <contentTypeBinding contentTypeId="org.mondo.wt.cstudy.merge.xmi" structureMergeViewerId="org.eclipse.viatra.dse.merge.ui.structureMergeViewer"/>
+  </extension>
+  <extension point="org.eclipse.compare.contentMergeViewers">
+    <viewer class="org.eclipse.viatra.dse.merge.ui.DSEContentMergeViewerCreator" extensions="xmi" id="org.eclipse.viatra.dse.merge.ui.contentMergeViewer" label="DSE Content Merge Viewer"/>
+    <contentTypeBinding contentMergeViewerId="org.eclipse.viatra.dse.merge.ui.contentMergeViewer" contentTypeId="org.mondo.wt.cstudy.merge.xmi"/>
+  </extension>
+  <extension point="org.eclipse.core.contenttype.contentTypes">
+    <content-type base-type="org.eclipse.emf.ecore.xmi" file-extensions="xmi" id="org.mondo.wt.cstudy.merge.xmi" name="WTSpec 4 Merge" priority="high"/>
+  </extension>
+  <extension id="org.mondo.wt.cstudy.merge.Patterns" point="org.eclipse.incquery.runtime.queryspecification">
+    <group group="org.eclipse.incquery.runtime.extensibility.SingletonExtensionFactory:org.mondo.wt.cstudy.merge.Patterns" id="org.mondo.wt.cstudy.merge.Patterns"/>
+  </extension>
+</plugin>

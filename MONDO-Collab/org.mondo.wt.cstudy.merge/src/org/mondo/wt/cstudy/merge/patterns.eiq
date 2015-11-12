@@ -1,0 +1,23 @@
+package org.mondo.wt.cstudy.merge
+
+import "http://WTSpec4M/5.0"
+
+pattern id2object(eobject, id) { 
+	WT.sysId(eobject, id); 
+} or {
+	wtc.sysId(eobject, id); 
+} or {
+	Subsystem.sysId(eobject, id); 
+} or {
+	SystemFault.sysId(eobject, id); 
+} or {
+	SystemInput.sysId(eobject, id); 
+} or {
+	SystemOutput.sysId(eobject, id); 
+} or {
+	SystemParam.sysId(eobject, id); 
+} or {
+	SystemTimer.sysId(eobject, id); 
+} or {
+	SystemVariable.sysId(eobject, id); 
+}
