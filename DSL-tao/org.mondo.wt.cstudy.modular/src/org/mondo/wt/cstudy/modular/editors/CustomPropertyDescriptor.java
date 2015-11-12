@@ -25,7 +25,7 @@ public class CustomPropertyDescriptor extends PropertyDescriptor{
 		CellEditor result =  super.createPropertyEditor(composite);
 		if(result instanceof ExtendedDialogCellEditor){
 			
-			String IdExtension = Activator.getDefault().getPreferenceStore().getString(PreferenceOptions.FeatureEditor_CHOICE);
+			final String IdExtension = Activator.getDefault().getPreferenceStore().getString(PreferenceOptions.FeatureEditor_CHOICE);
 			if(IdExtension.equals(PreferenceOptions.DefaultFeatureEditorDialog))
 				return result;
 			else
