@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.mondo.wt.cstudy.modular
 Bundle-SymbolicName: org.mondo.wt.cstudy.modular; singleton:=true
-Bundle-Version: 1.0.0
+Bundle-Version: 1.0.0.qualifier
 Import-Package: org.osgi.framework
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
@@ -11,7 +11,7 @@ Require-Bundle: org.eclipse.ui,org.eclipse.core.runtime,
  org.eclipse.ui.editors,
  org.mondo.modular.filterui.ext,
  org.eclipse.jface.text,
- org.eclipse.core.resources,	
+ org.eclipse.core.resources,
  org.eclipse.ui.ide,
  org.mondo.wt.cstudy,
  org.mondo.wt.cstudy.editor,
