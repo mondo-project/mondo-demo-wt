@@ -125,20 +125,19 @@
       <layout>p2</layout>
       <url>http://download.eclipse.org/eclipse/updates/4.5</url>
     </repository>
-	</repositories>
-
-  <distributionManagement>
+    <repository>
+			<id>incquery-snapshots</id>
+			<url>https://repo.eclipse.org/content/repositories/emf-incquery-snapshots/</url>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</snapshots>
+		</repository>
 		<repository>
-			<id>repo.eclipse.org</id>
-			<name>EMF-IncQuery Project Repository - Releases</name>
+			<id>incquery-releases</id>
 			<url>https://repo.eclipse.org/content/repositories/emf-incquery-releases/</url>
 		</repository>
-		<snapshotRepository>
-			<id>repo.eclipse.org</id>
-			<name>EMF-IncQuery Project Repository - Snapshots</name>
-			<url>https://repo.eclipse.org/content/repositories/emf-incquery-snapshots/</url>
-		</snapshotRepository>
-	</distributionManagement>
+	</repositories>
 
   <build>
   <plugins>
