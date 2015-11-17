@@ -24,13 +24,16 @@
 
   <modules>
     <module>../../DSL-tao/org.mondo.wt.cstudy</module>
-    <!--<module>../../DSL-tao/org.mondo.wt.cstudy.edit</module>
+    <module>../../DSL-tao/org.mondo.wt.cstudy.edit</module>
     <module>../../DSL-tao/org.mondo.wt.cstudy.editor</module>
     <module>../../DSL-tao/org.mondo.wt.cstudy.modular</module>
-    <module>../../MONDO-Collab/org.mondo.wt.cstudy.merge</module>-->
+    <module>../../MONDO-Collab/org.mondo.wt.cstudy.merge</module>
     <module>../../MONDO-Collab/org.mondo.wt.cstudy.lens</module>
-    <!--<module>../../Tycho-build/org.mondo.wt.cstudy.features</module>
-    <module>../../Tycho-build/org.mondo.wt.cstudy.updatesite</module>-->
+    <module>../../Tycho-build/org.mondo.wt.cstudy.lens.product</module>
+    <module>../../Tycho-build/org.mondo.wt.cstudy.model.feature</module>
+    <module>../../Tycho-build/org.mondo.wt.cstudy.editor.feature</module>
+    <module>../../Tycho-build/org.mondo.wt.cstudy.merge.feature</module>
+    <module>../../Tycho-build/org.mondo.wt.cstudy.updatesite</module>
   </modules>
 
   <pluginRepositories>
