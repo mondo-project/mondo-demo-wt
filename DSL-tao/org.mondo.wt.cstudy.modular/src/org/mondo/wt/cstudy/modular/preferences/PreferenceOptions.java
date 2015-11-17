@@ -16,7 +16,7 @@ public class PreferenceOptions {
 	public static final EList<String> GetTreeEditorFeatureOptions()
 	{
 		EvaluateCrossReferencesContributor eval = new EvaluateCrossReferencesContributor();
-		EList<String> listOfValues = eval.ListNames(Platform.getExtensionRegistry());
+		EList<String> listOfValues = eval.ListNames(Platform.getExtensionRegistry(),WTNewProjectNature.ID);
 		listOfValues.add(DefaultFeatureEditorDialog);
 		return listOfValues;
 	}
