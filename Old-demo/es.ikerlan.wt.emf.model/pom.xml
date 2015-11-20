@@ -6,7 +6,7 @@
 	<parent>
 		<artifactId>org.mondo.wt.cstudy.tycho</artifactId>
 		<groupId>org.mondo.wt.cstudy</groupId>
-		<version>1.0.0-SNAPSHOT</version>
+		<version>0.1.0-SNAPSHOT</version>
 		<relativePath>../../Tycho-build/org.mondo.wt.cstudy.tycho/pom.xml</relativePath>
 	</parent>
 	<artifactId>es.ikerlan.wt.emf.model</artifactId>
