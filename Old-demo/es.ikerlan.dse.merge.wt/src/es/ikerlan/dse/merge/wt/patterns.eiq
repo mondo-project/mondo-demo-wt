@@ -1,0 +1,10 @@
+package es.ikerlan.dse.merge.wt
+
+import "http://org.eclipse.viatra.dse.merge/model"
+import "http://www.ikerlan.es/domains/WTSpec4M/benchmark" 
+import "http://www.eclipse.org/emf/2002/Ecore"
+import "http://org.eclipse.viatra.dse.merge/scope"
+
+pattern id2object(eobject : WTElement, id) { 
+	WTElement.id(eobject, id); 
+}

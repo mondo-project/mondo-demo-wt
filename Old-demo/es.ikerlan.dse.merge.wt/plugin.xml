@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><plugin>
+  <extension point="org.eclipse.viatra.dse.merge.configuration">
+    <configuration class="es.ikerlan.dse.merge.wt.WTMergeConfigurator" epackageURI="http://www.ikerlan.es/domains/WTSpec4M/benchmark" extension="wtspec4m"/>
+  </extension>
+  <extension point="org.eclipse.compare.structureMergeViewers">
+    <viewer class="org.eclipse.viatra.dse.merge.ui.DSEStructureMergeViewerCreator" extensions="wtspec4m" id="org.eclipse.viatra.dse.merge.ui.structureMergeViewer" label="DSE Structure Merge Viewer"/>
+    <contentTypeBinding contentTypeId="es.ikerlan.wt.emf.model.wtspec4m" structureMergeViewerId="org.eclipse.viatra.dse.merge.ui.structureMergeViewer"/>
+  </extension>
+  <extension point="org.eclipse.compare.contentMergeViewers">
+    <viewer class="org.eclipse.viatra.dse.merge.ui.DSEContentMergeViewerCreator" extensions="wtspec4m" id="org.eclipse.viatra.dse.merge.ui.contentMergeViewer" label="DSE Content Merge Viewer"/>
+    <contentTypeBinding contentMergeViewerId="org.eclipse.viatra.dse.merge.ui.contentMergeViewer" contentTypeId="es.ikerlan.wt.emf.model.wtspec4m"/>
+  </extension>
+  <extension id="es.ikerlan.dse.merge.wt.Patterns" point="org.eclipse.incquery.runtime.queryspecification">
+    <group group="org.eclipse.incquery.runtime.extensibility.SingletonExtensionFactory:es.ikerlan.dse.merge.wt.Patterns" id="es.ikerlan.dse.merge.wt.Patterns"/>
+  </extension>
+</plugin>
