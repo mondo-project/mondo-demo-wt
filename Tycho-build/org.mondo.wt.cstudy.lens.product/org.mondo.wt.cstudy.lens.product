@@ -24,7 +24,6 @@
    </vm>
 
    <plugins>
-      <plugin id="com.google.guava"/>
       <plugin id="com.google.inject"/>
       <plugin id="com.google.inject.multibindings" fragment="true"/>
       <plugin id="com.ibm.icu"/>
@@ -34,6 +33,9 @@
       <plugin id="org.apache.commons.cli"/>
       <plugin id="org.apache.commons.lang"/>
       <plugin id="org.apache.commons.logging"/>
+      <plugin id="org.apache.felix.gogo.command"/>
+      <plugin id="org.apache.felix.gogo.runtime"/>
+      <plugin id="org.apache.felix.gogo.shell"/>
       <plugin id="org.apache.log4j"/>
       <plugin id="org.eclipse.core.commands"/>
       <plugin id="org.eclipse.core.contenttype"/>
@@ -60,6 +62,7 @@
       <plugin id="org.eclipse.emf.mwe2.runtime"/>
       <plugin id="org.eclipse.equinox.app"/>
       <plugin id="org.eclipse.equinox.common"/>
+      <plugin id="org.eclipse.equinox.console"/>
       <plugin id="org.eclipse.equinox.preferences"/>
       <plugin id="org.eclipse.equinox.registry"/>
       <plugin id="org.eclipse.incquery.patternlanguage"/>
@@ -71,7 +74,11 @@
       <plugin id="org.eclipse.incquery.runtime.matchers"/>
       <plugin id="org.eclipse.incquery.runtime.rete"/>
       <plugin id="org.eclipse.incquery.runtime.rete.recipes"/>
-
+      <plugin id="org.eclipse.jdt.compiler.apt" fragment="true"/>
+      <plugin id="org.eclipse.jdt.compiler.tool" fragment="true"/>
+      <plugin id="org.eclipse.jdt.core"/>
+      <plugin id="org.eclipse.jdt.debug"/>
+      <plugin id="org.eclipse.jdt.launching"/>
       <plugin id="org.eclipse.osgi"/>
       <plugin id="org.eclipse.osgi.compatibility.state" fragment="true"/>
       <plugin id="org.eclipse.text"/>
@@ -86,10 +93,13 @@
       <plugin id="org.eclipse.xtext.ecore"/>
       <plugin id="org.eclipse.xtext.generator"/>
       <plugin id="org.eclipse.xtext.logging" fragment="true"/>
+      <plugin id="org.eclipse.xtext.smap"/>
       <plugin id="org.eclipse.xtext.util"/>
       <plugin id="org.eclipse.xtext.xbase"/>
       <plugin id="org.eclipse.xtext.xbase.lib"/>
+      <plugin id="org.eclipse.xtext.xtext.generator"/>
       <plugin id="org.mondo.collaboration.security.lens"/>
+      <plugin id="org.mondo.collaboration.security.lens.offline.cli"/>
       <plugin id="org.mondo.collaboration.security.macl.xtext"/>
       <plugin id="org.mondo.collaboration.security.macl.xtext.rule"/>
       <plugin id="org.mondo.wt.cstudy"/>
