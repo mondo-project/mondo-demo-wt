@@ -104,6 +104,11 @@
       <plugin id="org.mondo.collaboration.security.macl.xtext.rule"/>
       <plugin id="org.mondo.wt.cstudy"/>
       <plugin id="org.objectweb.asm"/>
+      <plugin id="org.eclipse.equinox.common"/>
+      <plugin id="org.eclipse.equinox.ds"/>
+      <plugin id="org.eclipse.equinox.event"/>
+      <plugin id="org.eclipse.equinox.p2.reconciler.dropins"/>
+      <plugin id="org.eclipse.equinox.simpleconfigurator"/>
    </plugins>
 
    <configurations>
