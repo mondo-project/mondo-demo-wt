@@ -1,5 +1,7 @@
 package org.mondo.wt.cstudy.merge;
 
+import java.util.Collection;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -9,6 +11,8 @@ import org.eclipse.incquery.runtime.exception.IncQueryException;
 import org.eclipse.viatra.dse.merge.DSEMergeConfigurator;
 import org.eclipse.viatra.dse.merge.DSEMergeIdMapper;
 import org.mondo.wt.cstudy.merge.util.Id2objectQuerySpecification;
+
+import com.google.common.collect.Sets;
 
 import WTSpec4M.WTSpec4MPackage;
 
@@ -23,7 +27,7 @@ public class WTMergeConfigurator extends DSEMergeConfigurator {
     public IQuerySpecification<?> getId2EObject() throws IncQueryException {
         return Id2objectQuerySpecification.instance();
     }
-
+    
     @Override
     public DSEMergeIdMapper getIdMapper() {
         return new DSEMergeIdMapper() {

@@ -1,6 +1,7 @@
 package org.mondo.wt.cstudy.merge
 
 import "http://WTSpec4M/5.0"
+import "http://www.eclipse.org/emf/2002/Ecore"
 
 pattern id2object(eobject, id) { 
 	WT.sysId(eobject, id); 
