@@ -9,9 +9,5 @@
    <feature url="Tycho-build/org.mondo.wt.cstudy.merge.feature_1.0.0.qualifier.jar" id="org.mondo.wt.cstudy.merge.feature" version="1.0.0.qualifier">
       <category name="org.mondo.wt.cstudy"/>
    </feature>
-   <feature url="Tycho-build/es.ikerlan.wt.demo.feature_1.0.0.qualifier.jar" id="es.ikerlan.wt.demo.feature" version="1.0.0.qualifier">
-      <category name="es.ikerlan.wt.demo"/>
-   </feature>
    <category-def name="org.mondo.wt.cstudy" label="WT Case-Study Features"/>
-   <category-def name="es.ikerlan.wt.demo" label="Demo WT Features"/>
 </site>
