@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Mondo Offline Collaboration Command-line Application Product" uid="org.mondo.wt.cstudy.lens" id="org.mondo.collaboration.security.lens.offline.cli.MondoSecurityLensOffline" application="org.mondo.collaboration.security.lens.offline.cli" version="1.0.0" useFeatures="false" includeLaunchers="true">
+<product name="Mondo Offline Collaboration Command-line Application Product" uid="org.mondo.wt.cstudy.lens.product" id="org.mondo.collaboration.security.lens.offline.cli.MondoSecurityLensOffline" application="org.mondo.collaboration.security.lens.offline.cli" version="1.0.0" useFeatures="false" includeLaunchers="true">
 
    <configIni use="default">
    </configIni>
