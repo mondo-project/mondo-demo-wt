@@ -23,7 +23,11 @@
   </properties>
 
   <modules>
-    <!--<module>../../DSL-tao/org.mondo.wt.cstudy</module>
+    <!--
+    <module>../../Tycho-build/es.ikerlan.wt.demo.feature</module>
+    <module>../../Old-demo/es.ikerlan.dse.merge.wt</module>
+    <module>../../Old-demo/es.ikerlan.wt.emf.model</module>
+    <module>../../DSL-tao/org.mondo.wt.cstudy</module>
     <module>../../DSL-tao/org.mondo.wt.cstudy.edit</module>
     <module>../../DSL-tao/org.mondo.wt.cstudy.editor</module>
     <module>../../DSL-tao/org.mondo.wt.cstudy.modular</module>-->
@@ -36,9 +40,6 @@
     <module>../../Tycho-build/org.mondo.wt.cstudy.model.feature</module>
     <module>../../Tycho-build/org.mondo.wt.cstudy.editor.feature</module>
     <module>../../Tycho-build/org.mondo.wt.cstudy.merge.feature</module>
-    <module>../../Old-demo/es.ikerlan.dse.merge.wt</module>
-    <module>../../Old-demo/es.ikerlan.wt.emf.model</module>
-    <module>../../Tycho-build/es.ikerlan.wt.demo.feature</module>
     <module>../../Tycho-build/org.mondo.wt.cstudy.updatesite</module>
   </modules>
 
