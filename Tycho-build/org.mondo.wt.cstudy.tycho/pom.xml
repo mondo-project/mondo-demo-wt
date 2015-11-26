@@ -23,10 +23,13 @@
   </properties>
 
   <modules>
-    <module>../../DSL-tao/org.mondo.wt.cstudy</module>
+    <!--<module>../../DSL-tao/org.mondo.wt.cstudy</module>
     <module>../../DSL-tao/org.mondo.wt.cstudy.edit</module>
     <module>../../DSL-tao/org.mondo.wt.cstudy.editor</module>
-    <module>../../DSL-tao/org.mondo.wt.cstudy.modular</module>
+    <module>../../DSL-tao/org.mondo.wt.cstudy.modular</module>-->
+    <module>../../MONDO-Collab/org.mondo.wt.cstudy.metamodel</module>
+    <module>../../MONDO-Collab/org.mondo.wt.cstudy.metamodel.edit</module>
+    <module>../../MONDO-Collab/org.mondo.wt.cstudy.metamodel.editor</module>
     <module>../../MONDO-Collab/org.mondo.wt.cstudy.merge</module>
     <module>../../MONDO-Collab/org.mondo.wt.cstudy.lens</module>
     <module>../../Tycho-build/org.mondo.wt.cstudy.lens.product</module>
@@ -44,6 +47,11 @@
 			<id>central</id>
 			<name>Maven Central</name>
 			<url>http://repo.maven.apache.org/maven2</url>
+		</pluginRepository>
+    <pluginRepository>
+			<id>central2</id>
+			<name>Maven Central2</name>
+			<url>http://central.maven.apache.org/maven2</url>
 		</pluginRepository>
 		<pluginRepository>
 			<id>eclipse.plugin.repository</id>
