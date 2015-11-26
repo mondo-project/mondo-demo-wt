@@ -17,23 +17,16 @@
    </license>
 
    <plugin
-         id="org.mondo.wt.cstudy.edit"
+         id="org.mondo.wt.cstudy.metamodel.edit"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
     <plugin
-          id="org.mondo.wt.cstudy.editor"
+          id="org.mondo.wt.cstudy.metamodel.editor"
           download-size="0"
           install-size="0"
           version="0.0.0"
           unpack="false"/>
-
-   <plugin
-         id="org.mondo.wt.cstudy.modular"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
 </feature>

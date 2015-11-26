@@ -11,6 +11,7 @@ import WTSpec4M.SystemFault;
 import WTSpec4M.SystemInput;
 import WTSpec4M.SystemOutput;
 import WTSpec4M.SystemParam;
+import WTSpec4M.SystemTimer;
 import WTSpec4M.SystemVariable;
 import WTSpec4M.WT;
 import WTSpec4M.wtc;
@@ -55,6 +56,9 @@ public class UniqueIdSchemeFactory implements UniqueIDSchemeFactory {
             }
             if (input instanceof SystemVariable) {
                 return "org.mondo.wt.cstudy.WTSpec4M.SystemVariable:" + ((SystemVariable) input).getSysId();
+            }
+            if (input instanceof SystemTimer) {
+                return "org.mondo.wt.cstudy.WTSpec4M.SystemTimer:" + ((SystemTimer) input).getSysId();
             }
             return null;
         }

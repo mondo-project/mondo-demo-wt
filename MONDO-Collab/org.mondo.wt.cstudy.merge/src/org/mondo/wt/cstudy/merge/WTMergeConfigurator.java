@@ -1,7 +1,5 @@
 package org.mondo.wt.cstudy.merge;
 
-import java.util.Collection;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -11,8 +9,6 @@ import org.eclipse.incquery.runtime.exception.IncQueryException;
 import org.eclipse.viatra.dse.merge.DSEMergeConfigurator;
 import org.eclipse.viatra.dse.merge.DSEMergeIdMapper;
 import org.mondo.wt.cstudy.merge.util.Id2objectQuerySpecification;
-
-import com.google.common.collect.Sets;
 
 import WTSpec4M.WTSpec4MPackage;
 
@@ -34,9 +30,7 @@ public class WTMergeConfigurator extends DSEMergeConfigurator {
             
             @Override
             public Object getId(EObject object) {
-                EClass eClass = object.eClass();
-                EStructuralFeature id = eClass.getEStructuralFeature("sysId");
-                return object.eGet(id);
+                return object.eGet(getIdFeature(object));
             }
 
             @Override
@@ -44,6 +38,12 @@ public class WTMergeConfigurator extends DSEMergeConfigurator {
                 if (feature.getName().equals("sysId"))
                     return true;
                 return false;
+            }
+
+            @Override
+            public EStructuralFeature getIdFeature(EObject object) {
+                EClass eClass = object.eClass();
+                return eClass.getEStructuralFeature("sysId");
             }
         };
     }

@@ -102,9 +102,9 @@ public final class Id2objectQuerySpecification extends BaseGeneratedEMFQuerySpec
       		   new ExportedParameter(body, var_id, "id")
       		));
       		//  	WT.sysId(eobject, id)
-      		new TypeConstraint(body, new FlatTuple(var_eobject), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://WTSpec4M/5.0", "WT")));
+      		new TypeConstraint(body, new FlatTuple(var_eobject), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://WTSpec4M/5.0M", "WT")));
       		PVariable var__virtual_0_ = body.getOrCreateVariableByName(".virtual{0}");
-      		new TypeConstraint(body, new FlatTuple(var_eobject, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://WTSpec4M/5.0", "WT", "sysId")));
+      		new TypeConstraint(body, new FlatTuple(var_eobject, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://WTSpec4M/5.0M", "WT", "sysId")));
       		new Equality(body, var__virtual_0_, var_id);
       		bodies.add(body);
       	}
@@ -117,9 +117,9 @@ public final class Id2objectQuerySpecification extends BaseGeneratedEMFQuerySpec
       		   new ExportedParameter(body, var_id, "id")
       		));
       		// 	wtc.sysId(eobject, id)
-      		new TypeConstraint(body, new FlatTuple(var_eobject), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://WTSpec4M/5.0", "wtc")));
+      		new TypeConstraint(body, new FlatTuple(var_eobject), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://WTSpec4M/5.0M", "wtc")));
       		PVariable var__virtual_0_ = body.getOrCreateVariableByName(".virtual{0}");
-      		new TypeConstraint(body, new FlatTuple(var_eobject, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://WTSpec4M/5.0", "wtc", "sysId")));
+      		new TypeConstraint(body, new FlatTuple(var_eobject, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://WTSpec4M/5.0M", "wtc", "sysId")));
       		new Equality(body, var__virtual_0_, var_id);
       		bodies.add(body);
       	}
@@ -132,9 +132,9 @@ public final class Id2objectQuerySpecification extends BaseGeneratedEMFQuerySpec
       		   new ExportedParameter(body, var_id, "id")
       		));
       		// 	Subsystem.sysId(eobject, id)
-      		new TypeConstraint(body, new FlatTuple(var_eobject), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://WTSpec4M/5.0", "Subsystem")));
+      		new TypeConstraint(body, new FlatTuple(var_eobject), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://WTSpec4M/5.0M", "Subsystem")));
       		PVariable var__virtual_0_ = body.getOrCreateVariableByName(".virtual{0}");
-      		new TypeConstraint(body, new FlatTuple(var_eobject, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://WTSpec4M/5.0", "Subsystem", "sysId")));
+      		new TypeConstraint(body, new FlatTuple(var_eobject, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://WTSpec4M/5.0M", "Subsystem", "sysId")));
       		new Equality(body, var__virtual_0_, var_id);
       		bodies.add(body);
       	}
@@ -147,9 +147,9 @@ public final class Id2objectQuerySpecification extends BaseGeneratedEMFQuerySpec
       		   new ExportedParameter(body, var_id, "id")
       		));
       		// 	SystemFault.sysId(eobject, id)
-      		new TypeConstraint(body, new FlatTuple(var_eobject), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://WTSpec4M/5.0", "SystemFault")));
+      		new TypeConstraint(body, new FlatTuple(var_eobject), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://WTSpec4M/5.0M", "SystemFault")));
       		PVariable var__virtual_0_ = body.getOrCreateVariableByName(".virtual{0}");
-      		new TypeConstraint(body, new FlatTuple(var_eobject, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://WTSpec4M/5.0", "SystemFault", "sysId")));
+      		new TypeConstraint(body, new FlatTuple(var_eobject, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://WTSpec4M/5.0M", "SystemFault", "sysId")));
       		new Equality(body, var__virtual_0_, var_id);
       		bodies.add(body);
       	}
@@ -162,9 +162,9 @@ public final class Id2objectQuerySpecification extends BaseGeneratedEMFQuerySpec
       		   new ExportedParameter(body, var_id, "id")
       		));
       		// 	SystemInput.sysId(eobject, id)
-      		new TypeConstraint(body, new FlatTuple(var_eobject), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://WTSpec4M/5.0", "SystemInput")));
+      		new TypeConstraint(body, new FlatTuple(var_eobject), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://WTSpec4M/5.0M", "SystemInput")));
       		PVariable var__virtual_0_ = body.getOrCreateVariableByName(".virtual{0}");
-      		new TypeConstraint(body, new FlatTuple(var_eobject, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://WTSpec4M/5.0", "SystemInput", "sysId")));
+      		new TypeConstraint(body, new FlatTuple(var_eobject, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://WTSpec4M/5.0M", "SystemInput", "sysId")));
       		new Equality(body, var__virtual_0_, var_id);
       		bodies.add(body);
       	}
@@ -177,9 +177,9 @@ public final class Id2objectQuerySpecification extends BaseGeneratedEMFQuerySpec
       		   new ExportedParameter(body, var_id, "id")
       		));
       		// 	SystemOutput.sysId(eobject, id)
-      		new TypeConstraint(body, new FlatTuple(var_eobject), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://WTSpec4M/5.0", "SystemOutput")));
+      		new TypeConstraint(body, new FlatTuple(var_eobject), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://WTSpec4M/5.0M", "SystemOutput")));
       		PVariable var__virtual_0_ = body.getOrCreateVariableByName(".virtual{0}");
-      		new TypeConstraint(body, new FlatTuple(var_eobject, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://WTSpec4M/5.0", "SystemOutput", "sysId")));
+      		new TypeConstraint(body, new FlatTuple(var_eobject, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://WTSpec4M/5.0M", "SystemOutput", "sysId")));
       		new Equality(body, var__virtual_0_, var_id);
       		bodies.add(body);
       	}
@@ -192,9 +192,9 @@ public final class Id2objectQuerySpecification extends BaseGeneratedEMFQuerySpec
       		   new ExportedParameter(body, var_id, "id")
       		));
       		// 	SystemParam.sysId(eobject, id)
-      		new TypeConstraint(body, new FlatTuple(var_eobject), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://WTSpec4M/5.0", "SystemParam")));
+      		new TypeConstraint(body, new FlatTuple(var_eobject), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://WTSpec4M/5.0M", "SystemParam")));
       		PVariable var__virtual_0_ = body.getOrCreateVariableByName(".virtual{0}");
-      		new TypeConstraint(body, new FlatTuple(var_eobject, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://WTSpec4M/5.0", "SystemParam", "sysId")));
+      		new TypeConstraint(body, new FlatTuple(var_eobject, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://WTSpec4M/5.0M", "SystemParam", "sysId")));
       		new Equality(body, var__virtual_0_, var_id);
       		bodies.add(body);
       	}
@@ -207,9 +207,9 @@ public final class Id2objectQuerySpecification extends BaseGeneratedEMFQuerySpec
       		   new ExportedParameter(body, var_id, "id")
       		));
       		// 	SystemTimer.sysId(eobject, id)
-      		new TypeConstraint(body, new FlatTuple(var_eobject), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://WTSpec4M/5.0", "SystemTimer")));
+      		new TypeConstraint(body, new FlatTuple(var_eobject), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://WTSpec4M/5.0M", "SystemTimer")));
       		PVariable var__virtual_0_ = body.getOrCreateVariableByName(".virtual{0}");
-      		new TypeConstraint(body, new FlatTuple(var_eobject, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://WTSpec4M/5.0", "SystemTimer", "sysId")));
+      		new TypeConstraint(body, new FlatTuple(var_eobject, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://WTSpec4M/5.0M", "SystemTimer", "sysId")));
       		new Equality(body, var__virtual_0_, var_id);
       		bodies.add(body);
       	}
@@ -222,9 +222,9 @@ public final class Id2objectQuerySpecification extends BaseGeneratedEMFQuerySpec
       		   new ExportedParameter(body, var_id, "id")
       		));
       		// 	SystemVariable.sysId(eobject, id)
-      		new TypeConstraint(body, new FlatTuple(var_eobject), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://WTSpec4M/5.0", "SystemVariable")));
+      		new TypeConstraint(body, new FlatTuple(var_eobject), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://WTSpec4M/5.0M", "SystemVariable")));
       		PVariable var__virtual_0_ = body.getOrCreateVariableByName(".virtual{0}");
-      		new TypeConstraint(body, new FlatTuple(var_eobject, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://WTSpec4M/5.0", "SystemVariable", "sysId")));
+      		new TypeConstraint(body, new FlatTuple(var_eobject, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://WTSpec4M/5.0M", "SystemVariable", "sysId")));
       		new Equality(body, var__virtual_0_, var_id);
       		bodies.add(body);
       	}

@@ -1,6 +1,6 @@
 package org.mondo.wt.cstudy.merge
 
-import "http://WTSpec4M/5.0"
+import "http://WTSpec4M/5.0M"
 import "http://www.eclipse.org/emf/2002/Ecore"
 
 pattern id2object(eobject, id) { 

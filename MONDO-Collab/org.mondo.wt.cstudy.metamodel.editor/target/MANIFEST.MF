@@ -1,0 +1,19 @@
+Manifest-Version: 1.0
+Bundle-SymbolicName: org.mondo.wt.cstudy.metamodel.editor;singleton:=t
+ rue
+Require-Bundle: org.eclipse.core.runtime,org.eclipse.core.resources;vi
+ sibility:=reexport,org.mondo.wt.cstudy.metamodel.edit;visibility:=ree
+ xport,org.eclipse.emf.ecore.xmi;visibility:=reexport,org.eclipse.emf.
+ edit.ui;visibility:=reexport,org.eclipse.ui.ide;visibility:=reexport
+Bundle-ManifestVersion: 2
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: %providerName
+Export-Package: WTSpec4M.presentation
+Bundle-Name: %pluginName
+Bundle-Version: 1.0.0.201511261244
+Bundle-ClassPath: .
+Bundle-Localization: plugin
+Bundle-Activator: WTSpec4M.presentation.WTSpec4M50MEditorPlugin$Implem
+ entation
+
