@@ -1,0 +1,3 @@
+uri=http://WTSpec4M/5.0M
+target=dse-gen
+package=org.mondo.wt.cstudy.metamodel.merge

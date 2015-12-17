@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="WTSpec4M" nsURI="http://WTSpec4M/5.0M" nsPrefix="wtc">
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="WTSpec4M50M" nsURI="http://WTSpec4M/5.0M" nsPrefix="wtc">
   <eClassifiers xsi:type="ecore:EClass" name="WT">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="sysId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="model" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

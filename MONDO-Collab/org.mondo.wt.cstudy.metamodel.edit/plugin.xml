@@ -10,7 +10,7 @@
       <!-- @generated WTSpec4M50M -->
       <factory
             uri="http://WTSpec4M/5.0M"
-            class="WTSpec4M.provider.WTSpec4MItemProviderAdapterFactory"
+            class="WTSpec4M50M.provider.WTSpec4M50MItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
                org.eclipse.emf.edit.provider.IStructuredItemContentProvider

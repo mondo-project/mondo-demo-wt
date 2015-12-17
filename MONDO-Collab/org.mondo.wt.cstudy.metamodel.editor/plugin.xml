@@ -12,12 +12,12 @@
             id="org.eclipse.emf.ecore.Wizard.category.ID"
             name="%_UI_Wizard_category"/>
       <wizard
-            id="WTSpec4M.presentation.WTSpec4MModelWizardID"
-            name="%_UI_WTSpec4MModelWizard_label"
-            class="WTSpec4M.presentation.WTSpec4MModelWizard"
+            id="WTSpec4M50M.presentation.WTSpec4M50MModelWizardID"
+            name="%_UI_WTSpec4M50MModelWizard_label"
+            class="WTSpec4M50M.presentation.WTSpec4M50MModelWizard"
             category="org.eclipse.emf.ecore.Wizard.category.ID"
-            icon="icons/full/obj16/WTSpec4MModelFile.gif">
-         <description>%_UI_WTSpec4MModelWizard_description</description>
+            icon="icons/full/obj16/WTSpec4M50MModelFile.gif">
+         <description>%_UI_WTSpec4M50MModelWizard_description</description>
          <selection class="org.eclipse.core.resources.IResource"/>
       </wizard>
    </extension>
@@ -25,12 +25,12 @@
    <extension point="org.eclipse.ui.editors">
       <!-- @generated WTSpec4M50M -->
       <editor
-            id="WTSpec4M.presentation.WTSpec4MEditorID"
-            name="%_UI_WTSpec4MEditor_label"
-            icon="icons/full/obj16/WTSpec4MModelFile.gif"
-            extensions="wtspec4m"
-            class="WTSpec4M.presentation.WTSpec4MEditor"
-            contributorClass="WTSpec4M.presentation.WTSpec4MActionBarContributor">
+            id="WTSpec4M50M.presentation.WTSpec4M50MEditorID"
+            name="%_UI_WTSpec4M50MEditor_label"
+            icon="icons/full/obj16/WTSpec4M50MModelFile.gif"
+            extensions="wtspec4m50m"
+            class="WTSpec4M50M.presentation.WTSpec4M50MEditor"
+            contributorClass="WTSpec4M50M.presentation.WTSpec4M50MActionBarContributor">
       </editor>
    </extension>
 

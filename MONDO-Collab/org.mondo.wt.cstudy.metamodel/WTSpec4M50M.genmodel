@@ -2,10 +2,10 @@
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.mondo.wt.cstudy.metamodel/src" modelPluginID="org.mondo.wt.cstudy.metamodel"
     modelName="WTSpec4M50M" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
-    importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0" copyrightFields="false"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
     operationReflection="true" importOrganizing="true">
   <foreignModel>WTSpec4M50M.ecore</foreignModel>
-  <genPackages prefix="WTSpec4M" disposableProviderFactory="true" ecorePackage="WTSpec4M50M.ecore#/">
+  <genPackages prefix="WTSpec4M50M" disposableProviderFactory="true" ecorePackage="WTSpec4M50M.ecore#/">
     <genClasses ecoreClass="WTSpec4M50M.ecore#//WT">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WTSpec4M50M.ecore#//WT/sysId"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WTSpec4M50M.ecore#//WT/model"/>
