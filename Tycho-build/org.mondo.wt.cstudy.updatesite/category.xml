@@ -3,9 +3,6 @@
    <feature url="Tycho-build/org.mondo.wt.cstudy.model.feature_1.0.0.qualifier.jar" id="org.mondo.wt.cstudy.model.feature" version="1.0.0.qualifier">
       <category name="org.mondo.wt.cstudy"/>
    </feature>
-   <feature url="Tycho-build/org.mondo.wt.cstudy.editor.feature_1.0.0.qualifier.jar" id="org.mondo.wt.cstudy.editor.feature" version="1.0.0.qualifier">
-      <category name="org.mondo.wt.cstudy"/>
-   </feature>
    <feature url="Tycho-build/org.mondo.wt.cstudy.merge.feature_1.0.0.qualifier.jar" id="org.mondo.wt.cstudy.merge.feature" version="1.0.0.qualifier">
       <category name="org.mondo.wt.cstudy"/>
    </feature>

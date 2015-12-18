@@ -17,7 +17,7 @@
    </license>
 
    <plugin
-         id="org.mondo.wt.cstudy.merge.merge"
+         id="org.mondo.wt.cstudy.metamodel.merge"
          download-size="0"
          install-size="0"
          version="0.0.0"

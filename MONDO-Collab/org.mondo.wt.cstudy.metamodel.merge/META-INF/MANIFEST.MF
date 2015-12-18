@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.mondo.wt.cstudy.metamodel.merge
 Bundle-SymbolicName: org.mondo.wt.cstudy.metamodel.merge;singleton:=true
-Bundle-Version: 0.0.1.qualifier
+Bundle-Version: 1.0.0.qualifier
 Export-Package: org.mondo.wt.cstudy.metamodel.merge,
  org.mondo.wt.cstudy.metamodel.merge.util
 Require-Bundle: org.eclipse.viatra.dse.merge,

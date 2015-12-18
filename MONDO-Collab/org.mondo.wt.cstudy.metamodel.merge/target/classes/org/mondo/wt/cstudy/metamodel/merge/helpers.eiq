@@ -1,0 +1,16 @@
+package org.mondo.wt.cstudy.metamodel.merge
+
+import "http://www.eclipse.org/emf/2002/Ecore"
+import "http://WTSpec4M/5.0M"
+
+
+pattern id2object(object:EObject,key)
+{	SystemTimer.sysId(object,key); }
+or {	SystemParam.sysId(object,key); }
+or {	SystemVariable.sysId(object,key); }
+or {	SystemFault.sysId(object,key); }
+or {	Subsystem.sysId(object,key); }
+or {	wtc.sysId(object,key); }
+or {	SystemOutput.sysId(object,key); }
+or {	SystemInput.sysId(object,key); }
+or {	WT.sysId(object,key); }
