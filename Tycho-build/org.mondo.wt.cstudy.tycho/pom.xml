@@ -33,8 +33,8 @@
     <module>../../DSL-tao/org.mondo.wt.cstudy.modular</module>
     <module>../../MONDO-Collab/org.mondo.wt.cstudy.metamodel.edit</module>
     <module>../../MONDO-Collab/org.mondo.wt.cstudy.metamodel.editor</module>
-    <module>../../Tycho-build/org.mondo.wt.cstudy.editor.feature</module>
-    <module>../../Tycho-build/org.mondo.wt.cstudy.lens.product</module>-->
+    <module>../../Tycho-build/org.mondo.wt.cstudy.editor.feature</module>-->
+    <module>../../Tycho-build/org.mondo.wt.cstudy.lens.product</module>
     <module>../../MONDO-Collab/org.mondo.wt.cstudy.metamodel</module>
     <module>../../MONDO-Collab/org.mondo.wt.cstudy.metamodel.merge</module>
     <module>../../MONDO-Collab/org.mondo.wt.cstudy.lens</module>

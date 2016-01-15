@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension
+         point="org.eclipse.core.runtime.applications"
+         id="WTSpec4MEditorAdvisorApplication">
+      <!-- @generated WTSpec4M -->
+      <application>
+         <run class="WTSpec4M.presentation.WTSpec4MEditorAdvisor$Application"/>
+      </application>
+   </extension>
+
+   <extension point="org.eclipse.ui.perspectives">
+      <!-- @generated WTSpec4M -->
+      <perspective
+            name="%_UI_Perspective_label"
+            class="WTSpec4M.presentation.WTSpec4MEditorAdvisor$Perspective"
+            id="WTSpec4M.presentation.WTSpec4MEditorAdvisorPerspective">
+      </perspective>
+   </extension>
+
+   <extension point="org.eclipse.ui.commands">
+      <!-- @generated WTSpec4M -->
+      <command
+            name="%_UI_Menu_OpenURI_label"
+            description="%_UI_Menu_OpenURI_description"
+            categoryId="org.eclipse.ui.category.file"
+            id="WTSpec4M.presentation.WTSpec4MEditorAdvisorOpenURICommand"/>
+   </extension>
+
+
+   <extension point="org.eclipse.ui.actionSets">
+      <!-- @generated WTSpec4M -->
+      <actionSet
+            label="%_UI_WTSpec4MEditorAdvisor_ActionSet_label"
+            visible="true"
+            id="WTSpec4MEditorAdvisorActionSet">
+         <action
+               label="%_UI_Menu_About_label"
+               class="WTSpec4M.presentation.WTSpec4MEditorAdvisor$AboutAction"
+               menubarPath="help/additions"
+               id="WTSpec4M.presentation.WTSpec4MEditorAdvisorAboutAction"/>
+         <action
+               label="%_UI_Menu_OpenURI_label"
+               definitionId="WTSpec4M.presentation.WTSpec4MEditorAdvisorOpenURICommand"
+               class="WTSpec4M.presentation.WTSpec4MEditorAdvisor$OpenURIAction"
+               menubarPath="file/additions"
+               id="WTSpec4M.presentation.WTSpec4MEditorAdvisorOpenURIAction"/>
+      </actionSet>
+   </extension>
+
+   <extension point="org.eclipse.ui.actionSets">
+      <!-- @generated WTSpec4M -->
+      <actionSet
+            label="%_UI_WTSpec4MModelWizard_ActionSet_label"
+            visible="true"
+            id="WTSpec4M.presentation.WTSpec4MActionBarContributorActionSet">
+         <action
+               label="%_UI_WTSpec4MModelWizard_label"
+               class="WTSpec4M.presentation.WTSpec4MActionBarContributor$NewAction"
+               menubarPath="file/new/additions"
+               id="WTSpec4M.presentation.WTSpec4MActionBarContributorNewAction"/>
+      </actionSet>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated WTSpec4M -->
+      <editor
+            id="WTSpec4M.presentation.WTSpec4MEditorID"
+            name="%_UI_WTSpec4MEditor_label"
+            icon="icons/full/obj16/WTSpec4MModelFile.gif"
+            extensions="wtspec4m"
+            class="WTSpec4M.presentation.WTSpec4MEditor"
+            contributorClass="WTSpec4M.presentation.WTSpec4MActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>
