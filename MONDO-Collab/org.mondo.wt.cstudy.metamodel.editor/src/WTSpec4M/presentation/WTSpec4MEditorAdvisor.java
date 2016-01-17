@@ -84,10 +84,6 @@ public final class WTSpec4MEditorAdvisor extends WorkbenchAdvisor {
 		 * @generated
 		 */
 		public Object start(IApplicationContext context) throws Exception {
-			String temp = (String) context.getArguments().get("mondo.temp");
-			if(temp != null) {
-				return IApplication.EXIT_OK;
-			}
 			WorkbenchAdvisor workbenchAdvisor = new WTSpec4MEditorAdvisor();
 			Display display = PlatformUI.createDisplay();
 			try {
@@ -177,7 +173,7 @@ public final class WTSpec4MEditorAdvisor extends WorkbenchAdvisor {
 		@Override
 		public void preWindowOpen() {
 			IWorkbenchWindowConfigurer configurer = getWindowConfigurer();
-			configurer.setInitialSize(new Point(600, 450));
+//			configurer.setInitialSize(new Point(600, 450));
 			configurer.setShowCoolBar(false);
 			configurer.setShowStatusLine(true);
 			configurer.setTitle(getString("_UI_Application_title"));

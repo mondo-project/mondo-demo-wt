@@ -2,6 +2,7 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension
+         id="mondo.demo"
          point="org.mondo.collaboration.security.lens.uniqueIDSchemeFactory">
       <id-scheme
             scheme-factory-class="org.mondo.wt.cstudy.lens.UniqueIdSchemeFactory">

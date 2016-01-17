@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde version="3.8"?><target name="mondo_RAP" sequenceNumber="67">
+<locations>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="false" type="InstallableUnit">
+<unit id="org.eclipse.emf.rap.sdk.feature.group" version="2.11.1.v20150806-0404"/>
+<unit id="org.eclipse.e4.rcp.feature.group" version="1.4.0.v20150603-0857"/>
+<repository location="http://download.eclipse.org/releases/mars/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="false" type="InstallableUnit">
+<unit id="org.apache.commons.lang" version="2.6.0.v201404270220"/>
+<unit id="org.apache.commons.logging" version="1.1.1.v201101211721"/>
+<repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20150519210750/repository/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="false" type="InstallableUnit">
+<unit id="org.eclipse.emf.ecp.emfforms.sdk.feature.feature.group" version="1.7.2.20151117-1207"/>
+<unit id="org.eclipse.emf.ecp.rap.util.feature.source.feature.group" version="1.7.2.20151117-1207"/>
+<unit id="org.eclipse.emf.ecp.rap.sdk.feature.feature.group" version="1.7.2.20151117-1207"/>
+<repository location="http://download.eclipse.org/ecp/releases/releases_target_17"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="false" type="InstallableUnit">
+<unit id="org.eclipse.rap.equinox.target.feature.feature.group" version="3.1.0.20151215-1144"/>
+<unit id="org.eclipse.rap.feature.feature.group" version="3.1.0.20151215-1144"/>
+<unit id="org.eclipse.rap.sdk.feature.feature.group" version="3.1.0.20151215-1144"/>
+<repository location="http://download.eclipse.org/rt/rap/3.1/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="false" type="InstallableUnit">
+<unit id="org.mondo.collaboration.security.macl.feature.feature.group" version="1.0.0.201601121109"/>
+<repository location="http://mondo.inf.mit.bme.hu/web/mondo-collaboration/update/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="false" type="InstallableUnit">
+<unit id="org.apache.log4j" version="1.2.15.v201012070815"/>
+<unit id="org.apache.commons.cli" version="1.2.0.v201404270220"/>
+<repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20150519210750/repository/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="false" type="InstallableUnit">
+<unit id="org.eclipse.emf.sdk.feature.group" version="2.11.1.v20150806-0404"/>
+<unit id="com.google.guava" version="0.0.0"/>
+<unit id="org.eclipse.xpand" version="0.0.0"/>
+<unit id="org.eclipse.xtend" version="0.0.0"/>
+<unit id="org.eclipse.xtend.typesystem.emf" version="0.0.0"/>
+<repository location="http://download.eclipse.org/releases/mars/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="false" type="InstallableUnit">
+<unit id="javax.inject" version="1.0.0.v20091030"/>
+<repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20150519210750/repository/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="false" type="InstallableUnit">
+<unit id="org.eclipse.viatra.modelobfuscator.feature.feature.group" version="0.7.0.201407161550"/>
+<repository location="http://download.eclipse.org/viatra2/modelobfuscator/updates/integration"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="false" type="InstallableUnit">
+<unit id="com.google.inject" version="3.0.0.v201312141243"/>
+<unit id="com.google.inject.multibindings" version="3.0.0.v201402270930"/>
+<unit id="org.eclipse.incquery.sdk.feature.source.feature.group" version="1.2.0.201601151736"/>
+<repository location="http://download.eclipse.org/incquery/updates/integration"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="false" type="InstallableUnit">
+<unit id="org.eclipse.xtend.sdk.feature.group" version="2.9.1.v201512180746"/>
+<unit id="org.eclipse.xtext.redist.feature.group" version="2.9.1.v201512180746"/>
+<repository location="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="false" type="InstallableUnit">
+<unit id="org.eclipse.emf.mwe2.runtime.sdk.feature.group" version="2.8.1.v201508030321"/>
+<unit id="org.eclipse.emf.mwe2.language.sdk.feature.group" version="2.8.1.v201508030411"/>
+<unit id="org.eclipse.emf.mwe.sdk.feature.group" version="1.3.11.v201508030321"/>
+<repository location="http://download.eclipse.org/releases/mars/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="false" type="InstallableUnit">
+<unit id="org.objectweb.asm" version="5.0.1.v201404251740"/>
+<repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20150519210750/repository/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="false" type="InstallableUnit">
+<unit id="org.eclipse.sdk.ide" version="4.5.1.M20150904-0015"/>
+<repository location="http://download.eclipse.org/eclipse/updates/4.5"/>
+</location>
+</locations>
+</target>

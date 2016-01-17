@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?pde version="3.5"?>
+
+<product useFeatures="false" includeLaunchers="false">
+   <plugins>
+      <plugin id="com.google.guava"/>
+      <plugin id="com.google.inject"/>
+      <plugin id="com.ibm.icu.base"/>
+      <plugin id="javax.annotation"/>
+      <plugin id="javax.inject"/>
+      <plugin id="javax.xml"/>
+      <plugin id="org.antlr.runtime"/>
+      <plugin id="org.apache.commons.cli"/>
+      <plugin id="org.apache.commons.fileupload"/>
+      <plugin id="org.apache.commons.io"/>
+      <plugin id="org.apache.commons.lang"/>
+      <plugin id="org.apache.commons.logging"/>
+      <plugin id="org.apache.felix.gogo.command"/>
+      <plugin id="org.apache.felix.gogo.runtime"/>
+      <plugin id="org.apache.felix.gogo.shell"/>
+      <plugin id="org.apache.log4j"/>
+      <plugin id="org.eclipse.core.commands"/>
+      <plugin id="org.eclipse.core.contenttype"/>
+      <plugin id="org.eclipse.core.databinding"/>
+      <plugin id="org.eclipse.core.databinding.observable"/>
+      <plugin id="org.eclipse.core.databinding.property"/>
+      <plugin id="org.eclipse.core.expressions"/>
+      <plugin id="org.eclipse.core.filesystem"/>
+      <plugin id="org.eclipse.core.jobs"/>
+      <plugin id="org.eclipse.core.resources"/>
+      <plugin id="org.eclipse.core.runtime"/>
+      <plugin id="org.eclipse.core.variables"/>
+      <plugin id="org.eclipse.debug.core"/>
+      <plugin id="org.eclipse.e4.core.contexts"/>
+      <plugin id="org.eclipse.e4.core.di"/>
+      <plugin id="org.eclipse.e4.core.di.annotations"/>
+      <plugin id="org.eclipse.emf.codegen"/>
+      <plugin id="org.eclipse.emf.codegen.ecore"/>
+      <plugin id="org.eclipse.emf.common"/>
+      <plugin id="org.eclipse.emf.databinding"/>
+      <plugin id="org.eclipse.emf.databinding.edit"/>
+      <plugin id="org.eclipse.emf.ecore"/>
+      <plugin id="org.eclipse.emf.ecore.change"/>
+      <plugin id="org.eclipse.emf.ecore.edit"/>
+      <plugin id="org.eclipse.emf.ecore.xmi"/>
+      <plugin id="org.eclipse.emf.ecp.common"/>
+      <plugin id="org.eclipse.emf.ecp.common.ui"/>
+      <plugin id="org.eclipse.emf.ecp.edit"/>
+      <plugin id="org.eclipse.emf.ecp.edit.swt"/>
+      <plugin id="org.eclipse.emf.ecp.rap.util"/>
+      <plugin id="org.eclipse.emf.ecp.ui.view"/>
+      <plugin id="org.eclipse.emf.ecp.ui.view.swt"/>
+      <plugin id="org.eclipse.emf.ecp.view.context"/>
+      <plugin id="org.eclipse.emf.ecp.view.context.locale"/>
+      <plugin id="org.eclipse.emf.ecp.view.control.multireference"/>
+      <plugin id="org.eclipse.emf.ecp.view.core.swt"/>
+      <plugin id="org.eclipse.emf.ecp.view.group.model"/>
+      <plugin id="org.eclipse.emf.ecp.view.group.model.edit"/>
+      <plugin id="org.eclipse.emf.ecp.view.group.ui.swt"/>
+      <plugin id="org.eclipse.emf.ecp.view.horizontal.model"/>
+      <plugin id="org.eclipse.emf.ecp.view.horizontal.model.edit"/>
+      <plugin id="org.eclipse.emf.ecp.view.horizontal.ui.swt"/>
+      <plugin id="org.eclipse.emf.ecp.view.label.model"/>
+      <plugin id="org.eclipse.emf.ecp.view.label.model.edit"/>
+      <plugin id="org.eclipse.emf.ecp.view.label.rap"/>
+      <plugin id="org.eclipse.emf.ecp.view.label.ui.swt"/>
+      <plugin id="org.eclipse.emf.ecp.view.migrator"/>
+      <plugin id="org.eclipse.emf.ecp.view.model"/>
+      <plugin id="org.eclipse.emf.ecp.view.model.common"/>
+      <plugin id="org.eclipse.emf.ecp.view.model.edit"/>
+      <plugin id="org.eclipse.emf.ecp.view.model.provider.generator"/>
+      <plugin id="org.eclipse.emf.ecp.view.model.provider.xmi"/>
+      <plugin id="org.eclipse.emf.ecp.view.swt.layout"/>
+      <plugin id="org.eclipse.emf.ecp.view.template.model"/>
+      <plugin id="org.eclipse.emf.ecp.view.template.service"/>
+      <plugin id="org.eclipse.emf.ecp.view.util.swt"/>
+      <plugin id="org.eclipse.emf.ecp.view.util.swt.rap"/>
+      <plugin id="org.eclipse.emf.ecp.view.validation"/>
+      <plugin id="org.eclipse.emf.ecp.view.vertical.model"/>
+      <plugin id="org.eclipse.emf.ecp.view.vertical.model.edit"/>
+      <plugin id="org.eclipse.emf.ecp.view.vertical.ui.swt"/>
+      <plugin id="org.eclipse.emf.edit"/>
+      <plugin id="org.eclipse.emf.mwe.core"/>
+      <plugin id="org.eclipse.emf.mwe.utils"/>
+      <plugin id="org.eclipse.emf.mwe2.language"/>
+      <plugin id="org.eclipse.emf.mwe2.launch"/>
+      <plugin id="org.eclipse.emf.mwe2.lib"/>
+      <plugin id="org.eclipse.emf.mwe2.runtime"/>
+      <plugin id="org.eclipse.emf.rap.common.ui"/>
+      <plugin id="org.eclipse.emf.rap.edit.ui"/>
+      <plugin id="org.eclipse.emf.rap.edit.ui.minimal"/>
+      <plugin id="org.eclipse.emfforms.common"/>
+      <plugin id="org.eclipse.emfforms.core.services"/>
+      <plugin id="org.eclipse.emfforms.core.services.databinding.featurepath"/>
+      <plugin id="org.eclipse.emfforms.core.services.editsupport"/>
+      <plugin id="org.eclipse.emfforms.core.services.emf"/>
+      <plugin id="org.eclipse.emfforms.core.services.emfspecificservice"/>
+      <plugin id="org.eclipse.emfforms.core.services.locale.default"/>
+      <plugin id="org.eclipse.emfforms.localization"/>
+      <plugin id="org.eclipse.emfforms.swt.core"/>
+      <plugin id="org.eclipse.emfforms.swt.core.di"/>
+      <plugin id="org.eclipse.emfforms.swt.core.plugin"/>
+      <plugin id="org.eclipse.emfforms.view.model.localization"/>
+      <plugin id="org.eclipse.equinox.app"/>
+      <plugin id="org.eclipse.equinox.common"/>
+      <plugin id="org.eclipse.equinox.console"/>
+      <plugin id="org.eclipse.equinox.ds"/>
+      <plugin id="org.eclipse.equinox.event"/>
+      <plugin id="org.eclipse.equinox.http.registry"/>
+      <plugin id="org.eclipse.equinox.http.servlet"/>
+      <plugin id="org.eclipse.equinox.http.servletbridge"/>
+      <plugin id="org.eclipse.equinox.preferences"/>
+      <plugin id="org.eclipse.equinox.registry"/>
+      <plugin id="org.eclipse.equinox.servletbridge"/>
+      <plugin id="org.eclipse.equinox.util"/>
+      <plugin id="org.eclipse.help"/>
+      <plugin id="org.eclipse.incquery.patternlanguage"/>
+      <plugin id="org.eclipse.incquery.patternlanguage.emf"/>
+      <plugin id="org.eclipse.incquery.runtime"/>
+      <plugin id="org.eclipse.incquery.runtime.base"/>
+      <plugin id="org.eclipse.incquery.runtime.base.itc"/>
+      <plugin id="org.eclipse.incquery.runtime.evm"/>
+      <plugin id="org.eclipse.incquery.runtime.matchers"/>
+      <plugin id="org.eclipse.incquery.runtime.rete"/>
+      <plugin id="org.eclipse.incquery.runtime.rete.recipes"/>
+      <plugin id="org.eclipse.jdt.core"/>
+      <plugin id="org.eclipse.jdt.debug"/>
+      <plugin id="org.eclipse.jdt.launching"/>
+      <plugin id="org.eclipse.osgi"/>
+      <plugin id="org.eclipse.osgi.services"/>
+      <plugin id="org.eclipse.rap.filedialog"/>
+      <plugin id="org.eclipse.rap.fileupload"/>
+      <plugin id="org.eclipse.rap.jface"/>
+      <plugin id="org.eclipse.rap.jface.databinding"/>
+      <plugin id="org.eclipse.rap.rwt"/>
+      <plugin id="org.eclipse.rap.rwt.osgi"/>
+      <plugin id="org.eclipse.rap.rwt.testfixture"/>
+      <plugin id="org.eclipse.rap.ui"/>
+      <plugin id="org.eclipse.rap.ui.views"/>
+      <plugin id="org.eclipse.rap.ui.workbench"/>
+      <plugin id="org.eclipse.text"/>
+      <plugin id="org.eclipse.viatra.modelobfuscator.runtime"/>
+      <plugin id="org.eclipse.xpand"/>
+      <plugin id="org.eclipse.xtend"/>
+      <plugin id="org.eclipse.xtend.lib"/>
+      <plugin id="org.eclipse.xtend.lib.macro"/>
+      <plugin id="org.eclipse.xtend.typesystem.emf"/>
+      <plugin id="org.eclipse.xtext"/>
+      <plugin id="org.eclipse.xtext.common.types"/>
+      <plugin id="org.eclipse.xtext.ecore"/>
+      <plugin id="org.eclipse.xtext.generator"/>
+      <plugin id="org.eclipse.xtext.smap"/>
+      <plugin id="org.eclipse.xtext.util"/>
+      <plugin id="org.eclipse.xtext.xbase"/>
+      <plugin id="org.eclipse.xtext.xbase.lib"/>
+      <plugin id="org.eclipse.xtext.xtext.generator"/>
+      <plugin id="org.hamcrest.core"/>
+      <plugin id="org.junit"/>
+      <plugin id="org.mondo.collaboration.online.core"/>
+      <plugin id="org.mondo.collaboration.online.rap.widgets"/>
+      <plugin id="org.mondo.collaboration.security.lens"/>
+      <plugin id="org.mondo.collaboration.security.macl.xtext"/>
+      <plugin id="org.mondo.collaboration.security.macl.xtext.rule"/>
+      <plugin id="org.mondo.wt.cstudy.metamodel"/>
+      <plugin id="org.mondo.wt.cstudy.metamodel.edit"/>
+      <plugin id="org.mondo.wt.cstudy.metamodel.editor"/>
+      <plugin id="org.mondo.wt.cstudy.online.rap"/>
+      <plugin id="org.objectweb.asm"/>
+   </plugins>
+
+   <configurations>
+      <plugin id="com.google.guava" autoStart="true" startLevel="0" />
+      <plugin id="com.google.inject" autoStart="true" startLevel="0" />
+      <plugin id="com.ibm.icu.base" autoStart="true" startLevel="0" />
+      <plugin id="javax.annotation" autoStart="true" startLevel="0" />
+      <plugin id="javax.inject" autoStart="true" startLevel="0" />
+      <plugin id="javax.xml" autoStart="true" startLevel="0" />
+      <plugin id="org.antlr.runtime" autoStart="true" startLevel="0" />
+      <plugin id="org.apache.commons.cli" autoStart="true" startLevel="0" />
+      <plugin id="org.apache.commons.fileupload" autoStart="true" startLevel="0" />
+      <plugin id="org.apache.commons.io" autoStart="true" startLevel="0" />
+      <plugin id="org.apache.commons.lang" autoStart="true" startLevel="0" />
+      <plugin id="org.apache.commons.logging" autoStart="true" startLevel="0" />
+      <plugin id="org.apache.felix.gogo.command" autoStart="true" startLevel="0" />
+      <plugin id="org.apache.felix.gogo.runtime" autoStart="true" startLevel="0" />
+      <plugin id="org.apache.felix.gogo.shell" autoStart="true" startLevel="0" />
+      <plugin id="org.apache.log4j" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.core.commands" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.core.contenttype" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.core.databinding" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.core.databinding.observable" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.core.databinding.property" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.core.expressions" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.core.filesystem" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.core.jobs" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.core.resources" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.core.runtime" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.core.variables" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.debug.core" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.e4.core.contexts" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.e4.core.di" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.e4.core.di.annotations" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.codegen" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.codegen.ecore" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.common" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.databinding" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.databinding.edit" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecore" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecore.change" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecore.edit" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecore.xmi" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecp.common" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecp.common.ui" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecp.edit" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecp.edit.swt" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecp.rap.util" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecp.ui.view" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecp.ui.view.swt" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecp.view.context" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecp.view.context.locale" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecp.view.control.multireference" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecp.view.core.swt" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecp.view.group.model" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecp.view.group.model.edit" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecp.view.group.ui.swt" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecp.view.horizontal.model" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecp.view.horizontal.model.edit" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecp.view.horizontal.ui.swt" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecp.view.label.model" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecp.view.label.model.edit" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecp.view.label.rap" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecp.view.label.ui.swt" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecp.view.migrator" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecp.view.model" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecp.view.model.common" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecp.view.model.edit" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecp.view.model.provider.generator" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecp.view.model.provider.xmi" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecp.view.swt.layout" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecp.view.template.model" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecp.view.template.service" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecp.view.util.swt" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecp.view.util.swt.rap" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecp.view.validation" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecp.view.vertical.model" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecp.view.vertical.model.edit" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.ecp.view.vertical.ui.swt" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.edit" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.mwe.core" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.mwe.utils" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.mwe2.language" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.mwe2.launch" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.mwe2.lib" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.mwe2.runtime" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.rap.common.ui" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.rap.edit.ui" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emf.rap.edit.ui.minimal" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emfforms.common" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emfforms.core.services" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emfforms.core.services.databinding.featurepath" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emfforms.core.services.editsupport" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emfforms.core.services.emf" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emfforms.core.services.emfspecificservice" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emfforms.core.services.locale.default" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emfforms.localization" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emfforms.swt.core" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emfforms.swt.core.di" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emfforms.swt.core.plugin" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.emfforms.view.model.localization" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.equinox.app" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.equinox.common" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.equinox.console" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.equinox.ds" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.equinox.event" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.equinox.http.registry" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.equinox.http.servlet" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.equinox.http.servletbridge" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.equinox.preferences" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.equinox.registry" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.equinox.servletbridge" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.equinox.util" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.help" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.incquery.patternlanguage" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.incquery.patternlanguage.emf" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.incquery.runtime" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.incquery.runtime.base" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.incquery.runtime.base.itc" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.incquery.runtime.evm" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.incquery.runtime.matchers" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.incquery.runtime.rete" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.incquery.runtime.rete.recipes" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.jdt.core" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.jdt.debug" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.jdt.launching" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.osgi" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.osgi.services" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.rap.filedialog" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.rap.fileupload" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.rap.jface" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.rap.jface.databinding" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.rap.rwt" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.rap.rwt.osgi" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.rap.rwt.testfixture" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.rap.ui" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.rap.ui.views" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.rap.ui.workbench" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.text" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.viatra.modelobfuscator.runtime" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.xpand" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.xtend" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.xtend.lib" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.xtend.lib.macro" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.xtend.typesystem.emf" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.xtext" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.xtext.common.types" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.xtext.ecore" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.xtext.generator" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.xtext.smap" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.xtext.util" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.xtext.xbase" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.xtext.xbase.lib" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.xtext.xtext.generator" autoStart="true" startLevel="0" />
+      <plugin id="org.hamcrest.core" autoStart="true" startLevel="0" />
+      <plugin id="org.junit" autoStart="true" startLevel="0" />
+      <plugin id="org.mondo.collaboration.online.core" autoStart="true" startLevel="0" />
+      <plugin id="org.mondo.collaboration.online.rap.widgets" autoStart="true" startLevel="0" />
+      <plugin id="org.mondo.collaboration.security.lens" autoStart="true" startLevel="0" />
+      <plugin id="org.mondo.collaboration.security.macl.xtext" autoStart="true" startLevel="0" />
+      <plugin id="org.mondo.collaboration.security.macl.xtext.rule" autoStart="true" startLevel="0" />
+      <plugin id="org.mondo.wt.cstudy.metamodel" autoStart="true" startLevel="0" />
+      <plugin id="org.mondo.wt.cstudy.metamodel.edit" autoStart="true" startLevel="0" />
+      <plugin id="org.mondo.wt.cstudy.metamodel.editor" autoStart="true" startLevel="0" />
+      <plugin id="org.mondo.wt.cstudy.online.rap" autoStart="true" startLevel="0" />
+      <plugin id="org.objectweb.asm" autoStart="true" startLevel="0" />
+   </configurations>
+
+   <warConfiguration webXml="/org.mondo.wt.cstudy.online.rap/WEB-INF/web.xml" launchIni="/org.mondo.wt.cstudy.online.rap/WEB-INF/launch.ini">
+   <libraries>
+      <library path="org.eclipse.equinox.servletbridge_1.3.0.v20140430-1556.jar" fromTarget="true"/>
+   </libraries>
+   </warConfiguration>
+</product>
