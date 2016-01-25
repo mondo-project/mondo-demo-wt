@@ -84,7 +84,7 @@ import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.PropertySheet;
 import org.eclipse.ui.views.properties.PropertySheetPage;
-
+import org.mondo.collaboration.online.core.LensActivator;
 import org.eclipse.emf.common.command.BasicCommandStack;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CommandStack;
@@ -852,7 +852,7 @@ public class WTSpec4MEditor
 	 * This is the method called to load a resource into the editing domain's resource set based on the editor's input.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public void createModel() {
 		URI resourceURI = EditUIUtil.getURI(getEditorInput());
@@ -861,7 +861,17 @@ public class WTSpec4MEditor
 		try {
 			// Load the resource through the editing domain.
 			//
-			resource = editingDomain.getResourceSet().getResource(resourceURI, true);
+			
+			boolean needToInitialize = LensActivator.getModelSessions().containsKey(resourceURI);
+			if(needToInitialize){
+				LensActivator.initializeSession(resourceURI, editingDomain.getResourceSet());
+			}
+			
+//			resource = editingDomain.getResourceSet().getResource(resourceURI, true);
+			resource = LensActivator.getOrCreateResource(resourceURI);
+			
+			
+			
 		}
 		catch (Exception e) {
 			exception = e;
