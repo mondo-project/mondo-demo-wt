@@ -85,6 +85,7 @@ import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.PropertySheet;
 import org.eclipse.ui.views.properties.PropertySheetPage;
 import org.mondo.collaboration.online.core.LensActivator;
+import org.mondo.collaboration.online.rap.widgets.ModelExplorer;
 import org.eclipse.emf.common.command.BasicCommandStack;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CommandStack;
@@ -862,13 +863,13 @@ public class WTSpec4MEditor
 			// Load the resource through the editing domain.
 			//
 			
-			boolean needToInitialize = LensActivator.getModelSessions().containsKey(resourceURI);
+			boolean needToInitialize = !LensActivator.getModelSessions().containsKey(resourceURI);
 			if(needToInitialize){
-				LensActivator.initializeSession(resourceURI, editingDomain.getResourceSet());
+				LensActivator.initializeSession(resourceURI, editingDomain.getResourceSet(), ModelExplorer.getCurrentStorageAccess());
 			}
 			
 //			resource = editingDomain.getResourceSet().getResource(resourceURI, true);
-			resource = LensActivator.getOrCreateResource(resourceURI);
+			resource = LensActivator.getOrCreateResource(resourceURI,ModelExplorer.getCurrentStorageAccess());
 			
 			
 			

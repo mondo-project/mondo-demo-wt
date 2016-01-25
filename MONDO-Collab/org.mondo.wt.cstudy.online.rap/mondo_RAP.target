@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?pde version="3.8"?><target name="mondo_RAP" sequenceNumber="67">
+<?pde version="3.8"?><target name="mondo_RAP" sequenceNumber="68">
 <locations>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="false" type="InstallableUnit">
 <unit id="org.eclipse.emf.rap.sdk.feature.group" version="2.11.1.v20150806-0404"/>
@@ -22,10 +22,6 @@
 <unit id="org.eclipse.rap.feature.feature.group" version="3.1.0.20151215-1144"/>
 <unit id="org.eclipse.rap.sdk.feature.feature.group" version="3.1.0.20151215-1144"/>
 <repository location="http://download.eclipse.org/rt/rap/3.1/"/>
-</location>
-<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="false" type="InstallableUnit">
-<unit id="org.mondo.collaboration.security.macl.feature.feature.group" version="1.0.0.201601121109"/>
-<repository location="http://mondo.inf.mit.bme.hu/web/mondo-collaboration/update/"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="false" type="InstallableUnit">
 <unit id="org.apache.log4j" version="1.2.15.v201012070815"/>
@@ -72,6 +68,11 @@
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="false" type="InstallableUnit">
 <unit id="org.eclipse.sdk.ide" version="4.5.1.M20150904-0015"/>
 <repository location="http://download.eclipse.org/eclipse/updates/4.5"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="false" type="InstallableUnit">
+<unit id="org.mondo.collaboration.security.mpbl.feature.feature.group" version="1.0.0.201601230748"/>
+<unit id="org.mondo.collaboration.security.macl.feature.feature.group" version="1.0.0.201601230748"/>
+<repository location="http://mondo.inf.mit.bme.hu/web/mondo-collaboration/update/"/>
 </location>
 </locations>
 </target>
