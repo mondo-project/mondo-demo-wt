@@ -13,6 +13,7 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -57,8 +58,6 @@ import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.jface.dialogs.ProgressMonitorDialog;
-import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.util.LocalSelectionTransfer;
 import org.eclipse.jface.viewers.ColumnWeightData;
 import org.eclipse.jface.viewers.ISelection;
@@ -102,10 +101,11 @@ import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.PropertySheet;
 import org.eclipse.ui.views.properties.PropertySheetPage;
-import org.mondo.collaboration.online.core.ILegCallback;
 import org.mondo.collaboration.online.core.LensActivator;
 import org.mondo.collaboration.online.rap.widgets.ModelExplorer;
 import org.mondo.collaboration.security.lens.bx.online.OnlineCollaborationSession.Leg;
+
+import com.google.common.util.concurrent.FutureCallback;
 
 import WTSpec4M.provider.WTSpec4MItemProviderAdapterFactory;
 
@@ -821,15 +821,20 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 		}
 
 		// Initialize new Online Collaboration Leg for the existing session
-		leg = LensActivator.getOrCreateResource(resourceURI, editingDomain, new ILegCallback() {
+		leg = LensActivator.getOrCreateResource(resourceURI, editingDomain, new FutureCallback<Object>() {
 			
 			@Override
-			public void callback() {
+			public void onFailure(Throwable arg0) {
+			}
+			
+			@Override
+			public void onSuccess(Object obj) {
 				if(treeViewer != null)
 					treeViewer.refresh();
 				if(tableViewer != null)
 					tableViewer.refresh();
 			}
+			
 		}, ModelExplorer.getCurrentStorageAccess());
 		
 		resource = leg.getFrontResourceSet().getResources().get(0);
