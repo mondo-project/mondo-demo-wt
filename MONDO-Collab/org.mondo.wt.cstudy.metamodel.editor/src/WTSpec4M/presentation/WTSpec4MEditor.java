@@ -102,6 +102,7 @@ import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.PropertySheet;
 import org.eclipse.ui.views.properties.PropertySheetPage;
+import org.mondo.collaboration.online.core.ILegCallback;
 import org.mondo.collaboration.online.core.LensActivator;
 import org.mondo.collaboration.online.rap.widgets.ModelExplorer;
 
@@ -817,7 +818,16 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 		}
 
 		// Initialize new Online Collaboration Leg for the existing session
-		resource = LensActivator.getOrCreateResource(resourceURI, editingDomain.getResourceSet(), ModelExplorer.getCurrentStorageAccess());
+		resource = LensActivator.getOrCreateResource(resourceURI, editingDomain, new ILegCallback() {
+			
+			@Override
+			public void callback() {
+				if(treeViewer != null)
+					treeViewer.refresh();
+				if(tableViewer != null)
+					tableViewer.refresh();
+			}
+		}, ModelExplorer.getCurrentStorageAccess());
 		
 		Diagnostic diagnostic = analyzeResourceProblems(resource, exception);
 		if (diagnostic.getSeverity() != Diagnostic.OK) {
