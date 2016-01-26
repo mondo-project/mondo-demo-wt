@@ -105,6 +105,7 @@ import org.eclipse.ui.views.properties.PropertySheetPage;
 import org.mondo.collaboration.online.core.ILegCallback;
 import org.mondo.collaboration.online.core.LensActivator;
 import org.mondo.collaboration.online.rap.widgets.ModelExplorer;
+import org.mondo.collaboration.security.lens.bx.online.OnlineCollaborationSession.Leg;
 
 import WTSpec4M.provider.WTSpec4MItemProviderAdapterFactory;
 
@@ -414,6 +415,8 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 			}
 		}
 	};
+
+	private Leg leg;
 
 	/**
 	 * Handles activation of the editor or it's associated views. <!--
@@ -818,7 +821,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 		}
 
 		// Initialize new Online Collaboration Leg for the existing session
-		resource = LensActivator.getOrCreateResource(resourceURI, editingDomain, new ILegCallback() {
+		leg = LensActivator.getOrCreateResource(resourceURI, editingDomain, new ILegCallback() {
 			
 			@Override
 			public void callback() {
@@ -829,6 +832,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 			}
 		}, ModelExplorer.getCurrentStorageAccess());
 		
+		resource = leg.getFrontResourceSet().getResources().get(0);
 		Diagnostic diagnostic = analyzeResourceProblems(resource, exception);
 		if (diagnostic.getSeverity() != Diagnostic.OK) {
 			resourceToDiagnosticMap.put(resource, analyzeResourceProblems(resource, exception));
@@ -1319,61 +1323,63 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	 * This is for implementing {@link IEditorPart} and simply saves the model
 	 * file. <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public void doSave(IProgressMonitor progressMonitor) {
-		// Save only resources that have actually changed.
-		//
-		final Map<Object, Object> saveOptions = new HashMap<Object, Object>();
-		saveOptions.put(Resource.OPTION_SAVE_ONLY_IF_CHANGED, Resource.OPTION_SAVE_ONLY_IF_CHANGED_MEMORY_BUFFER);
-		saveOptions.put(Resource.OPTION_LINE_DELIMITER, Resource.OPTION_LINE_DELIMITER_UNSPECIFIED);
-
-		// Do the work within an operation because this is a long running
-		// activity that modifies the workbench.
-		//
-		IRunnableWithProgress operation = new IRunnableWithProgress() {
-			// This is the method that gets invoked when the operation runs.
-			//
-			public void run(IProgressMonitor monitor) {
-				// Save the resources to the file system.
-				//
-				boolean first = true;
-				for (Resource resource : editingDomain.getResourceSet().getResources()) {
-					if ((first || !resource.getContents().isEmpty() || isPersisted(resource))
-							&& !editingDomain.isReadOnly(resource)) {
-						try {
-							long timeStamp = resource.getTimeStamp();
-							resource.save(saveOptions);
-							if (resource.getTimeStamp() != timeStamp) {
-								savedResources.add(resource);
-							}
-						} catch (Exception exception) {
-							resourceToDiagnosticMap.put(resource, analyzeResourceProblems(resource, exception));
-						}
-						first = false;
-					}
-				}
-			}
-		};
-
-		updateProblemIndication = false;
-		try {
-			// This runs the options, and shows progress.
-			//
-			new ProgressMonitorDialog(getSite().getShell()).run(true, false, operation);
-
-			// Refresh the necessary state.
-			//
-			((BasicCommandStack) editingDomain.getCommandStack()).saveIsDone();
-			firePropertyChange(IEditorPart.PROP_DIRTY);
-		} catch (Exception exception) {
-			// Something went wrong that shouldn't.
-			//
-			WTSpec4MEditorPlugin.INSTANCE.log(exception);
-		}
-		updateProblemIndication = true;
-		updateProblemIndication();
+		leg.trySubmitModification();
+		
+//		// Save only resources that have actually changed.
+//		//
+//		final Map<Object, Object> saveOptions = new HashMap<Object, Object>();
+//		saveOptions.put(Resource.OPTION_SAVE_ONLY_IF_CHANGED, Resource.OPTION_SAVE_ONLY_IF_CHANGED_MEMORY_BUFFER);
+//		saveOptions.put(Resource.OPTION_LINE_DELIMITER, Resource.OPTION_LINE_DELIMITER_UNSPECIFIED);
+//
+//		// Do the work within an operation because this is a long running
+//		// activity that modifies the workbench.
+//		//
+//		IRunnableWithProgress operation = new IRunnableWithProgress() {
+//			// This is the method that gets invoked when the operation runs.
+//			//
+//			public void run(IProgressMonitor monitor) {
+//				// Save the resources to the file system.
+//				//
+//				boolean first = true;
+//				for (Resource resource : editingDomain.getResourceSet().getResources()) {
+//					if ((first || !resource.getContents().isEmpty() || isPersisted(resource))
+//							&& !editingDomain.isReadOnly(resource)) {
+//						try {
+//							long timeStamp = resource.getTimeStamp();
+//							resource.save(saveOptions);
+//							if (resource.getTimeStamp() != timeStamp) {
+//								savedResources.add(resource);
+//							}
+//						} catch (Exception exception) {
+//							resourceToDiagnosticMap.put(resource, analyzeResourceProblems(resource, exception));
+//						}
+//						first = false;
+//					}
+//				}
+//			}
+//		};
+//
+//		updateProblemIndication = false;
+//		try {
+//			// This runs the options, and shows progress.
+//			//
+//			new ProgressMonitorDialog(getSite().getShell()).run(true, false, operation);
+//
+//			// Refresh the necessary state.
+//			//
+//			((BasicCommandStack) editingDomain.getCommandStack()).saveIsDone();
+//			firePropertyChange(IEditorPart.PROP_DIRTY);
+//		} catch (Exception exception) {
+//			// Something went wrong that shouldn't.
+//			//
+//			WTSpec4MEditorPlugin.INSTANCE.log(exception);
+//		}
+//		updateProblemIndication = true;
+//		updateProblemIndication();
 	}
 
 	/**
