@@ -102,6 +102,7 @@ import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.PropertySheet;
 import org.eclipse.ui.views.properties.PropertySheetPage;
 import org.mondo.collaboration.online.core.LensActivator;
+import org.mondo.collaboration.online.core.OnlineLeg.LegCommand;
 import org.mondo.collaboration.online.rap.widgets.ModelExplorer;
 import org.mondo.collaboration.security.lens.bx.online.OnlineCollaborationSession.Leg;
 
@@ -843,6 +844,18 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 			resourceToDiagnosticMap.put(resource, analyzeResourceProblems(resource, exception));
 		}
 		editingDomain.getResourceSet().eAdapters().add(problemIndicationAdapter);
+		
+		// Submit changes for lens
+		editingDomain.getCommandStack().addCommandStackListener(new CommandStackListener() {
+			
+			@Override
+			public void commandStackChanged(EventObject event) {
+				// TODO Auto-generated method stub
+				if(!(editingDomain.getCommandStack().getMostRecentCommand() instanceof LegCommand)){
+					leg.trySubmitModification();
+				}
+			}
+		});
 	}
 
 	/**
