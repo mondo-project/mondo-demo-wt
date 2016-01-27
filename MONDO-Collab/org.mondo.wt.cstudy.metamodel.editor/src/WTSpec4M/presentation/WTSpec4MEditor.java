@@ -72,6 +72,8 @@ import org.eclipse.jface.viewers.TableLayout;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.rap.rwt.RWT;
+import org.eclipse.rap.rwt.service.UISession;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CTabFolder;
 import org.eclipse.swt.dnd.DND;
@@ -82,6 +84,7 @@ import org.eclipse.swt.events.ControlEvent;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
@@ -418,6 +421,8 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	};
 
 	private Leg leg;
+
+	private boolean isItMe;
 
 	/**
 	 * Handles activation of the editor or it's associated views. <!--
@@ -830,10 +835,20 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 			
 			@Override
 			public void onSuccess(Object obj) {
-				if(treeViewer != null)
-					treeViewer.refresh();
-				if(tableViewer != null)
-					tableViewer.refresh();
+				
+				if(!isItMe) {
+					System.out.println("other user");
+					selectionViewer.getControl().getDisplay().asyncExec( new Runnable() {
+					    public void run() {
+					    	System.out.println("executing on ui thread");
+					    	if(selectionViewer != null)
+					    		selectionViewer.refresh();
+					    	System.out.println("finished");
+					    	
+					    }
+					});
+				}
+				
 			}
 			
 		}, ModelExplorer.getCurrentStorageAccess());
@@ -850,10 +865,13 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 			
 			@Override
 			public void commandStackChanged(EventObject event) {
-				// TODO Auto-generated method stub
-				if(!(editingDomain.getCommandStack().getMostRecentCommand() instanceof LegCommand)){
-					leg.trySubmitModification();
-				}
+				
+				System.out.println(editingDomain.getCommandStack().getMostRecentCommand().getLabel());
+				System.out.println(editingDomain.getCommandStack().getMostRecentCommand().getDescription());
+				
+//				if(!(editingDomain.getCommandStack().getMostRecentCommand() instanceof LegCommand)){
+//					leg.trySubmitModification();
+//				}
 			}
 		});
 	}
@@ -1345,7 +1363,9 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	 */
 	@Override
 	public void doSave(IProgressMonitor progressMonitor) {
+		isItMe = true;
 		leg.trySubmitModification();
+		isItMe = false;
 		
 //		// Save only resources that have actually changed.
 //		//
