@@ -311,7 +311,9 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 		}
 
 		public void partClosed(IWorkbenchPart p) {
-			// Ignore.
+			if(leg != null){
+				leg.dispose();
+			}
 		}
 
 		public void partDeactivated(IWorkbenchPart p) {
