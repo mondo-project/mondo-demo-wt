@@ -4,9 +4,11 @@ package WTSpec4M.presentation;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Date;
 import java.util.EventObject;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -94,8 +96,10 @@ import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.IPartListener;
+import org.eclipse.ui.IViewReference;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.MultiPageEditorPart;
 import org.eclipse.ui.views.contentoutline.ContentOutline;
 import org.eclipse.ui.views.contentoutline.ContentOutlinePage;
@@ -108,7 +112,9 @@ import org.mondo.collaboration.online.core.LensSessionManager;
 import org.mondo.collaboration.online.core.OnlineLeg;
 import org.mondo.collaboration.online.core.OnlineLeg.LegCommand;
 import org.mondo.collaboration.online.rap.widgets.ModelExplorer;
+import org.mondo.collaboration.online.rap.widgets.ModelLogView;
 import org.mondo.collaboration.online.rap.widgets.UINotifierManager;
+import org.mondo.collaboration.security.lens.bx.online.OnlineCollaborationSession;
 import org.mondo.collaboration.security.lens.bx.online.OnlineCollaborationSession.Leg;
 
 import com.google.common.util.concurrent.FutureCallback;
@@ -923,11 +929,41 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 			@Override
 			public void commandStackChanged(EventObject event) {
 				
-				if(!(editingDomain.getCommandStack().getMostRecentCommand() instanceof LegCommand)){
+				Command mostRecentCommand = editingDomain.getCommandStack().getMostRecentCommand();
+				if(!(mostRecentCommand instanceof LegCommand)){
 					leg.trySubmitModification();
+					// Log the event
+					IViewReference[] viewReferences = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getViewReferences();
+					ModelLogView logView = ModelLogView.getCurrentLogView(viewReferences);
+					
+					String username = ModelExplorer.getCurrentStorageAccess().getUsername();
+					
+					Date now = new Date();
+				    String strDate = sdf.format(now);
+					
+				    String commandLabel = mostRecentCommand.getLabel();
+					String logString = logView.getLogString();
+					
+					Collection<?> affectedObjects = mostRecentCommand.getAffectedObjects();
+					String affectedObjectETypes = "";
+					for (Object object : affectedObjects) {
+						// TODO collect more details here
+						affectedObjectETypes += (((EObject) object).eClass().getName()+ " ");
+					}
+					
+					logString=  strDate + " " + commandLabel + " by " + username + ". Affeted object type: " + affectedObjectETypes + logView.getLineDelimiter() + logString; //" (Details: " + commandDescription + ") " + logView.getLineDelimiter() + logString ; 
+					logView.setLogString(logString);
+					logView.refresh();
 				}
+				
+				
 			}
+
+			
 		});
+		
+		
+		
 	}
 
 	/**
@@ -1723,7 +1759,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public void dispose() {
