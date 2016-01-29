@@ -689,7 +689,13 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 		@Override
 		public void onSuccess(Object obj) {
 			ModelExplorer.update((String) obj);
-			firePropertyChange(IEditorPart.PROP_DIRTY);			
+			getContainer().getDisplay().asyncExec(new Runnable() {
+				
+				@Override
+				public void run() {
+					firePropertyChange(IEditorPart.PROP_DIRTY);			
+				}
+			});
 		}
 	}
 	
