@@ -73,6 +73,7 @@ import org.eclipse.jface.viewers.TableLayout;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.rap.rwt.RWT;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CTabFolder;
 import org.eclipse.swt.dnd.DND;
@@ -106,6 +107,7 @@ import org.mondo.collaboration.online.core.LensActivator;
 import org.mondo.collaboration.online.core.OnlineLeg;
 import org.mondo.collaboration.online.core.OnlineLeg.LegCommand;
 import org.mondo.collaboration.online.rap.widgets.ModelExplorer;
+import org.mondo.collaboration.online.rap.widgets.UISessionManager;
 import org.mondo.collaboration.security.lens.bx.online.OnlineCollaborationSession.Leg;
 
 import com.google.common.util.concurrent.FutureCallback;
@@ -864,7 +866,9 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 		}
 
 		// Initialize new Online Collaboration Leg for the existing session
-		leg = LensActivator.getOrCreateResource(resourceURI, editingDomain, new UpdateOnModification(), new UpdateOnSave(), ModelExplorer.getCurrentStorageAccess());
+		leg = LensActivator.getOrCreateResource(resourceURI, editingDomain, ModelExplorer.getCurrentStorageAccess());
+		UISessionManager.register(OnlineLeg.EVENT_UPDATE, RWT.getUISession(), new UpdateOnModification());
+		UISessionManager.register(OnlineLeg.EVENT_SAVE, RWT.getUISession(), new UpdateOnSave());
 		
 		resource = leg.getFrontResourceSet().getResources().get(0);
 		Diagnostic diagnostic = analyzeResourceProblems(resource, exception);
