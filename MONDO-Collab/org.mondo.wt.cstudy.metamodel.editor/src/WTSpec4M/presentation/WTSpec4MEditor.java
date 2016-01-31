@@ -953,7 +953,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 					String username = ModelExplorer.getCurrentStorageAccess().getUsername();
 					
 					Date now = new Date();
-				    String strDate = sdf.format(now);
+				    String strDate = ModelExplorer.DATE_FORMAT.format(now);
 					
 				    String commandLabel = mostRecentCommand.getLabel();
 					String logString = logView.getLogString();
@@ -961,7 +961,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 					Collection<?> affectedObjects = mostRecentCommand.getAffectedObjects();
 					String affectedObjectETypes = "";
 					for (Object object : affectedObjects) {
-						// TODO collect more details here
+						// TODO collect more details here about the executed command
 						affectedObjectETypes += (((EObject) object).eClass().getName()+ " ");
 					}
 					
