@@ -96,8 +96,11 @@ import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.IPartListener;
+import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IViewReference;
+import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.MultiPageEditorPart;
@@ -320,8 +323,19 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 		}
 
 		public void partClosed(IWorkbenchPart p) {
-			if(leg != null){
+			// TODO dispose leg only when it was the last open front model editor for the current user
+			if(leg != null){ 
 				leg.dispose();
+			}
+			// Close the log view
+			IWorkbenchWindow workbenchWindow = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+			IWorkbenchPage page = workbenchWindow.getActivePage();
+			
+			IViewReference[] viewReferences = page.getViewReferences();
+			for (IViewReference iViewReference : viewReferences) {
+				if(iViewReference.getId().equals(ModelLogView.ID)){
+					page.hideView(iViewReference);
+				}
 			}
 		}
 
@@ -1494,6 +1508,8 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 			}
 		};
 
+		
+		
 		updateProblemIndication = false;
 		try {
 			// This runs the options, and shows progress.
