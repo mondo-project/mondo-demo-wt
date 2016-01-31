@@ -2,9 +2,9 @@
  */
 package WTSpec4M.presentation;
 
+import java.awt.color.CMMException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -76,6 +76,7 @@ import org.eclipse.jface.viewers.TableLayout;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.window.Window;
 import org.eclipse.rap.rwt.RWT;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CTabFolder;
@@ -87,6 +88,7 @@ import org.eclipse.swt.events.ControlEvent;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
@@ -97,7 +99,6 @@ import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.IPartListener;
-import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IViewReference;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
@@ -114,10 +115,11 @@ import org.eclipse.ui.views.properties.PropertySheetPage;
 import org.mondo.collaboration.online.core.LensActivator;
 import org.mondo.collaboration.online.core.OnlineLeg;
 import org.mondo.collaboration.online.core.OnlineLeg.LegCommand;
+import org.mondo.collaboration.online.core.StorageAccess;
+import org.mondo.collaboration.online.rap.widgets.CommitMessageDialog;
 import org.mondo.collaboration.online.rap.widgets.ModelExplorer;
 import org.mondo.collaboration.online.rap.widgets.ModelLogView;
 import org.mondo.collaboration.online.rap.widgets.UISessionManager;
-import org.mondo.collaboration.security.lens.bx.online.OnlineCollaborationSession;
 import org.mondo.collaboration.security.lens.bx.online.OnlineCollaborationSession.Leg;
 
 import com.google.common.util.concurrent.FutureCallback;
@@ -330,11 +332,12 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 			// Close the log view
 			IWorkbenchWindow workbenchWindow = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
 			IWorkbenchPage page = workbenchWindow.getActivePage();
-			
-			IViewReference[] viewReferences = page.getViewReferences();
-			for (IViewReference iViewReference : viewReferences) {
-				if(iViewReference.getId().equals(ModelLogView.ID)){
-					page.hideView(iViewReference);
+			if(page != null){
+				IViewReference[] viewReferences = page.getViewReferences();
+				for (IViewReference iViewReference : viewReferences) {
+					if (iViewReference.getId().equals(ModelLogView.ID)) {
+						page.hideView(iViewReference);
+					}
 				}
 			}
 		}
@@ -1493,6 +1496,18 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 		}
 		updateProblemIndication = true;
 		updateProblemIndication();
+		
+		CommitMessageDialog dialog = new CommitMessageDialog(Display.getCurrent().getActiveShell());
+		dialog.create();
+		if (dialog.open() == Window.OK) {
+		  String commitMessage = dialog.getCommitMessage();
+		  
+		  StorageAccess currentStorageAccess = ModelExplorer.getCurrentStorageAccess();
+		  URIEditorInput editorInput = (URIEditorInput) getEditorInput();
+		  // TODO make sure that the expected uri is correct
+		  currentStorageAccess.commit(editorInput.toString(), commitMessage);		
+		} 
+
 	}
 
 	/**
