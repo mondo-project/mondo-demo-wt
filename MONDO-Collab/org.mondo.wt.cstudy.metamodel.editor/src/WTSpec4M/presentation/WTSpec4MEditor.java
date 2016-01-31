@@ -1509,7 +1509,6 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 		};
 
 		
-		
 		updateProblemIndication = false;
 		try {
 			// This runs the options, and shows progress.
