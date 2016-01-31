@@ -2,6 +2,7 @@
  */
 package WTSpec4M.presentation;
 
+import java.awt.color.CMMException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
@@ -32,6 +33,7 @@ import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -75,6 +77,7 @@ import org.eclipse.jface.viewers.TableLayout;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.window.Window;
 import org.eclipse.rap.rwt.RWT;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CTabFolder;
@@ -327,14 +330,16 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 			if(leg != null){ 
 				leg.dispose();
 			}
+			
 			// Close the log view
 			IWorkbenchWindow workbenchWindow = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
 			IWorkbenchPage page = workbenchWindow.getActivePage();
-			
-			IViewReference[] viewReferences = page.getViewReferences();
-			for (IViewReference iViewReference : viewReferences) {
-				if(iViewReference.getId().equals(ModelLogView.ID)){
-					page.hideView(iViewReference);
+			if(page != null){
+				IViewReference[] viewReferences = page.getViewReferences();
+				for (IViewReference iViewReference : viewReferences) {
+					if (iViewReference.getId().equals(ModelLogView.ID)) {
+						page.hideView(iViewReference);
+					}
 				}
 			}
 		}
