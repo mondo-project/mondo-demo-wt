@@ -21,5 +21,6 @@ Require-Bundle: org.eclipse.core.runtime,
  org.mondo.collaboration.online.core,
  org.mondo.collaboration.security.lens;bundle-version="1.0.0",
  org.mondo.wt.cstudy.lens;bundle-version="1.0.0",
- com.google.guava
+ com.google.guava,
+ javax.servlet;bundle-version="3.1.0"
 Bundle-ActivationPolicy: lazy

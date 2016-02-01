@@ -104,10 +104,11 @@ import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.PropertySheet;
 import org.eclipse.ui.views.properties.PropertySheetPage;
 import org.mondo.collaboration.online.core.LensActivator;
+import org.mondo.collaboration.online.core.LensSessionManager;
 import org.mondo.collaboration.online.core.OnlineLeg;
 import org.mondo.collaboration.online.core.OnlineLeg.LegCommand;
 import org.mondo.collaboration.online.rap.widgets.ModelExplorer;
-import org.mondo.collaboration.online.rap.widgets.UISessionManager;
+import org.mondo.collaboration.online.rap.widgets.UINotifierManager;
 import org.mondo.collaboration.security.lens.bx.online.OnlineCollaborationSession.Leg;
 
 import com.google.common.util.concurrent.FutureCallback;
@@ -160,7 +161,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	 * 
 	 * @generated
 	 */
-	protected ComposedAdapterFactory adapterFactory;
+	protected AdapterFactory adapterFactory;
 
 	/**
 	 * This is the content outline page. <!-- begin-user-doc --> <!--
@@ -559,17 +560,19 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	 * This sets up the editing domain for the model editor. <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
 	 * 
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void initializeEditingDomain() {
 		// Create an adapter factory that yields item providers.
 		//
-		adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
+		ComposedAdapterFactory adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
 
 		adapterFactory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new WTSpec4MItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 
+		this.adapterFactory = adapterFactory;
+		
 		// Create the command stack that will notify this editor as commands are
 		// executed.
 		//
@@ -606,6 +609,38 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 		// Create the editing domain with a special command stack.
 		//
 		editingDomain = new AdapterFactoryEditingDomain(adapterFactory, commandStack, new HashMap<Resource, Boolean>());
+	}
+	
+	protected void initializeEditingDomain(AdapterFactoryEditingDomain editingDomain) {
+
+		this.editingDomain = editingDomain;
+		this.adapterFactory = editingDomain.getAdapterFactory();
+		
+		editingDomain.getCommandStack().addCommandStackListener(new CommandStackListener() {
+			public void commandStackChanged(final EventObject event) {
+				getContainer().getDisplay().asyncExec(new Runnable() {
+					public void run() {
+						firePropertyChange(IEditorPart.PROP_DIRTY);
+
+						// Try to select the affected objects.
+						//
+						Command mostRecentCommand = ((CommandStack) event.getSource()).getMostRecentCommand();
+						if (mostRecentCommand != null) {
+							setSelectionToViewer(mostRecentCommand.getAffectedObjects());
+						}
+						for (Iterator<PropertySheetPage> i = propertySheetPages.iterator(); i.hasNext();) {
+							PropertySheetPage propertySheetPage = i.next();
+							if (propertySheetPage.getControl().isDisposed()) {
+								i.remove();
+							} else {
+								propertySheetPage.refresh();
+							}
+						}
+					}
+				});
+			}
+		});
+
 	}
 
 	/**
@@ -865,16 +900,15 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 		Exception exception = null;
 		Resource resource = null;
 		
-		// Initialize new Online Collaboration Session if needs
-		boolean needToInitialize = !LensActivator.getModelSessions().containsKey(resourceURI);
-		if (needToInitialize) {
-			LensActivator.initializeSession(resourceURI, ModelExplorer.getCurrentStorageAccess());
+		leg = LensSessionManager.getExistingLeg(ModelExplorer.getCurrentStorageAccess().getUsername(), RWT.getUISession().getHttpSession(), resourceURI);
+		if(leg == null) {
+			initializeEditingDomain();
+			leg = LensSessionManager.createLeg(resourceURI, ModelExplorer.getCurrentStorageAccess(), editingDomain, RWT.getUISession().getHttpSession());
+		} else {
+			initializeEditingDomain(leg.getEditingDomain());
 		}
-
-		// Initialize new Online Collaboration Leg for the existing session
-		leg = LensActivator.getOrCreateResource(resourceURI, editingDomain, ModelExplorer.getCurrentStorageAccess());
-		UISessionManager.register(OnlineLeg.EVENT_UPDATE, RWT.getUISession(), new UpdateOnModification());
-		UISessionManager.register(OnlineLeg.EVENT_SAVE, RWT.getUISession(), new UpdateOnSave());
+		UINotifierManager.register(OnlineLeg.EVENT_UPDATE, RWT.getUISession(), new UpdateOnModification());
+		UINotifierManager.register(OnlineLeg.EVENT_SAVE, RWT.getUISession(), new UpdateOnSave());
 		
 		resource = leg.getFrontResourceSet().getResources().get(0);
 		Diagnostic diagnostic = analyzeResourceProblems(resource, exception);
@@ -1697,7 +1731,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 
 		getSite().getPage().removePartListener(partListener);
 
-		adapterFactory.dispose();
+//		adapterFactory.dispose();
 
 		if (getActionBarContributor().getActiveEditor() == this) {
 			getActionBarContributor().setActiveEditor(null);
