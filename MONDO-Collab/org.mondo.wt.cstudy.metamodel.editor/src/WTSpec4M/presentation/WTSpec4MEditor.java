@@ -917,16 +917,13 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 				if(!(mostRecentCommand instanceof LegCommand)){
 					leg.trySubmitModification();
 					// Log the event
-					IViewReference[] viewReferences = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getViewReferences();
-					ModelLogView logView = ModelLogView.getCurrentLogView(viewReferences);
-					
 					String username = ModelExplorer.getCurrentStorageAccess().getUsername();
 					
 					Date now = new Date();
 				    String strDate = ModelExplorer.DATE_FORMAT.format(now);
 					
 				    String commandLabel = mostRecentCommand.getLabel();
-					String logString = logView.getLogString();
+					String logString = ModelLogView.getCompleteLogString();
 					
 					Collection<?> affectedObjects = mostRecentCommand.getAffectedObjects();
 					String affectedObjectETypes = "";
@@ -935,9 +932,10 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 						affectedObjectETypes += (((EObject) object).eClass().getName()+ " ");
 					}
 					
-					logString=  strDate + " " + commandLabel + " by " + username + ". Affeted object type: " + affectedObjectETypes + logView.getLineDelimiter() + logString; //" (Details: " + commandDescription + ") " + logView.getLineDelimiter() + logString ; 
-					logView.setLogString(logString);
-					logView.refresh();
+					logString=  strDate + " " + commandLabel + " by " + username + ". Affeted object type: " + affectedObjectETypes + ModelLogView.getLineDelimiter() + logString; //" (Details: " + commandDescription + ") " + logView.getLineDelimiter() + logString ; 
+					ModelLogView.setLogString(logString);
+					UISessionManager.notifySuccess(ModelLogView.EVENT_UPDATE_LOG, null);
+					
 				}
 				
 				
