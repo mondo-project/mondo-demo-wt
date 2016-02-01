@@ -117,6 +117,8 @@ import org.mondo.collaboration.online.core.LensActivator;
 import org.mondo.collaboration.online.core.LensSessionManager;
 import org.mondo.collaboration.online.core.OnlineLeg;
 import org.mondo.collaboration.online.core.OnlineLeg.LegCommand;
+import org.mondo.collaboration.online.core.StorageAccess;
+import org.mondo.collaboration.online.rap.widgets.CommitMessageDialog;
 import org.mondo.collaboration.online.rap.widgets.ModelExplorer;
 import org.mondo.collaboration.online.rap.widgets.ModelLogView;
 import org.mondo.collaboration.online.rap.widgets.UINotifierManager;
@@ -969,7 +971,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 					
 					logString=  strDate + " " + commandLabel + " by " + username + ". Affeted object type: " + affectedObjectETypes + ModelLogView.getLineDelimiter() + logString; //" (Details: " + commandDescription + ") " + logView.getLineDelimiter() + logString ; 
 					ModelLogView.setLogString(logString);
-					UISessionManager.notifySuccess(ModelLogView.EVENT_UPDATE_LOG, null);
+					UINotifierManager.notifySuccess(ModelLogView.EVENT_UPDATE_LOG, null);
 					
 				}
 				
