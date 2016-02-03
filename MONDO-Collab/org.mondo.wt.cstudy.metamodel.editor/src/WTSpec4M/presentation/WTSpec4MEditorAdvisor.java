@@ -33,6 +33,7 @@ import org.eclipse.ui.application.IWorkbenchWindowConfigurer;
 import org.eclipse.ui.application.WorkbenchAdvisor;
 import org.eclipse.ui.application.WorkbenchWindowAdvisor;
 import org.mondo.collaboration.online.rap.widgets.ModelExplorer;
+import org.mondo.collaboration.online.rap.widgets.SessionChatView;
 import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.ui.action.WorkbenchWindowActionDelegate;
 import org.eclipse.emf.common.util.URI;
@@ -136,11 +137,11 @@ public final class WTSpec4MEditorAdvisor extends WorkbenchAdvisor {
 			layout.setEditorAreaVisible(true);
 			layout.addPerspectiveShortcut(ID_PERSPECTIVE);
 
-			IFolderLayout left = layout.createFolder("left", IPageLayout.LEFT, (float)0.66, layout.getEditorArea());
+			IFolderLayout left = layout.createFolder("left", IPageLayout.LEFT, (float)0.33, layout.getEditorArea());
 			left.addView(ModelExplorer.ID);
 
 			IFolderLayout right = layout.createFolder("right", IPageLayout.RIGHT, (float)0.66, layout.getEditorArea());
-			right.addView(IPageLayout.ID_OUTLINE);
+			right.addView(SessionChatView.ID);
 
 			IFolderLayout bottonRight = layout.createFolder("bottonRight", IPageLayout.BOTTOM, (float)0.60, "right");
 			bottonRight.addView(IPageLayout.ID_PROP_SHEET);
