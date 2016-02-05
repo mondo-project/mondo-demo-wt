@@ -87,6 +87,7 @@ import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Menu;
+import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.Tree;
@@ -116,6 +117,7 @@ import org.mondo.collaboration.online.rap.UINotifierManager;
 import org.mondo.collaboration.online.rap.UISessionManager;
 import org.mondo.collaboration.online.rap.widgets.ModelExplorer;
 import org.mondo.collaboration.online.rap.widgets.ModelLogView;
+import org.mondo.collaboration.security.lens.bx.AbortReason.DenialReason;
 import org.mondo.collaboration.security.lens.bx.online.OnlineCollaborationSession.Leg;
 
 import com.google.common.util.concurrent.FutureCallback;
@@ -130,6 +132,8 @@ import WTSpec4M.provider.WTSpec4MItemProviderAdapterFactory;
  */
 public class WTSpec4MEditor extends MultiPageEditorPart
 		implements IEditingDomainProvider, ISelectionProvider, IMenuListener, IViewerProvider {
+	private static final String DENIED_MODIFICATION_ON_MODEL = "Denied Modification on Model";
+
 	/**
 	 * The filters for file extensions supported by the editor. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -941,12 +945,31 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 		// Submit changes for lens
 		editingDomain.getCommandStack().addCommandStackListener(new CommandStackListener() {
 			
+			boolean isAborted = false;
+			
 			@Override
 			public void commandStackChanged(EventObject event) {
 				
+				if(isAborted)
+					return;
+				
 				Command mostRecentCommand = editingDomain.getCommandStack().getMostRecentCommand();
 				if(!(mostRecentCommand instanceof LegCommand)){
-					leg.trySubmitModification();
+					DenialReason result = leg.trySubmitModification();
+					if(result != null) {
+						MessageBox messageBox = new MessageBox(getSite().getShell(), SWT.ABORT | SWT.ICON_WARNING);
+						messageBox.setMessage(result.prettyPrintProblem());
+						messageBox.setText(DENIED_MODIFICATION_ON_MODEL);
+						messageBox.open();
+						
+						isAborted = true;
+						editingDomain.getCommandStack().undo();
+						isAborted = false;
+						
+						return;
+					}
+						
+					
 					// Log the event
 					String username = ModelExplorer.getCurrentStorageAccess().getUsername();
 					
