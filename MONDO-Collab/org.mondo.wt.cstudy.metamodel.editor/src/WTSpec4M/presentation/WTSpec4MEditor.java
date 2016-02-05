@@ -2,10 +2,8 @@
  */
 package WTSpec4M.presentation;
 
-import java.awt.color.CMMException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -77,7 +75,6 @@ import org.eclipse.jface.viewers.TableLayout;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.jface.window.Window;
 import org.eclipse.rap.rwt.RWT;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CTabFolder;
@@ -99,7 +96,6 @@ import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.IPartListener;
-import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IViewReference;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
@@ -113,16 +109,13 @@ import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.PropertySheet;
 import org.eclipse.ui.views.properties.PropertySheetPage;
-import org.mondo.collaboration.online.core.LensActivator;
 import org.mondo.collaboration.online.core.LensSessionManager;
 import org.mondo.collaboration.online.core.OnlineLeg;
 import org.mondo.collaboration.online.core.OnlineLeg.LegCommand;
-import org.mondo.collaboration.online.core.StorageAccess;
-import org.mondo.collaboration.online.rap.widgets.CommitMessageDialog;
+import org.mondo.collaboration.online.rap.UINotifierManager;
+import org.mondo.collaboration.online.rap.UISessionManager;
 import org.mondo.collaboration.online.rap.widgets.ModelExplorer;
 import org.mondo.collaboration.online.rap.widgets.ModelLogView;
-import org.mondo.collaboration.online.rap.widgets.UINotifierManager;
-import org.mondo.collaboration.security.lens.bx.online.OnlineCollaborationSession;
 import org.mondo.collaboration.security.lens.bx.online.OnlineCollaborationSession.Leg;
 
 import com.google.common.util.concurrent.FutureCallback;
@@ -934,6 +927,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 		} else {
 			initializeEditingDomain(leg.getEditingDomain());
 		}
+		UISessionManager.register(resourceURI, ModelExplorer.getCurrentStorageAccess().getUsername(), RWT.getUISession());
 		UINotifierManager.register(OnlineLeg.EVENT_UPDATE, RWT.getUISession(), new UpdateOnModification());
 		UINotifierManager.register(OnlineLeg.EVENT_SAVE, RWT.getUISession(), new UpdateOnSave());
 		
@@ -1784,7 +1778,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	@Override
 	public void dispose() {
 		updateProblemIndication = false;
-
+		
 		getSite().getPage().removePartListener(partListener);
 
 //		adapterFactory.dispose();
@@ -1801,6 +1795,9 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 			contentOutlinePage.dispose();
 		}
 
+		URI resourceURI = EditUIUtil.getURI(getEditorInput());
+		UISessionManager.remove(resourceURI, ModelExplorer.getCurrentStorageAccess().getUsername(), RWT.getUISession());
+		
 		super.dispose();
 	}
 
