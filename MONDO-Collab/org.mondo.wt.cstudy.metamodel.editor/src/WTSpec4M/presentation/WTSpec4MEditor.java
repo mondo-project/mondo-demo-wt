@@ -986,7 +986,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 						affectedObjectETypes += (((EObject) object).eClass().getName()+ " ");
 					}
 					
-					logString=  strDate + " " + commandLabel + " by " + username + ". Affeted object type: " + affectedObjectETypes + ModelLogView.getLineDelimiter() + logString; //" (Details: " + commandDescription + ") " + logView.getLineDelimiter() + logString ; 
+					logString=  strDate + " " + commandLabel + " by " + username + ". Affected object type: " + affectedObjectETypes + ModelLogView.getLineDelimiter() + logString; //" (Details: " + commandDescription + ") " + logView.getLineDelimiter() + logString ; 
 					ModelLogView.setLogString(logString);
 					UINotifierManager.notifySuccess(ModelLogView.EVENT_UPDATE_LOG, null);
 					
@@ -1819,6 +1819,8 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 		}
 
 		URI resourceURI = EditUIUtil.getURI(getEditorInput());
+//		leg
+//		if(LensSessionManager.getUsersForURI(resourceURI))
 		UISessionManager.remove(resourceURI, ModelExplorer.getCurrentStorageAccess().getUsername(), RWT.getUISession());
 		
 		super.dispose();
