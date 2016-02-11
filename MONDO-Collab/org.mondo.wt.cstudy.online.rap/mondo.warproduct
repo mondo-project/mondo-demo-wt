@@ -157,10 +157,12 @@
       <plugin id="org.hamcrest.core"/>
       <plugin id="org.junit"/>
       <plugin id="org.mondo.collaboration.online.core"/>
+      <plugin id="org.mondo.collaboration.online.rap"/>
       <plugin id="org.mondo.collaboration.online.rap.widgets"/>
       <plugin id="org.mondo.collaboration.security.lens"/>
       <plugin id="org.mondo.collaboration.security.macl.xtext"/>
       <plugin id="org.mondo.collaboration.security.macl.xtext.rule"/>
+      <plugin id="org.mondo.wt.cstudy.lens"/>
       <plugin id="org.mondo.wt.cstudy.metamodel"/>
       <plugin id="org.mondo.wt.cstudy.metamodel.edit"/>
       <plugin id="org.mondo.wt.cstudy.metamodel.editor"/>
@@ -323,10 +325,12 @@
       <plugin id="org.hamcrest.core" autoStart="true" startLevel="0" />
       <plugin id="org.junit" autoStart="true" startLevel="0" />
       <plugin id="org.mondo.collaboration.online.core" autoStart="true" startLevel="0" />
+      <plugin id="org.mondo.collaboration.online.rap" autoStart="true" startLevel="0" />
       <plugin id="org.mondo.collaboration.online.rap.widgets" autoStart="true" startLevel="0" />
       <plugin id="org.mondo.collaboration.security.lens" autoStart="true" startLevel="0" />
       <plugin id="org.mondo.collaboration.security.macl.xtext" autoStart="true" startLevel="0" />
       <plugin id="org.mondo.collaboration.security.macl.xtext.rule" autoStart="true" startLevel="0" />
+      <plugin id="org.mondo.wt.cstudy.lens" autoStart="true" startLevel="0" />
       <plugin id="org.mondo.wt.cstudy.metamodel" autoStart="true" startLevel="0" />
       <plugin id="org.mondo.wt.cstudy.metamodel.edit" autoStart="true" startLevel="0" />
       <plugin id="org.mondo.wt.cstudy.metamodel.editor" autoStart="true" startLevel="0" />
