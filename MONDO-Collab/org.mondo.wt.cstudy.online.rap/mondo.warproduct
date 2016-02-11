@@ -5,6 +5,7 @@
    <plugins>
       <plugin id="com.google.guava"/>
       <plugin id="com.google.inject"/>
+      <plugin id="com.google.inject.multibindings" fragment="true"/>
       <plugin id="com.ibm.icu.base"/>
       <plugin id="javax.annotation"/>
       <plugin id="javax.inject"/>
@@ -134,7 +135,6 @@
       <plugin id="org.eclipse.rap.jface.databinding"/>
       <plugin id="org.eclipse.rap.rwt"/>
       <plugin id="org.eclipse.rap.rwt.osgi"/>
-      <plugin id="org.eclipse.rap.rwt.testfixture"/>
       <plugin id="org.eclipse.rap.ui"/>
       <plugin id="org.eclipse.rap.ui.views"/>
       <plugin id="org.eclipse.rap.ui.workbench"/>
@@ -302,7 +302,6 @@
       <plugin id="org.eclipse.rap.jface.databinding" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.rap.rwt" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.rap.rwt.osgi" autoStart="true" startLevel="0" />
-      <plugin id="org.eclipse.rap.rwt.testfixture" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.rap.ui" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.rap.ui.views" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.rap.ui.workbench" autoStart="true" startLevel="0" />
@@ -341,6 +340,9 @@
    <warConfiguration webXml="/org.mondo.wt.cstudy.online.rap/WEB-INF/web.xml" launchIni="/org.mondo.wt.cstudy.online.rap/WEB-INF/launch.ini">
    <libraries>
       <library path="org.eclipse.equinox.servletbridge_1.3.0.v20140430-1556.jar" fromTarget="true"/>
+      <library path="/org.mondo.collaboration.security.macl.xtext.rule/.antlr-generator-3.2.0-patch.jar" fromTarget="false"/>
+      <library path="/org.mondo.collaboration.security.macl.xtext/.antlr-generator-3.2.0-patch.jar" fromTarget="false"/>
+      <library path="/org.mondo.collaboration.online.rap.widgets/swing2swt.jar" fromTarget="false"/>
    </libraries>
    </warConfiguration>
 </product>
