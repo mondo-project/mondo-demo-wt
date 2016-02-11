@@ -15,6 +15,7 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorDescriptor;
 import org.eclipse.ui.IFolderLayout;
 import org.eclipse.ui.IPageLayout;
@@ -158,6 +159,8 @@ public final class WTSpec4MEditorAdvisor extends WorkbenchAdvisor {
 	 * @generated
 	 */
 	public static class WindowAdvisor extends WorkbenchWindowAdvisor {
+		private Shell shell;
+
 		/**
 		 * @see WorkbenchWindowAdvisor#WorkbenchWindowAdvisor(org.eclipse.ui.application.IWorkbenchWindowConfigurer)
 		 * <!-- begin-user-doc -->
@@ -166,6 +169,18 @@ public final class WTSpec4MEditorAdvisor extends WorkbenchAdvisor {
 		 */
 		public WindowAdvisor(IWorkbenchWindowConfigurer configurer) {
 			super(configurer);
+		}
+
+		@Override
+		public void createWindowContents(Shell shell) {
+			super.createWindowContents(shell);
+			this.shell = shell;
+		}
+		
+		@Override
+		public void postWindowOpen() {
+			super.postWindowOpen();
+			shell.setMaximized(true);
 		}
 		
 		/**
