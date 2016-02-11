@@ -15,6 +15,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.xml.crypto.dsig.keyinfo.RetrievalMethod;
+
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.command.BasicCommandStack;
@@ -31,7 +33,6 @@ import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -75,6 +76,7 @@ import org.eclipse.jface.viewers.TableLayout;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.window.Window;
 import org.eclipse.rap.rwt.RWT;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CTabFolder;
@@ -86,6 +88,7 @@ import org.eclipse.swt.events.ControlEvent;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Table;
@@ -113,8 +116,10 @@ import org.eclipse.ui.views.properties.PropertySheetPage;
 import org.mondo.collaboration.online.core.LensSessionManager;
 import org.mondo.collaboration.online.core.OnlineLeg;
 import org.mondo.collaboration.online.core.OnlineLeg.LegCommand;
+import org.mondo.collaboration.online.core.StorageAccess;
 import org.mondo.collaboration.online.rap.UINotifierManager;
 import org.mondo.collaboration.online.rap.UISessionManager;
+import org.mondo.collaboration.online.rap.widgets.CommitMessageDialog;
 import org.mondo.collaboration.online.rap.widgets.ModelExplorer;
 import org.mondo.collaboration.online.rap.widgets.ModelLogView;
 import org.mondo.collaboration.security.lens.bx.AbortReason.DenialReason;
@@ -968,7 +973,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 						
 						return;
 					}
-						
+					
 					
 					// Log the event
 					String username = ModelExplorer.getCurrentStorageAccess().getUsername();
@@ -976,17 +981,24 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 					Date now = new Date();
 				    String strDate = ModelExplorer.DATE_FORMAT.format(now);
 					
+				    
 				    String commandLabel = mostRecentCommand.getLabel();
-					String logString = ModelLogView.getCompleteLogString();
+				    
+				    if("Delete".equals(commandLabel)){
+				    	Collection<?> result2 = mostRecentCommand.getResult();
+				    	
+				    }
+				    
+				    String logString = ModelLogView.getCompleteLogString();
 					
 					Collection<?> affectedObjects = mostRecentCommand.getAffectedObjects();
-					String affectedObjectETypes = "";
+					String affectedObjectLabels = "";
 					for (Object object : affectedObjects) {
 						// TODO collect more details here about the executed command
-						affectedObjectETypes += (((EObject) object).eClass().getName()+ " ");
+						affectedObjectLabels += ((AdapterFactoryLabelProvider)treeViewer.getLabelProvider()).getText(object);
 					}
 					
-					logString=  strDate + " " + commandLabel + " by " + username + ". Affeted object type: " + affectedObjectETypes + ModelLogView.getLineDelimiter() + logString; //" (Details: " + commandDescription + ") " + logView.getLineDelimiter() + logString ; 
+					logString=  strDate + " " + commandLabel + " by " + username + ". Affected object: " + affectedObjectLabels + ModelLogView.getLineDelimiter() + logString; //" (Details: " + commandDescription + ") " + logView.getLineDelimiter() + logString ; 
 					ModelLogView.setLogString(logString);
 					UINotifierManager.notifySuccess(ModelLogView.EVENT_UPDATE_LOG, null);
 					
@@ -1489,8 +1501,22 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	 */
 	@Override
 	public void doSave(IProgressMonitor progressMonitor) {
-		leg.trySubmitModification();
+		// Not needed, because it is checked on the fly
+		// leg.trySubmitModification();
 		
+		CommitMessageDialog dialog = new CommitMessageDialog(Display.getCurrent().getActiveShell());
+		dialog.create();
+		if (dialog.open() == Window.OK) {
+			String commitMessage = dialog.getCommitMessage();
+
+			StorageAccess currentStorageAccess = ModelExplorer.getCurrentStorageAccess();
+			URIEditorInput editorInput = (URIEditorInput) getEditorInput();
+			// TODO make sure that the expected uri is correct
+			currentStorageAccess.commit(editorInput.getURI().toString(), commitMessage);
+		} else {
+			return;
+		}
+
 		// Save only resources that have actually changed.
 		//
 		final Map<Object, Object> saveOptions = new HashMap<Object, Object>();
@@ -1521,12 +1547,12 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 						first = false;
 					}
 				}
-				for (Leg l : leg.getOnlineCollaborationSession().getLegs()) {
-					if(l instanceof OnlineLeg) {
-						OnlineLeg onlineLeg = (OnlineLeg) l;
-						onlineLeg.saveExecuted();
-					}
-				}
+//				for (Leg l : leg.getOnlineCollaborationSession().getLegs()) {
+//					if(l instanceof OnlineLeg) {
+//						OnlineLeg onlineLeg = (OnlineLeg) l;
+//						onlineLeg.saveExecuted();
+//					}
+//				}
 			}
 		};
 
@@ -1548,6 +1574,8 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 		}
 		updateProblemIndication = true;
 		updateProblemIndication();
+	
+		
 	}
 
 	/**
@@ -1819,6 +1847,8 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 		}
 
 		URI resourceURI = EditUIUtil.getURI(getEditorInput());
+//		leg
+//		if(LensSessionManager.getUsersForURI(resourceURI))
 		UISessionManager.remove(resourceURI, ModelExplorer.getCurrentStorageAccess().getUsername(), RWT.getUISession());
 		
 		super.dispose();

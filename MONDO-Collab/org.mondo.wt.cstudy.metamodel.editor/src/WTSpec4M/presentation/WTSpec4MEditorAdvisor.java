@@ -15,6 +15,7 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorDescriptor;
 import org.eclipse.ui.IFolderLayout;
 import org.eclipse.ui.IPageLayout;
@@ -33,7 +34,8 @@ import org.eclipse.ui.application.IWorkbenchWindowConfigurer;
 import org.eclipse.ui.application.WorkbenchAdvisor;
 import org.eclipse.ui.application.WorkbenchWindowAdvisor;
 import org.mondo.collaboration.online.rap.widgets.ModelExplorer;
-import org.mondo.collaboration.online.rap.widgets.SessionChatView;
+import org.mondo.collaboration.online.rap.widgets.ModelLogView;
+import org.mondo.collaboration.online.rap.widgets.WhiteboardChatView;
 import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.ui.action.WorkbenchWindowActionDelegate;
 import org.eclipse.emf.common.util.URI;
@@ -140,11 +142,13 @@ public final class WTSpec4MEditorAdvisor extends WorkbenchAdvisor {
 			IFolderLayout left = layout.createFolder("left", IPageLayout.LEFT, (float)0.33, layout.getEditorArea());
 			left.addView(ModelExplorer.ID);
 
-			IFolderLayout right = layout.createFolder("right", IPageLayout.RIGHT, (float)0.66, layout.getEditorArea());
-			right.addView(SessionChatView.ID);
+			IFolderLayout topRight = layout.createFolder("topRight", IPageLayout.RIGHT, (float)0.55, layout.getEditorArea());
+			topRight.addView(WhiteboardChatView.ID);
+			IFolderLayout right = layout.createFolder("right", IPageLayout.BOTTOM, (float)0.33, "topRight");
+			right.addView(ModelLogView.ID);
 
-			IFolderLayout bottonRight = layout.createFolder("bottonRight", IPageLayout.BOTTOM, (float)0.60, "right");
-			bottonRight.addView(IPageLayout.ID_PROP_SHEET);
+			IFolderLayout bottomRight = layout.createFolder("bottomRight", IPageLayout.BOTTOM, (float)0.60, "right");
+			bottomRight.addView(IPageLayout.ID_PROP_SHEET);
 		}
 	}
 	
@@ -155,6 +159,8 @@ public final class WTSpec4MEditorAdvisor extends WorkbenchAdvisor {
 	 * @generated
 	 */
 	public static class WindowAdvisor extends WorkbenchWindowAdvisor {
+		private Shell shell;
+
 		/**
 		 * @see WorkbenchWindowAdvisor#WorkbenchWindowAdvisor(org.eclipse.ui.application.IWorkbenchWindowConfigurer)
 		 * <!-- begin-user-doc -->
@@ -163,6 +169,18 @@ public final class WTSpec4MEditorAdvisor extends WorkbenchAdvisor {
 		 */
 		public WindowAdvisor(IWorkbenchWindowConfigurer configurer) {
 			super(configurer);
+		}
+
+		@Override
+		public void createWindowContents(Shell shell) {
+			super.createWindowContents(shell);
+			this.shell = shell;
+		}
+		
+		@Override
+		public void postWindowOpen() {
+			super.postWindowOpen();
+			shell.setMaximized(true);
 		}
 		
 		/**
