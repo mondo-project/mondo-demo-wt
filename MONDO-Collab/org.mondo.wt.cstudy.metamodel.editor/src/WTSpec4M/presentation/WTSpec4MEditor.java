@@ -15,8 +15,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.xml.crypto.dsig.keyinfo.RetrievalMethod;
-
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.command.BasicCommandStack;
@@ -100,12 +98,8 @@ import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.IPartListener;
-import org.eclipse.ui.IViewReference;
-import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
-import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PartInitException;
-import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.MultiPageEditorPart;
 import org.eclipse.ui.views.contentoutline.ContentOutline;
 import org.eclipse.ui.views.contentoutline.ContentOutlinePage;
@@ -123,8 +117,8 @@ import org.mondo.collaboration.online.rap.widgets.CommitMessageDialog;
 import org.mondo.collaboration.online.rap.widgets.ModelExplorer;
 import org.mondo.collaboration.online.rap.widgets.ModelLogView;
 import org.mondo.collaboration.security.lens.bx.AbortReason.DenialReason;
-import org.mondo.collaboration.security.lens.bx.online.OnlineCollaborationSession.Leg;
 
+import com.google.common.collect.Maps;
 import com.google.common.util.concurrent.FutureCallback;
 
 import WTSpec4M.provider.WTSpec4MItemProviderAdapterFactory;
@@ -135,6 +129,8 @@ import WTSpec4M.provider.WTSpec4MItemProviderAdapterFactory;
  * 
  * @generated
  */
+
+@SuppressWarnings("serial")
 public class WTSpec4MEditor extends MultiPageEditorPart
 		implements IEditingDomainProvider, ISelectionProvider, IMenuListener, IViewerProvider {
 	private static final String DENIED_MODIFICATION_ON_MODEL = "Denied Modification on Model";
@@ -331,19 +327,10 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 
 		public void partClosed(IWorkbenchPart p) {
 			// TODO dispose leg only when it was the last open front model editor for the current user
-			if(leg != null){ 
-				leg.dispose();
-			}
-			
-			// Close the log view
-			IWorkbenchWindow workbenchWindow = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
-			IWorkbenchPage page = workbenchWindow.getActivePage();
-			if(page != null){
-				IViewReference[] viewReferences = page.getViewReferences();
-				for (IViewReference iViewReference : viewReferences) {
-					if (iViewReference.getId().equals(ModelLogView.ID)) {
-						page.hideView(iViewReference);
-					}
+			if(leg != null){
+				String userName = ModelExplorer.getCurrentStorageAccess().getUsername();
+				if(legsForUser.get(userName)==1){
+					leg.dispose();
 				}
 			}
 		}
@@ -456,6 +443,8 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	private OnlineLeg leg;
 
 	private boolean isItMe;
+
+	private static Map<String, Integer> legsForUser = Maps.newHashMap();
 
 	/**
 	 * Handles activation of the editor or it's associated views. <!--
@@ -768,6 +757,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	 * 
 	 * @generated
 	 */
+	
 	public class ReverseAdapterFactoryContentProvider extends AdapterFactoryContentProvider {
 		/**
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -927,20 +917,22 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	public void createModel() {
 		URI resourceURI = EditUIUtil.getURI(getEditorInput());
 		Exception exception = null;
-		Resource resource = null;
 		
-		leg = LensSessionManager.getExistingLeg(ModelExplorer.getCurrentStorageAccess().getUsername(), RWT.getUISession().getHttpSession(), resourceURI);
+		String userName = ModelExplorer.getCurrentStorageAccess().getUsername();
+		leg = LensSessionManager.getExistingLeg(userName, RWT.getUISession().getHttpSession(), resourceURI);
 		if(leg == null) {
 			initializeEditingDomain();
 			leg = LensSessionManager.createLeg(resourceURI, ModelExplorer.getCurrentStorageAccess(), editingDomain, RWT.getUISession().getHttpSession());
+			legsForUser.put(userName,1);
 		} else {
 			initializeEditingDomain(leg.getEditingDomain());
+			legsForUser.put(userName, legsForUser.get(userName)+1);
 		}
-		UISessionManager.register(resourceURI, ModelExplorer.getCurrentStorageAccess().getUsername(), RWT.getUISession());
+		UISessionManager.register(resourceURI, userName, RWT.getUISession());
 		UINotifierManager.register(OnlineLeg.EVENT_UPDATE, RWT.getUISession(), new UpdateOnModification());
 		UINotifierManager.register(OnlineLeg.EVENT_SAVE, RWT.getUISession(), new UpdateOnSave());
 		
-		resource = leg.getFrontResourceSet().getResources().get(0);
+		Resource resource = leg.getFrontResourceSet().getResources().get(0);
 		Diagnostic diagnostic = analyzeResourceProblems(resource, exception);
 		if (diagnostic.getSeverity() != Diagnostic.OK) {
 			resourceToDiagnosticMap.put(resource, analyzeResourceProblems(resource, exception));
@@ -974,33 +966,37 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 						return;
 					}
 					
-					
 					// Log the event
-					String username = ModelExplorer.getCurrentStorageAccess().getUsername();
-					
 					Date now = new Date();
 				    String strDate = ModelExplorer.DATE_FORMAT.format(now);
-					
 				    
 				    String commandLabel = mostRecentCommand.getLabel();
 				    
-				    if("Delete".equals(commandLabel)){
-				    	Collection<?> result2 = mostRecentCommand.getResult();
-				    	
-				    }
-				    
-				    String logString = ModelLogView.getCompleteLogString();
-					
-					Collection<?> affectedObjects = mostRecentCommand.getAffectedObjects();
-					String affectedObjectLabels = "";
-					for (Object object : affectedObjects) {
-						// TODO collect more details here about the executed command
-						affectedObjectLabels += ((AdapterFactoryLabelProvider)treeViewer.getLabelProvider()).getText(object);
+				    String logString = commandLabel;
+
+					if ("Delete".equals(commandLabel)) {
+						Collection<?> commandResult = mostRecentCommand.getResult();
+
+						String affectedObjectLabels = "";
+						for (Object object : commandResult) {
+							// TODO collect more details here about the executed
+							// command
+							affectedObjectLabels += ((AdapterFactoryLabelProvider) treeViewer.getLabelProvider()).getText(object);
+						}
+						logString = logString + ". " + "Deleted object(s): " + affectedObjectLabels + ModelLogView.getLineDelimiter();
+					} else {
+
+						Collection<?> affectedObjects = mostRecentCommand.getAffectedObjects();
+						String affectedObjectLabels = "";
+						for (Object object : affectedObjects) {
+							// TODO collect more details here about the executed
+							// command
+							affectedObjectLabels += ((AdapterFactoryLabelProvider) treeViewer.getLabelProvider()).getText(object);
+						}
+						logString = logString + ". " + "Affected object(s): " + affectedObjectLabels + ModelLogView.getLineDelimiter();
 					}
-					
-					logString=  strDate + " " + commandLabel + " by " + username + ". Affected object: " + affectedObjectLabels + ModelLogView.getLineDelimiter() + logString; //" (Details: " + commandDescription + ") " + logView.getLineDelimiter() + logString ; 
-					ModelLogView.setLogString(logString);
-					UINotifierManager.notifySuccess(ModelLogView.EVENT_UPDATE_LOG, null);
+				    logString=  strDate + " " + userName + ": " + logString;  
+				    UINotifierManager.notifySuccess(ModelLogView.EVENT_UPDATE_LOG, new Object[]{resource.getURI() ,logString});
 					
 				}
 				
@@ -1044,6 +1040,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	 * 
 	 * @generated
 	 */
+	
 	@Override
 	public void createPages() {
 		// Creates the model from the editor input
@@ -1617,6 +1614,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	 * 
 	 * @generated
 	 */
+	
 	@Override
 	public void doSaveAs() {
 		new ResourceDialog(getSite().getShell(), null, SWT.NONE) {
