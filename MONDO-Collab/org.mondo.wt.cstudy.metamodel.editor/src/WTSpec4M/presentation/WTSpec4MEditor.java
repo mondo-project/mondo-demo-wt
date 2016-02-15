@@ -1013,24 +1013,44 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 					
 				    
 				    String commandLabel = mostRecentCommand.getLabel();
+
+				    String logMessage = commandLabel;
+
+					if ("Delete".equals(commandLabel)) {
+						Collection<?> commandResult = mostRecentCommand.getResult();
+
+						String affectedObjectLabels = "";
+						for (Object object : commandResult) {
+							// TODO collect more details here about the executed
+							// command
+							affectedObjectLabels += ((AdapterFactoryLabelProvider) treeViewer.getLabelProvider()).getText(object);
+						}
+						logMessage = logMessage + ". " + "Deleted object(s): " + affectedObjectLabels + ModelLogView.getLineDelimiter();
+					} else {
+
+						Collection<?> affectedObjects = mostRecentCommand.getAffectedObjects();
+						String affectedObjectLabels = "";
+						for (Object object : affectedObjects) {
+							// TODO collect more details here about the executed
+							// command
+							affectedObjectLabels += ((AdapterFactoryLabelProvider) treeViewer.getLabelProvider()).getText(object);
+						}
+						logMessage = logMessage + ". " + "Affected object(s): " + affectedObjectLabels;
+					}
+				    logMessage=  strDate + " " + userName + ": " + logMessage;  
 				    
-				    if("Delete".equals(commandLabel)){
-				    	Collection<?> result2 = mostRecentCommand.getResult();
-				    	
-				    }
-				    
-				    String logString = ModelLogView.getCompleteLogString();
-					
-					Collection<?> affectedObjects = mostRecentCommand.getAffectedObjects();
-					String affectedObjectLabels = "";
-					for (Object object : affectedObjects) {
-						// TODO collect more details here about the executed command
-						affectedObjectLabels += ((AdapterFactoryLabelProvider)treeViewer.getLabelProvider()).getText(object);
+				    ModelLogView logView = null;
+					IViewReference viewReferences[] = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
+							.getActivePage().getViewReferences();
+					for (int i = 0; i < viewReferences.length; i++) {
+						if (ModelLogView.ID.equals(viewReferences[i].getId())) {
+							logView = (ModelLogView) viewReferences[i].getView(false);
+						}
 					}
 					
-					logString=  strDate + " " + commandLabel + " by " + username + ". Affected object: " + affectedObjectLabels + ModelLogView.getLineDelimiter() + logString; //" (Details: " + commandDescription + ") " + logView.getLineDelimiter() + logString ; 
-					ModelLogView.setLogString(logString);
-					UINotifierManager.notifySuccess(ModelLogView.EVENT_UPDATE_LOG, null);
+					logView.addMessage(logMessage);
+				    
+					UINotifierManager.notifySuccess(ModelLogView.EVENT_UPDATE_LOG, leg.getOnlineCollaborationSession().getGoldConfinementURI());
 				}
 			}
 		});
