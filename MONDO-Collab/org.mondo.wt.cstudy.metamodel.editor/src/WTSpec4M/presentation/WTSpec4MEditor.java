@@ -332,6 +332,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 				if(legsForUser.get(userName)==1){
 					leg.dispose();
 				}
+				legsForUser.put(userName, legsForUser.get(userName)-1);
 			}
 		}
 
