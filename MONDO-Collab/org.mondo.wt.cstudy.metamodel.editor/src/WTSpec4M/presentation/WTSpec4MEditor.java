@@ -15,8 +15,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.xml.crypto.dsig.keyinfo.RetrievalMethod;
-
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.command.BasicCommandStack;
@@ -32,10 +30,16 @@ import org.eclipse.emf.common.ui.editor.ProblemEditorPart;
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.edit.command.AddCommand;
+import org.eclipse.emf.edit.command.CreateChildCommand;
+import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
@@ -115,6 +119,7 @@ import org.eclipse.ui.views.properties.PropertySheet;
 import org.eclipse.ui.views.properties.PropertySheetPage;
 import org.mondo.collaboration.online.core.LensSessionManager;
 import org.mondo.collaboration.online.core.OnlineLeg;
+import org.mondo.collaboration.online.core.OnlineLeg.CreateCommand;
 import org.mondo.collaboration.online.core.OnlineLeg.LegCommand;
 import org.mondo.collaboration.online.core.StorageAccess;
 import org.mondo.collaboration.online.rap.UINotifierManager;
@@ -123,7 +128,6 @@ import org.mondo.collaboration.online.rap.widgets.CommitMessageDialog;
 import org.mondo.collaboration.online.rap.widgets.ModelExplorer;
 import org.mondo.collaboration.online.rap.widgets.ModelLogView;
 import org.mondo.collaboration.security.lens.bx.AbortReason.DenialReason;
-import org.mondo.collaboration.security.lens.bx.online.OnlineCollaborationSession.Leg;
 
 import com.google.common.util.concurrent.FutureCallback;
 
@@ -752,7 +756,6 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 
 		@Override
 		public void onSuccess(Object obj) {
-			ModelExplorer.update((String) obj);
 			getContainer().getDisplay().asyncExec(new Runnable() {
 				
 				@Override
@@ -952,6 +955,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 			
 			boolean isAborted = false;
 			
+			@SuppressWarnings("unchecked")
 			@Override
 			public void commandStackChanged(EventObject event) {
 				
@@ -959,6 +963,34 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 					return;
 				
 				Command mostRecentCommand = editingDomain.getCommandStack().getMostRecentCommand();
+				//We have to change the create command to a customized one that set the ID attribute of the child
+				if(mostRecentCommand instanceof CreateChildCommand && !(mostRecentCommand instanceof OnlineLeg.CreateCommand)) {
+					CreateChildCommand commandDelegate = (CreateChildCommand) mostRecentCommand;
+					Collection<?> affectedObjects = commandDelegate.getAffectedObjects();
+					Command command = commandDelegate.getCommand();
+					EditingDomain domain = null;
+					EStructuralFeature feature = null;
+					EObject owner = null;
+					EObject child = null;
+					if(command instanceof AddCommand) {
+						AddCommand addCommand = (AddCommand) command;
+						domain = addCommand.getDomain();
+						feature = addCommand.getFeature();
+						owner = addCommand.getOwner();
+						child = (EObject) addCommand.getCollection().iterator().next();
+					}
+					if(command instanceof SetCommand) {
+						SetCommand setCommand = (SetCommand) command;
+						domain = setCommand.getDomain();
+						feature = setCommand.getFeature();
+						owner = setCommand.getOwner();
+						child = (EObject) owner.eGet(feature);
+					}
+					commandDelegate.undo();
+//					Command createWithIDCommand = new OnlineLeg.CreateCommand(domain, owner, feature, child, affectedObjects);
+//					editingDomain.getCommandStack().execute(createWithIDCommand);
+					return;
+				}
 				if(!(mostRecentCommand instanceof LegCommand)){
 					DenialReason result = leg.trySubmitModification();
 					if(result != null) {
@@ -1001,13 +1033,8 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 					logString=  strDate + " " + commandLabel + " by " + username + ". Affected object: " + affectedObjectLabels + ModelLogView.getLineDelimiter() + logString; //" (Details: " + commandDescription + ") " + logView.getLineDelimiter() + logString ; 
 					ModelLogView.setLogString(logString);
 					UINotifierManager.notifySuccess(ModelLogView.EVENT_UPDATE_LOG, null);
-					
 				}
-				
-				
 			}
-
-			
 		});
 		
 		
