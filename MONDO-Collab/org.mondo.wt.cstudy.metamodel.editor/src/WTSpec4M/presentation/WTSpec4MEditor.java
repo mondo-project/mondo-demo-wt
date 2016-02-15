@@ -129,6 +129,7 @@ import org.mondo.collaboration.online.rap.widgets.ModelExplorer;
 import org.mondo.collaboration.online.rap.widgets.ModelLogView;
 import org.mondo.collaboration.security.lens.bx.AbortReason.DenialReason;
 
+import com.google.common.collect.Maps;
 import com.google.common.util.concurrent.FutureCallback;
 
 import WTSpec4M.provider.WTSpec4MItemProviderAdapterFactory;
@@ -335,20 +336,12 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 
 		public void partClosed(IWorkbenchPart p) {
 			// TODO dispose leg only when it was the last open front model editor for the current user
-			if(leg != null){ 
-				leg.dispose();
-			}
-			
-			// Close the log view
-			IWorkbenchWindow workbenchWindow = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
-			IWorkbenchPage page = workbenchWindow.getActivePage();
-			if(page != null){
-				IViewReference[] viewReferences = page.getViewReferences();
-				for (IViewReference iViewReference : viewReferences) {
-					if (iViewReference.getId().equals(ModelLogView.ID)) {
-						page.hideView(iViewReference);
-					}
+			if(leg != null){
+				String userName = ModelExplorer.getCurrentStorageAccess().getUsername();
+				if(legsForUser.get(userName)==1){
+					leg.dispose();
 				}
+				legsForUser.put(userName, legsForUser.get(userName)-1);
 			}
 		}
 
@@ -460,6 +453,8 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	private OnlineLeg leg;
 
 	private boolean isItMe;
+
+	private static Map<String, Integer> legsForUser = Maps.newHashMap();
 
 	/**
 	 * Handles activation of the editor or it's associated views. <!--
@@ -932,12 +927,15 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 		Exception exception = null;
 		Resource resource = null;
 		
-		leg = LensSessionManager.getExistingLeg(ModelExplorer.getCurrentStorageAccess().getUsername(), RWT.getUISession().getHttpSession(), resourceURI);
+		String userName = ModelExplorer.getCurrentStorageAccess().getUsername();
+		leg = LensSessionManager.getExistingLeg(userName, RWT.getUISession().getHttpSession(), resourceURI);
 		if(leg == null) {
 			initializeEditingDomain();
 			leg = LensSessionManager.createLeg(resourceURI, ModelExplorer.getCurrentStorageAccess(), editingDomain, RWT.getUISession().getHttpSession());
+			legsForUser.put(userName,1);
 		} else {
 			initializeEditingDomain(leg.getEditingDomain());
+			legsForUser.put(userName, legsForUser.get(userName)+1);
 		}
 		UISessionManager.register(resourceURI, ModelExplorer.getCurrentStorageAccess().getUsername(), RWT.getUISession());
 		UINotifierManager.register(OnlineLeg.EVENT_UPDATE, RWT.getUISession(), new UpdateOnModification());
