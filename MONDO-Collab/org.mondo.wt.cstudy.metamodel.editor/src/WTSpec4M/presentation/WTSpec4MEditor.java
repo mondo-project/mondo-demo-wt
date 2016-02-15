@@ -985,8 +985,8 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 						child = (EObject) owner.eGet(feature);
 					}
 					commandDelegate.undo();
-//					Command createWithIDCommand = new OnlineLeg.CreateCommand(domain, owner, feature, child, affectedObjects);
-//					editingDomain.getCommandStack().execute(createWithIDCommand);
+					Command createWithIDCommand = leg.new CreateCommand(domain, owner, feature, child, affectedObjects, leg);
+					editingDomain.getCommandStack().execute(createWithIDCommand);
 					return;
 				}
 				if(!(mostRecentCommand instanceof LegCommand)){

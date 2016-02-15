@@ -21,10 +21,6 @@ import WTSpec4M.wtc;
 
 public class UniqueIdSchemeFactory implements UniqueIDSchemeFactory {
 
-	public UniqueIdSchemeFactory() {
-		// TODO Auto-generated constructor stub
-	}
-
 	@Override
 	public UniqueIDScheme apply(URI input) {
 		System.out.println(getClass().getSimpleName() + " on " + input);
@@ -32,76 +28,77 @@ public class UniqueIdSchemeFactory implements UniqueIDSchemeFactory {
 	}
 
 	public static class WTUniqueID extends ComposableIDFunction {
+		private static final String GENERATED = "_generated";
 		public final static WTUniqueID INSTANCE = new WTUniqueID();
 
 		@Override
 		public Object tryApply(EObject input) {
 			if (input instanceof WT) {
-				return "org.mondo.wt.cstudy.WTSpec4M.WT:" + ((WT) input).getSysId();
+				return ((WT) input).getSysId() == null ? null : prefix(input) + ((WT) input).getSysId();
 			}
 			if (input instanceof wtc) {
-				return "org.mondo.wt.cstudy.WTSpec4M.wtc:" + ((wtc) input).getSysId();
+				return ((wtc) input).getSysId() == null ? null : prefix(input) + ((wtc) input).getSysId();
 			}
 			if (input instanceof Subsystem) {
-				return "org.mondo.wt.cstudy.WTSpec4M.Subsystem:" + ((Subsystem) input).getSysId();
+				return ((Subsystem) input).getSysId() == null ? null : prefix(input) + ((Subsystem) input).getSysId();
 			}
 			if (input instanceof SystemFault) {
-				return "org.mondo.wt.cstudy.WTSpec4M.SystemFault:" + ((SystemFault) input).getSysId();
+				return ((SystemFault) input).getSysId() == null ? null : prefix(input) + ((SystemFault) input).getSysId();
 			}
 			if (input instanceof SystemInput) {
-				return "org.mondo.wt.cstudy.WTSpec4M.SystemInput:" + ((SystemInput) input).getSysId();
+				return ((SystemInput) input).getSysId() == null ? null : prefix(input) + ((SystemInput) input).getSysId();
 			}
 			if (input instanceof SystemOutput) {
-				return "org.mondo.wt.cstudy.WTSpec4M.SystemOutput:" + ((SystemOutput) input).getSysId();
+				return ((SystemOutput) input).getSysId() == null ? null : prefix(input) + ((SystemOutput) input).getSysId();
 			}
 			if (input instanceof SystemParam) {
-				return "org.mondo.wt.cstudy.WTSpec4M.SystemOutput:" + ((SystemParam) input).getSysId();
+				return ((SystemParam) input).getSysId() == null ? null : prefix(input) + ((SystemParam) input).getSysId();
 			}
 			if (input instanceof SystemVariable) {
-				return "org.mondo.wt.cstudy.WTSpec4M.SystemVariable:" + ((SystemVariable) input).getSysId();
+				return ((SystemVariable) input).getSysId() == null ? null : prefix(input) + ((SystemVariable) input).getSysId();
 			}
 			if (input instanceof SystemTimer) {
-				return "org.mondo.wt.cstudy.WTSpec4M.SystemTimer:" + ((SystemTimer) input).getSysId();
+				return ((SystemTimer) input).getSysId() == null ? null : prefix(input) + ((SystemTimer) input).getSysId();
 			}
 			return null;
 		}
 
 		public Object generateUniqueId(EObject input, Set<Object> reserved) {
-			String prefix = null;
+			String prefix = prefix(input);
+			String type = null;
 			if (input instanceof WT) {
-				prefix = "WT_";
+				type = "WT_";
 			}
 			if (input instanceof wtc) {
-				prefix = "wtc_";
+				type = "wtc_";
 			}
 			if (input instanceof Subsystem) {
-				prefix = "Subsystem_";
+				type = "Subsystem_";
 			}
 			if (input instanceof SystemFault) {
-				prefix = "SystemFault_";
+				type = "F_";
 			}
 			if (input instanceof SystemInput) {
-				prefix = "SystemInput_";
+				type = "I_";
 			}
 			if (input instanceof SystemOutput) {
-				prefix = "SystemOutput_";
+				type = "O_";
 			}
 			if (input instanceof SystemParam) {
-				prefix = "SystemParam_";
+				type = "P_";
 			}
 			if (input instanceof SystemVariable) {
-				prefix = "SystemVariable_";
+				type = "V_";
 			}
 			if (input instanceof SystemTimer) {
-				prefix = "SystemTimer_";
+				type = "T_";
 			}
-			if(prefix == null)
+			if(type == null)
 				throw new IllegalArgumentException();
 			
-			prefix = "generated_" + prefix;
 			int counter = 1;
-			for(; reserved.contains(prefix + counter); counter++);
-			String id = prefix + String.valueOf(counter);
+			for(; reserved.contains(prefix + type + counter) || reserved.contains(prefix + type + counter + GENERATED); counter++);
+			String id = type + String.valueOf(counter) + GENERATED;
 			return id;
 		}
 
@@ -109,35 +106,66 @@ public class UniqueIdSchemeFactory implements UniqueIDSchemeFactory {
         	if(value == null || target == null || !(value instanceof String))  {
         		throw new IllegalArgumentException();
         	}
-        	if (target instanceof WT) {
+        	else if (target instanceof WT) {
 				((WT) target).setSysId((String) value);
 			}
-			if (target instanceof wtc) {
+        	else if (target instanceof wtc) {
 				((wtc) target).setSysId((String) value);
 			}
-			if (target instanceof Subsystem) {
+        	else if (target instanceof Subsystem) {
 				((Subsystem) target).setSysId((String) value);
 			}
-			if (target instanceof SystemFault) {
+        	else if (target instanceof SystemFault) {
 				((SystemFault) target).setSysId((String) value);
 			}
-			if (target instanceof SystemInput) {
+        	else if (target instanceof SystemInput) {
 				((SystemInput) target).setSysId((String) value);
 			}
-			if (target instanceof SystemOutput) {
+        	else if (target instanceof SystemOutput) {
 				((SystemOutput) target).setSysId((String) value);
 			}
-			if (target instanceof SystemParam) {
+        	else if (target instanceof SystemParam) {
 				((SystemParam) target).setSysId((String) value);
 			}
-			if (target instanceof SystemVariable) {
+        	else if (target instanceof SystemVariable) {
 				((SystemVariable) target).setSysId((String) value);
 			}
-			if (target instanceof SystemTimer) {
+        	else if (target instanceof SystemTimer) {
 				((SystemTimer) target).setSysId((String) value);
 			}
-        	
+        	else
+        		throw new IllegalArgumentException();
         }
+		
+		protected String prefix(EObject input) {
+			if (input instanceof WT) {
+				return "org.mondo.wt.cstudy.WTSpec4M.WT:";
+			}
+			if (input instanceof wtc) {
+				return "org.mondo.wt.cstudy.WTSpec4M.wtc:";
+			}
+			if (input instanceof Subsystem) {
+				return "org.mondo.wt.cstudy.WTSpec4M.Subsystem:";
+			}
+			if (input instanceof SystemFault) {
+				return "org.mondo.wt.cstudy.WTSpec4M.SystemFault:";
+			}
+			if (input instanceof SystemInput) {
+				return "org.mondo.wt.cstudy.WTSpec4M.SystemInput:";
+			}
+			if (input instanceof SystemOutput) {
+				return "org.mondo.wt.cstudy.WTSpec4M.SystemOutput:";
+			}
+			if (input instanceof SystemParam) {
+				return "org.mondo.wt.cstudy.WTSpec4M.SystemOutput:";
+			}
+			if (input instanceof SystemVariable) {
+				return "org.mondo.wt.cstudy.WTSpec4M.SystemVariable:";
+			}
+			if (input instanceof SystemTimer) {
+				return "org.mondo.wt.cstudy.WTSpec4M.SystemTimer:";
+			}
+			throw new IllegalArgumentException();
+		}
     }
-
 }
