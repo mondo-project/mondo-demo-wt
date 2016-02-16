@@ -72,6 +72,7 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.ListViewer;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
@@ -456,6 +457,12 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 
 	private static Map<String, Integer> legsForUser = Maps.newHashMap();
 
+	private CommandStack commandStack;
+
+	private CommandStackListener refreshListener;
+
+	private CommandStackListener editorActionListener;
+
 	/**
 	 * Handles activation of the editor or it's associated views. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -601,15 +608,13 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 
 		this.adapterFactory = adapterFactory;
 		
-		// Create the command stack that will notify this editor as commands are
-		// executed.
-		//
-		BasicCommandStack commandStack = new BasicCommandStack();
+		commandStack = new BasicCommandStack();
 
 		// Add a listener to set the most recent command's affected objects to
 		// be the selection of the viewer with focus.
 		//
-		commandStack.addCommandStackListener(new CommandStackListener() {
+		
+		refreshListener = new CommandStackListener() {
 			public void commandStackChanged(final EventObject event) {
 				getContainer().getDisplay().asyncExec(new Runnable() {
 					public void run() {
@@ -632,7 +637,9 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 					}
 				});
 			}
-		});
+		};
+		
+		commandStack.addCommandStackListener(refreshListener);
 
 		// Create the editing domain with a special command stack.
 		//
@@ -644,7 +651,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 		this.editingDomain = editingDomain;
 		this.adapterFactory = editingDomain.getAdapterFactory();
 		
-		editingDomain.getCommandStack().addCommandStackListener(new CommandStackListener() {
+		refreshListener = new CommandStackListener() {
 			public void commandStackChanged(final EventObject event) {
 				getContainer().getDisplay().asyncExec(new Runnable() {
 					public void run() {
@@ -667,7 +674,9 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 					}
 				});
 			}
-		});
+		};
+		
+		editingDomain.getCommandStack().addCommandStackListener(refreshListener);
 
 	}
 
@@ -929,10 +938,12 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 		
 		String userName = ModelExplorer.getCurrentStorageAccess().getUsername();
 		leg = LensSessionManager.getExistingLeg(userName, RWT.getUISession().getHttpSession(), resourceURI);
+		boolean isNewUser = false;
 		if(leg == null) {
 			initializeEditingDomain();
 			leg = LensSessionManager.createLeg(resourceURI, ModelExplorer.getCurrentStorageAccess(), editingDomain, RWT.getUISession().getHttpSession());
 			legsForUser.put(userName,1);
+			isNewUser = true;
 		} else {
 			initializeEditingDomain(leg.getEditingDomain());
 			legsForUser.put(userName, legsForUser.get(userName)+1);
@@ -949,113 +960,118 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 		editingDomain.getResourceSet().eAdapters().add(problemIndicationAdapter);
 		
 		// Submit changes for lens
-		editingDomain.getCommandStack().addCommandStackListener(new CommandStackListener() {
+		if(isNewUser){
 			
-			boolean isAborted = false;
-			
-			@SuppressWarnings("unchecked")
-			@Override
-			public void commandStackChanged(EventObject event) {
+			editorActionListener = new CommandStackListener() {
 				
-				if(isAborted)
-					return;
+				boolean isAborted = false;
 				
-				Command mostRecentCommand = editingDomain.getCommandStack().getMostRecentCommand();
-				//We have to change the create command to a customized one that set the ID attribute of the child
-				if(mostRecentCommand instanceof CreateChildCommand && !(mostRecentCommand instanceof OnlineLeg.CreateCommand)) {
-					CreateChildCommand commandDelegate = (CreateChildCommand) mostRecentCommand;
-					Collection<?> affectedObjects = commandDelegate.getAffectedObjects();
-					Command command = commandDelegate.getCommand();
-					EditingDomain domain = null;
-					EStructuralFeature feature = null;
-					EObject owner = null;
-					EObject child = null;
-					if(command instanceof AddCommand) {
-						AddCommand addCommand = (AddCommand) command;
-						domain = addCommand.getDomain();
-						feature = addCommand.getFeature();
-						owner = addCommand.getOwner();
-						child = (EObject) addCommand.getCollection().iterator().next();
-					}
-					if(command instanceof SetCommand) {
-						SetCommand setCommand = (SetCommand) command;
-						domain = setCommand.getDomain();
-						feature = setCommand.getFeature();
-						owner = setCommand.getOwner();
-						child = (EObject) owner.eGet(feature);
-					}
-					commandDelegate.undo();
-					Command createWithIDCommand = leg.new CreateCommand(domain, owner, feature, child, affectedObjects, leg);
-					editingDomain.getCommandStack().execute(createWithIDCommand);
-					return;
-				}
-				if(!(mostRecentCommand instanceof LegCommand)){
-					DenialReason result = leg.trySubmitModification();
-					if(result != null) {
-						MessageBox messageBox = new MessageBox(getSite().getShell(), SWT.ABORT | SWT.ICON_WARNING);
-						messageBox.setMessage(result.prettyPrintProblem());
-						messageBox.setText(DENIED_MODIFICATION_ON_MODEL);
-						messageBox.open();
-						
-						isAborted = true;
-						editingDomain.getCommandStack().undo();
-						isAborted = false;
-						
+				@SuppressWarnings("unchecked")
+				@Override
+				public void commandStackChanged(EventObject event) {
+					
+					if(isAborted)
+						return;
+					
+					Command mostRecentCommand = editingDomain.getCommandStack().getMostRecentCommand();
+					//We have to change the create command to a customized one that set the ID attribute of the child
+					if(mostRecentCommand instanceof CreateChildCommand && !(mostRecentCommand instanceof OnlineLeg.CreateCommand)) {
+						CreateChildCommand commandDelegate = (CreateChildCommand) mostRecentCommand;
+						Collection<?> affectedObjects = commandDelegate.getAffectedObjects();
+						Command command = commandDelegate.getCommand();
+						EditingDomain domain = null;
+						EStructuralFeature feature = null;
+						EObject owner = null;
+						EObject child = null;
+						if(command instanceof AddCommand) {
+							AddCommand addCommand = (AddCommand) command;
+							domain = addCommand.getDomain();
+							feature = addCommand.getFeature();
+							owner = addCommand.getOwner();
+							child = (EObject) addCommand.getCollection().iterator().next();
+						}
+						if(command instanceof SetCommand) {
+							SetCommand setCommand = (SetCommand) command;
+							domain = setCommand.getDomain();
+							feature = setCommand.getFeature();
+							owner = setCommand.getOwner();
+							child = (EObject) owner.eGet(feature);
+						}
+						commandDelegate.undo();
+						Command createWithIDCommand = leg.new CreateCommand(domain, owner, feature, child, affectedObjects, leg);
+						editingDomain.getCommandStack().execute(createWithIDCommand);
 						return;
 					}
-					
-					
-					// Log the event
-					String username = ModelExplorer.getCurrentStorageAccess().getUsername();
-					
-					Date now = new Date();
-				    String strDate = ModelExplorer.DATE_FORMAT.format(now);
-					
-				    
-				    String commandLabel = mostRecentCommand.getLabel();
-
-				    String logMessage = commandLabel;
-
-					if ("Delete".equals(commandLabel)) {
-						Collection<?> commandResult = mostRecentCommand.getResult();
-
-						String affectedObjectLabels = "";
-						for (Object object : commandResult) {
-							// TODO collect more details here about the executed
-							// command
-							affectedObjectLabels += ((AdapterFactoryLabelProvider) treeViewer.getLabelProvider()).getText(object);
+					if(!(mostRecentCommand instanceof LegCommand)){
+						DenialReason result = leg.trySubmitModification();
+						if(result != null) {
+							MessageBox messageBox = new MessageBox(getSite().getShell(), SWT.ABORT | SWT.ICON_WARNING);
+							messageBox.setMessage(result.prettyPrintProblem());
+							messageBox.setText(DENIED_MODIFICATION_ON_MODEL);
+							messageBox.open();
+							
+							isAborted = true;
+							editingDomain.getCommandStack().undo();
+							isAborted = false;
+							
+							return;
 						}
-						logMessage = logMessage + ". " + "Deleted object(s): " + affectedObjectLabels + ModelLogView.getLineDelimiter();
-					} else {
-
-						Collection<?> affectedObjects = mostRecentCommand.getAffectedObjects();
-						String affectedObjectLabels = "";
-						for (Object object : affectedObjects) {
-							// TODO collect more details here about the executed
-							// command
-							affectedObjectLabels += ((AdapterFactoryLabelProvider) treeViewer.getLabelProvider()).getText(object);
+						
+						// Log the event
+						Date now = new Date();
+						String strDate = ModelExplorer.DATE_FORMAT.format(now);
+						
+						String commandLabel = mostRecentCommand.getLabel();
+						
+						String logMessage = commandLabel;
+						
+						if ("Delete".equals(commandLabel)) {
+							Collection<?> commandResult = mostRecentCommand.getResult();
+							
+							String affectedObjectLabels = "";
+							for (Object object : commandResult) {
+								// TODO collect more details here about the executed
+								// command
+								if(treeViewer.getLabelProvider() instanceof LabelProvider){
+									affectedObjectLabels += ((LabelProvider) treeViewer.getLabelProvider()).getText(object);									
+								} else {
+									affectedObjectLabels += ((AdapterFactoryLabelProvider) treeViewer.getLabelProvider()).getText(object);
+								}
+							}
+							logMessage = logMessage + ". " + "Deleted object(s): " + affectedObjectLabels;
+						} else {
+							
+							Collection<?> affectedObjects = mostRecentCommand.getAffectedObjects();
+							String affectedObjectLabels = "";
+							for (Object object : affectedObjects) {
+								// TODO collect more details here about the executed
+								// command
+								if(treeViewer.getLabelProvider() instanceof LabelProvider){
+									affectedObjectLabels += ((LabelProvider) treeViewer.getLabelProvider()).getText(object);								
+								} else {
+									affectedObjectLabels += ((AdapterFactoryLabelProvider) treeViewer.getLabelProvider()).getText(object);
+								}
+//								affectedObjectLabels += ((AdapterFactoryLabelProvider) treeViewer.getLabelProvider()).getText(object);
+							}
+							logMessage = logMessage + ". " + "Affected object(s): " + affectedObjectLabels;
 						}
-						logMessage = logMessage + ". " + "Affected object(s): " + affectedObjectLabels;
+						logMessage=  strDate + " " + userName + ": " + logMessage;  
+						
+//						ModelLogView logView = null;
+//						IViewReference viewReferences[] = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
+//								.getActivePage().getViewReferences();
+//						for (int i = 0; i < viewReferences.length; i++) {
+//							if (ModelLogView.ID.equals(viewReferences[i].getId())) {
+//								logView = (ModelLogView) viewReferences[i].getView(false);
+//							}
+//						}
+						
+						ModelLogView.addMessage(logMessage, leg.getOnlineCollaborationSession().getGoldConfinementURI());
 					}
-				    logMessage=  strDate + " " + userName + ": " + logMessage;  
-				    
-				    ModelLogView logView = null;
-					IViewReference viewReferences[] = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
-							.getActivePage().getViewReferences();
-					for (int i = 0; i < viewReferences.length; i++) {
-						if (ModelLogView.ID.equals(viewReferences[i].getId())) {
-							logView = (ModelLogView) viewReferences[i].getView(false);
-						}
-					}
-					
-					logView.addMessage(logMessage);
-				    
-					UINotifierManager.notifySuccess(ModelLogView.EVENT_UPDATE_LOG, leg.getOnlineCollaborationSession().getGoldConfinementURI());
 				}
-			}
-		});
-		
-		
+			};
+			editingDomain.getCommandStack().addCommandStackListener(editorActionListener);
+		}
 		
 	}
 
@@ -1875,6 +1891,9 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	public void dispose() {
 		updateProblemIndication = false;
 		
+		editingDomain.getCommandStack().removeCommandStackListener(refreshListener);
+//		editingDomain.getCommandStack().removeCommandStackListener(editorActionListener);
+		
 		getSite().getPage().removePartListener(partListener);
 
 //		adapterFactory.dispose();
@@ -1895,6 +1914,8 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 //		leg
 //		if(LensSessionManager.getUsersForURI(resourceURI))
 		UISessionManager.remove(resourceURI, ModelExplorer.getCurrentStorageAccess().getUsername(), RWT.getUISession());
+		
+		
 		
 		super.dispose();
 	}
