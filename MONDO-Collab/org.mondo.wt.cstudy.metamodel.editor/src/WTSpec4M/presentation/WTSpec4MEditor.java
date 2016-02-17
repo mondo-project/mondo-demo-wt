@@ -106,7 +106,9 @@ import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorSite;
+import org.eclipse.ui.IMemento;
 import org.eclipse.ui.IPartListener;
+import org.eclipse.ui.IPersistableEditor;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.internal.WorkbenchMessages;
@@ -121,6 +123,7 @@ import org.mondo.collaboration.online.core.LensSessionManager;
 import org.mondo.collaboration.online.core.OnlineLeg;
 import org.mondo.collaboration.online.core.OnlineLeg.LegCommand;
 import org.mondo.collaboration.online.core.StorageAccess;
+import org.mondo.collaboration.online.core.StorageAccessFactory;
 import org.mondo.collaboration.online.rap.UINotifierManager;
 import org.mondo.collaboration.online.rap.UISessionManager;
 import org.mondo.collaboration.online.rap.widgets.CommitMessageDialog;
@@ -141,7 +144,7 @@ import WTSpec4M.provider.WTSpec4MItemProviderAdapterFactory;
  */
 @SuppressWarnings("serial")
 public class WTSpec4MEditor extends MultiPageEditorPart
-		implements IEditingDomainProvider, ISelectionProvider, IMenuListener, IViewerProvider {
+		implements IEditingDomainProvider, ISelectionProvider, IMenuListener, IViewerProvider, IPersistableEditor {
 	private static final String DENIED_MODIFICATION_ON_MODEL = "Denied Modification on Model";
 
 	/**
@@ -310,7 +313,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	 * This listens for when the outline becomes active <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * 
-	 * @generated
+	 * @generated NOT
 	 */
 	protected IPartListener partListener = new IPartListener() {
 		public void partActivated(IWorkbenchPart p) {
@@ -337,7 +340,6 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 		public void partClosed(IWorkbenchPart p) {
 			// TODO dispose leg only when it was the last open front model editor for the current user
 			if(leg != null){
-				String userName = ModelExplorer.getCurrentStorageAccess().getUsername();
 				if(legsForUser.get(userName)==1){
 					leg.dispose();
 				}
@@ -462,6 +464,11 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 
 	private CommandStackListener editorActionListener;
 
+	private String userName;
+
+	private String passWord;
+
+	private StorageAccess storageAccess;
 	/**
 	 * Handles activation of the editor or it's associated views. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -935,7 +942,13 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 		Exception exception = null;
 		Resource resource = null;
 		
-		String userName = ModelExplorer.getCurrentStorageAccess().getUsername();
+		if(storageAccess == null) {
+			storageAccess = ModelExplorer.getCurrentStorageAccess();
+		}
+		if(userName == null) {
+			userName = storageAccess.getUsername();
+			passWord = storageAccess.getPassword();
+		}
 		leg = LensSessionManager.getExistingLeg(userName, RWT.getUISession().getHttpSession(), resourceURI);
 		boolean isNewUser = false;
 		if(leg == null) {
@@ -947,7 +960,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 			initializeEditingDomain(leg.getEditingDomain());
 			legsForUser.put(userName, legsForUser.get(userName)+1);
 		}
-		UISessionManager.register(resourceURI, ModelExplorer.getCurrentStorageAccess().getUsername(), RWT.getUISession());
+		UISessionManager.register(resourceURI, userName, RWT.getUISession());
 		UINotifierManager.register(OnlineLeg.EVENT_UPDATE, RWT.getUISession(), new UpdateOnModification());
 		UINotifierManager.register(OnlineLeg.EVENT_SAVE, RWT.getUISession(), new UpdateOnSave());
 		
@@ -1603,10 +1616,9 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 		if (dialog.open() == Window.OK) {
 			String commitMessage = dialog.getCommitMessage();
 
-			StorageAccess currentStorageAccess = ModelExplorer.getCurrentStorageAccess();
 			URIEditorInput editorInput = (URIEditorInput) getEditorInput();
 			// TODO make sure that the expected uri is correct
-			currentStorageAccess.commit(editorInput.getURI().toString(), commitMessage);
+			storageAccess.commit(editorInput.getURI().toString(), commitMessage);
 		} else {
 			return;
 		}
@@ -1946,7 +1958,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 		URI resourceURI = EditUIUtil.getURI(getEditorInput());
 //		leg
 //		if(LensSessionManager.getUsersForURI(resourceURI))
-		UISessionManager.remove(resourceURI, ModelExplorer.getCurrentStorageAccess().getUsername(), RWT.getUISession());
+//		UISessionManager.remove(resourceURI, userName, RWT.getUISession());
 
 		super.dispose();
 	}
@@ -1962,4 +1974,23 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	}
 	
 	 
+
+	@Override
+	public void saveState(IMemento memento) {
+		memento.putString(ModelExplorer.USERNAME, userName);
+		memento.putString(ModelExplorer.PASSWORD, passWord);
+	}
+
+	@Override
+	public void restoreState(IMemento memento) {
+		userName = memento.getString(ModelExplorer.USERNAME);
+		passWord = memento.getString(ModelExplorer.PASSWORD);
+		
+		try {
+			storageAccess = StorageAccessFactory.createStorageAccess(userName, passWord);
+			RWT.getUISession().setAttribute(ModelExplorer.STORAGEACCESS, storageAccess);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
