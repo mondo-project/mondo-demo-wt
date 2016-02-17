@@ -109,6 +109,7 @@ import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.IPartListener;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.internal.WorkbenchMessages;
 import org.eclipse.ui.part.MultiPageEditorPart;
 import org.eclipse.ui.views.contentoutline.ContentOutline;
 import org.eclipse.ui.views.contentoutline.ContentOutlinePage;
@@ -332,7 +333,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 		public void partBroughtToTop(IWorkbenchPart p) {
 			// Ignore.
 		}
-
+		
 		public void partClosed(IWorkbenchPart p) {
 			// TODO dispose leg only when it was the last open front model editor for the current user
 			if(leg != null){
@@ -1140,6 +1141,8 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 		// Creates the model from the editor input
 		//
 		createModel();
+		
+		WorkbenchMessages.get().EditorManager_saveChangesQuestion = "The model has uncommitted changes. Commit now?";
 
 		// Only creates the other pages if there is something that can be edited
 		//
