@@ -4,6 +4,7 @@ package WTSpec4M.presentation;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -21,6 +22,7 @@ import org.eclipse.emf.common.command.BasicCommandStack;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CommandStack;
 import org.eclipse.emf.common.command.CommandStackListener;
+import org.eclipse.emf.common.command.CommandWrapper;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.ui.URIEditorInput;
@@ -105,12 +107,8 @@ import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.IPartListener;
-import org.eclipse.ui.IViewReference;
-import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
-import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PartInitException;
-import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.MultiPageEditorPart;
 import org.eclipse.ui.views.contentoutline.ContentOutline;
 import org.eclipse.ui.views.contentoutline.ContentOutlinePage;
@@ -120,7 +118,6 @@ import org.eclipse.ui.views.properties.PropertySheet;
 import org.eclipse.ui.views.properties.PropertySheetPage;
 import org.mondo.collaboration.online.core.LensSessionManager;
 import org.mondo.collaboration.online.core.OnlineLeg;
-import org.mondo.collaboration.online.core.OnlineLeg.CreateCommand;
 import org.mondo.collaboration.online.core.OnlineLeg.LegCommand;
 import org.mondo.collaboration.online.core.StorageAccess;
 import org.mondo.collaboration.online.rap.UINotifierManager;
@@ -141,6 +138,7 @@ import WTSpec4M.provider.WTSpec4MItemProviderAdapterFactory;
  * 
  * @generated
  */
+@SuppressWarnings("serial")
 public class WTSpec4MEditor extends MultiPageEditorPart
 		implements IEditingDomainProvider, ISelectionProvider, IMenuListener, IViewerProvider {
 	private static final String DENIED_MODIFICATION_ON_MODEL = "Denied Modification on Model";
@@ -467,7 +465,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	 * Handles activation of the editor or it's associated views. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void handleActivate() {
 		// Recompute the read only state.
@@ -966,7 +964,6 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 				
 				boolean isAborted = false;
 				
-				@SuppressWarnings("unchecked")
 				@Override
 				public void commandStackChanged(EventObject event) {
 					
@@ -1026,48 +1023,81 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 						String logMessage = commandLabel;
 						
 						if ("Delete".equals(commandLabel)) {
-							Collection<?> commandResult = mostRecentCommand.getResult();
-							
-							String affectedObjectLabels = "";
-							for (Object object : commandResult) {
-								// TODO collect more details here about the executed
-								// command
-								if(treeViewer.getLabelProvider() instanceof LabelProvider){
-									affectedObjectLabels += ((LabelProvider) treeViewer.getLabelProvider()).getText(object);									
-								} else {
-									affectedObjectLabels += ((AdapterFactoryLabelProvider) treeViewer.getLabelProvider()).getText(object);
-								}
-							}
-							logMessage = logMessage + ". " + "Deleted object(s): " + affectedObjectLabels;
+							String effectString = "Deleted object(s): ";
+							logMessage = commandResultExtraction(mostRecentCommand, logMessage, effectString);
+						} else if ("Cut".equals(commandLabel)) {
+							String effectString = "Cut object(s): ";
+							logMessage = commandResultExtraction(mostRecentCommand, logMessage, effectString);
+						} else if ("Copy to Clipboard".equals(commandLabel)) {
+							String effectString = "Copied object(s): ";
+							logMessage = commandResultExtraction(mostRecentCommand, logMessage, effectString);
 						} else {
-							
+	
 							Collection<?> affectedObjects = mostRecentCommand.getAffectedObjects();
 							String affectedObjectLabels = "";
-							for (Object object : affectedObjects) {
-								// TODO collect more details here about the executed
-								// command
-								if(treeViewer.getLabelProvider() instanceof LabelProvider){
-									affectedObjectLabels += ((LabelProvider) treeViewer.getLabelProvider()).getText(object);								
-								} else {
-									affectedObjectLabels += ((AdapterFactoryLabelProvider) treeViewer.getLabelProvider()).getText(object);
-								}
-//								affectedObjectLabels += ((AdapterFactoryLabelProvider) treeViewer.getLabelProvider()).getText(object);
-							}
+							affectedObjectLabels = collectLabels(affectedObjects, affectedObjectLabels, mostRecentCommand);
 							logMessage = logMessage + ". " + "Affected object(s): " + affectedObjectLabels;
 						}
 						logMessage=  strDate + " " + userName + ": " + logMessage;  
 						
-//						ModelLogView logView = null;
-//						IViewReference viewReferences[] = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
-//								.getActivePage().getViewReferences();
-//						for (int i = 0; i < viewReferences.length; i++) {
-//							if (ModelLogView.ID.equals(viewReferences[i].getId())) {
-//								logView = (ModelLogView) viewReferences[i].getView(false);
-//							}
-//						}
-						
 						ModelLogView.addMessage(logMessage, leg.getOnlineCollaborationSession().getGoldConfinementURI());
 					}
+				}
+
+				private String commandResultExtraction(Command mostRecentCommand, String logMessage, String effectString) {
+					Collection<?> commandResult = mostRecentCommand.getResult();
+					
+					String affectedObjectLabels = "";
+					affectedObjectLabels = collectLabels(commandResult, affectedObjectLabels, mostRecentCommand);
+					logMessage = logMessage + ". " + effectString + affectedObjectLabels;
+					return logMessage;
+				}
+
+				private String collectLabels(Collection<?> affectedObjects, String affectedObjectLabels, Command currentCommand) {
+					for (Object object : affectedObjects) {
+						// TODO for some reason there is a change from AdapterFactoryLabelProvider to LabelProvider.
+						// the reason for this is unknown, but the workaround is to obtain the label manually
+						// TODO collect more details here about the executed command
+//						if(treeViewer.getLabelProvider() instanceof LabelProvider){
+//									affectedObjectLabels += ((LabelProvider) treeViewer.getLabelProvider()).getText(object);								
+							if(object instanceof EObject){
+								EList<EStructuralFeature> eAllStructuralFeatures = ((EObject) object).eClass().getEAllStructuralFeatures();
+								String id = null;
+								for (EStructuralFeature eStructuralFeature : eAllStructuralFeatures) {
+									String featureName = eStructuralFeature.getName();
+									if(featureName == "sysId"){
+										id = "type: \"" + ((EObject) object).eClass().getName() + "\", sysId: \"" + (String) ((EObject) object).eGet(eStructuralFeature) + "\"; ";
+										if("Set".equals(currentCommand.getLabel())){
+											try {
+												EStructuralFeature eStrucFeature = (EStructuralFeature) getProtectedField(currentCommand, "feature");
+												Object oldValue = getProtectedField(currentCommand, "oldValue");
+												Object value = getProtectedField(currentCommand, "value");
+												String addition = "feature name: \"" + eStrucFeature.getName() + "\" old value: " + oldValue + ", new value: " + value + " "; 
+												id += addition;
+											} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e) {
+											}
+										}
+										break;
+									}
+								}
+								if(id == null){
+									id = ((LabelProvider) treeViewer.getLabelProvider()).getText(object);
+								}
+								affectedObjectLabels += id;
+							}
+//						} else {
+//							affectedObjectLabels += ((AdapterFactoryLabelProvider) treeViewer.getLabelProvider()).getText(object);
+//						}
+					}
+					return affectedObjectLabels;
+				}
+
+				private Object getProtectedField(Command currentCommand, String fieldName)
+						throws NoSuchFieldException, IllegalAccessException {
+					Field featureField = currentCommand.getClass().getDeclaredField(fieldName);
+					featureField.setAccessible(true);
+					Object eStrucFeature = featureField.get(currentCommand);
+					return eStrucFeature;
 				}
 			};
 			editingDomain.getCommandStack().addCommandStackListener(editorActionListener);
@@ -1914,9 +1944,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 //		leg
 //		if(LensSessionManager.getUsersForURI(resourceURI))
 		UISessionManager.remove(resourceURI, ModelExplorer.getCurrentStorageAccess().getUsername(), RWT.getUISession());
-		
-		
-		
+
 		super.dispose();
 	}
 
@@ -1929,4 +1957,6 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	protected boolean showOutlineView() {
 		return true;
 	}
+	
+	 
 }
