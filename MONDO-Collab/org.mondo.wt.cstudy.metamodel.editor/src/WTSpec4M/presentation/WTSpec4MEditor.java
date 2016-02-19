@@ -22,7 +22,6 @@ import org.eclipse.emf.common.command.BasicCommandStack;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CommandStack;
 import org.eclipse.emf.common.command.CommandStackListener;
-import org.eclipse.emf.common.command.CommandWrapper;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.ui.URIEditorInput;
@@ -1610,76 +1609,72 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	public void doSave(IProgressMonitor progressMonitor) {
 		// Not needed, because it is checked on the fly
 		// leg.trySubmitModification();
-		
 		CommitMessageDialog dialog = new CommitMessageDialog(Display.getCurrent().getActiveShell());
 		dialog.create();
 		if (dialog.open() == Window.OK) {
+		
+			
+			// Save only resources that have actually changed.
+			//
+			final Map<Object, Object> saveOptions = new HashMap<Object, Object>();
+			saveOptions.put(Resource.OPTION_SAVE_ONLY_IF_CHANGED, Resource.OPTION_SAVE_ONLY_IF_CHANGED_MEMORY_BUFFER);
+			saveOptions.put(Resource.OPTION_LINE_DELIMITER, Resource.OPTION_LINE_DELIMITER_UNSPECIFIED);
+	
+			// Do the work within an operation because this is a long running
+			// activity that modifies the workbench.
+			//
+			IRunnableWithProgress operation = new IRunnableWithProgress() {
+				// This is the method that gets invoked when the operation runs.
+				//
+				public void run(IProgressMonitor monitor) {
+					// Save the resources to the file system.
+					//
+					boolean first = true;
+					for (Resource resource : leg.getGoldResourceSet().getResources()) {
+						if ((first || !resource.getContents().isEmpty() || isPersisted(resource))) {
+							try {
+								long timeStamp = resource.getTimeStamp();
+								resource.save(saveOptions);
+								if (resource.getTimeStamp() != timeStamp) {
+									savedResources.add(resource);
+								}
+							} catch (Exception exception) {
+								resourceToDiagnosticMap.put(resource, analyzeResourceProblems(resource, exception));
+							}
+							first = false;
+						}
+					}
+				}
+			};
+
+		
 			String commitMessage = dialog.getCommitMessage();
 
 			URIEditorInput editorInput = (URIEditorInput) getEditorInput();
-			// TODO make sure that the expected uri is correct
-			storageAccess.commit(editorInput.getURI().toString(), commitMessage);
+			storageAccess.commit(editorInput.getURI().toString(), commitMessage, leg);
+			
+			updateProblemIndication = false;
+			try {
+				// This runs the options, and shows progress.
+				//
+				new ProgressMonitorDialog(getSite().getShell()).run(true, false, operation);
+
+				// Refresh the necessary state.
+				//
+				((BasicCommandStack) editingDomain.getCommandStack()).saveIsDone();
+				firePropertyChange(IEditorPart.PROP_DIRTY);
+			} catch (Exception exception) {
+				// Something went wrong that shouldn't.
+				//
+				WTSpec4MEditorPlugin.INSTANCE.log(exception);
+			}
+			updateProblemIndication = true;
+			updateProblemIndication();
 		} else {
 			return;
 		}
-
-		// Save only resources that have actually changed.
-		//
-		final Map<Object, Object> saveOptions = new HashMap<Object, Object>();
-		saveOptions.put(Resource.OPTION_SAVE_ONLY_IF_CHANGED, Resource.OPTION_SAVE_ONLY_IF_CHANGED_MEMORY_BUFFER);
-		saveOptions.put(Resource.OPTION_LINE_DELIMITER, Resource.OPTION_LINE_DELIMITER_UNSPECIFIED);
-
-		// Do the work within an operation because this is a long running
-		// activity that modifies the workbench.
-		//
-		IRunnableWithProgress operation = new IRunnableWithProgress() {
-			// This is the method that gets invoked when the operation runs.
-			//
-			public void run(IProgressMonitor monitor) {
-				// Save the resources to the file system.
-				//
-				boolean first = true;
-				for (Resource resource : leg.getGoldResourceSet().getResources()) {
-					if ((first || !resource.getContents().isEmpty() || isPersisted(resource))) {
-						try {
-							long timeStamp = resource.getTimeStamp();
-							resource.save(saveOptions);
-							if (resource.getTimeStamp() != timeStamp) {
-								savedResources.add(resource);
-							}
-						} catch (Exception exception) {
-							resourceToDiagnosticMap.put(resource, analyzeResourceProblems(resource, exception));
-						}
-						first = false;
-					}
-				}
-//				for (Leg l : leg.getOnlineCollaborationSession().getLegs()) {
-//					if(l instanceof OnlineLeg) {
-//						OnlineLeg onlineLeg = (OnlineLeg) l;
-//						onlineLeg.saveExecuted();
-//					}
-//				}
-			}
-		};
-
 		
-		updateProblemIndication = false;
-		try {
-			// This runs the options, and shows progress.
-			//
-			new ProgressMonitorDialog(getSite().getShell()).run(true, false, operation);
-
-			// Refresh the necessary state.
-			//
-			((BasicCommandStack) editingDomain.getCommandStack()).saveIsDone();
-			firePropertyChange(IEditorPart.PROP_DIRTY);
-		} catch (Exception exception) {
-			// Something went wrong that shouldn't.
-			//
-			WTSpec4MEditorPlugin.INSTANCE.log(exception);
-		}
-		updateProblemIndication = true;
-		updateProblemIndication();
+		
 	
 		
 	}
@@ -1955,7 +1950,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 			contentOutlinePage.dispose();
 		}
 
-		URI resourceURI = EditUIUtil.getURI(getEditorInput());
+//		URI resourceURI = EditUIUtil.getURI(getEditorInput());
 //		leg
 //		if(LensSessionManager.getUsersForURI(resourceURI))
 //		UISessionManager.remove(resourceURI, userName, RWT.getUISession());
