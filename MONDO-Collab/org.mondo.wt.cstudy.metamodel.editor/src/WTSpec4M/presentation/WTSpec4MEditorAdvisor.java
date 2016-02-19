@@ -33,6 +33,7 @@ import org.eclipse.ui.application.IWorkbenchConfigurer;
 import org.eclipse.ui.application.IWorkbenchWindowConfigurer;
 import org.eclipse.ui.application.WorkbenchAdvisor;
 import org.eclipse.ui.application.WorkbenchWindowAdvisor;
+import org.mondo.collaboration.online.rap.widgets.CurrentUserView;
 import org.mondo.collaboration.online.rap.widgets.ModelExplorer;
 import org.mondo.collaboration.online.rap.widgets.ModelLogView;
 import org.mondo.collaboration.online.rap.widgets.WhiteboardChatView;
@@ -141,12 +142,14 @@ public final class WTSpec4MEditorAdvisor extends WorkbenchAdvisor {
 
 			IFolderLayout left = layout.createFolder("left", IPageLayout.LEFT, (float)0.33, layout.getEditorArea());
 			left.addView(ModelExplorer.ID);
-
+			IFolderLayout bottomLeft = layout.createFolder("bottomLeft", IPageLayout.BOTTOM, (float)0.90, "left");
+			bottomLeft.addView(CurrentUserView.ID);
+			
+			
 			IFolderLayout topRight = layout.createFolder("topRight", IPageLayout.RIGHT, (float)0.55, layout.getEditorArea());
 			topRight.addView(WhiteboardChatView.ID);
 			IFolderLayout right = layout.createFolder("right", IPageLayout.BOTTOM, (float)0.33, "topRight");
 			right.addView(ModelLogView.ID);
-
 			IFolderLayout bottomRight = layout.createFolder("bottomRight", IPageLayout.BOTTOM, (float)0.60, "right");
 			bottomRight.addView(IPageLayout.ID_PROP_SHEET);
 		}
