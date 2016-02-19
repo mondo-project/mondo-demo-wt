@@ -1644,15 +1644,14 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 							first = false;
 						}
 					}
+					
+					String commitMessage = dialog.getCommitMessage();
+
+					URIEditorInput editorInput = (URIEditorInput) getEditorInput();
+					storageAccess.commit(editorInput.getURI().toString(), commitMessage, leg);
 				}
 			};
 
-		
-			String commitMessage = dialog.getCommitMessage();
-
-			URIEditorInput editorInput = (URIEditorInput) getEditorInput();
-			storageAccess.commit(editorInput.getURI().toString(), commitMessage, leg);
-			
 			updateProblemIndication = false;
 			try {
 				// This runs the options, and shows progress.
@@ -1667,7 +1666,8 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 				// Something went wrong that shouldn't.
 				//
 				WTSpec4MEditorPlugin.INSTANCE.log(exception);
-			}
+			}		
+			
 			updateProblemIndication = true;
 			updateProblemIndication();
 		} else {
