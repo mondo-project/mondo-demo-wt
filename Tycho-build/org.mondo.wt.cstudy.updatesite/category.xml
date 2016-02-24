@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
    <feature url="Tycho-build/org.mondo.wt.cstudy.model.feature_1.0.0.qualifier.jar" id="org.mondo.wt.cstudy.model.feature" version="1.0.0.qualifier">
-      <category name="org.mondo.wt.cstudy"/>
+      <category name="org.mondo.wt.cstudy.client"/>
    </feature>
    <feature url="Tycho-build/org.mondo.wt.cstudy.merge.feature_1.0.0.qualifier.jar" id="org.mondo.wt.cstudy.merge.feature" version="1.0.0.qualifier">
-      <category name="org.mondo.wt.cstudy"/>
+      <category name="org.mondo.wt.cstudy.client"/>
    </feature>
-   <category-def name="org.mondo.wt.cstudy" label="WT Case-Study Features"/>
+   <feature url="Tycho-build/org.mondo.wt.cstudy.online.feature_1.0.0.qualifier.jar" id="org.mondo.wt.cstudy.online.feature" version="1.0.0.qualifier">
+      <category name="org.mondo.wt.cstudy.server"/>
+   </feature>
+   <category-def name="org.mondo.wt.cstudy.client" label="WT Case-Study Features [Client]"/>
+   <category-def name="org.mondo.wt.cstudy.server" label="WT Case-Study Features [Server]"/>
 </site>

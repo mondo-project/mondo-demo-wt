@@ -19,7 +19,7 @@
     <maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
     <jacoco.version>0.7.0.201403182114</jacoco.version>
 		<jacoco.targetdir>${project.basedir}/../../target</jacoco.targetdir>
-    <incquery.compiler.version>1.1.0-SNAPSHOT</incquery.compiler.version>
+    <incquery.compiler.version>1.2.0-SNAPSHOT</incquery.compiler.version>
   </properties>
 
   <modules>
@@ -33,18 +33,23 @@
     <module>../../DSL-tao/org.mondo.wt.cstudy.modular</module>
     <module>../../MONDO-Collab/org.mondo.wt.cstudy.metamodel.edit</module>
     <module>../../MONDO-Collab/org.mondo.wt.cstudy.metamodel.editor</module>
-    <module>../../Tycho-build/org.mondo.wt.cstudy.editor.feature</module>-->
-    <module>../../Tycho-build/org.mondo.wt.cstudy.lens.product</module>
-    <module>../../MONDO-Collab/org.mondo.wt.cstudy.metamodel</module>
-    <module>../../MONDO-Collab/org.mondo.wt.cstudy.metamodel.merge</module>
+    <module>../../Tycho-build/org.mondo.wt.cstudy.editor.feature</module>
+    <module>../../Tycho-build/org.mondo.wt.cstudy.lens.product</module>-->
+    <module>../../Tycho-build/org.mondo.wt.cstudy.targetplatform</module>
     <module>../../MONDO-Collab/org.mondo.wt.cstudy.lens</module>
+    <module>../../MONDO-Collab/org.mondo.wt.cstudy.metamodel</module>
+    <module>../../MONDO-Collab/org.mondo.wt.cstudy.metamodel.edit</module>
+    <module>../../MONDO-Collab/org.mondo.wt.cstudy.metamodel.editor</module>
+    <module>../../MONDO-Collab/org.mondo.wt.cstudy.metamodel.merge</module>
+    <module>../../MONDO-Collab/org.mondo.wt.cstudy.online.rap</module>
     <module>../../Tycho-build/org.mondo.wt.cstudy.model.feature</module>
     <module>../../Tycho-build/org.mondo.wt.cstudy.merge.feature</module>
+    <module>../../Tycho-build/org.mondo.wt.cstudy.online.feature</module>
     <module>../../Tycho-build/org.mondo.wt.cstudy.updatesite</module>
   </modules>
 
   <pluginRepositories>
-		<pluginRepository>
+		<!--<pluginRepository>
 			<id>central</id>
 			<name>Maven Central</name>
 			<url>http://repo.maven.apache.org/maven2</url>
@@ -58,7 +63,7 @@
 			<id>eclipse.plugin.repository</id>
 			<name>repo.eclipse.org Plug-in repository</name>
 			<url>https://repo.eclipse.org/content/repositories/cbi-releases/</url>
-		</pluginRepository>
+		</pluginRepository>-->
 		<pluginRepository>
 			<id>incquery-snapshots</id>
 			<snapshots>
@@ -69,7 +74,7 @@
 			</releases>
 			<url>https://repo.eclipse.org/content/repositories/emf-incquery/</url>
 		</pluginRepository>
-    <pluginRepository>
+    <!--<pluginRepository>
       <id>sonatype</id>
       <url>http://repository.sonatype.org/content/groups/sonatype-public-grid/</url>
       <releases>
@@ -78,25 +83,25 @@
       <snapshots>
         <enabled>true</enabled>
       </snapshots>
-    </pluginRepository>
+    </pluginRepository>-->
   </pluginRepositories>
 
   <repositories>
-		<repository>
+		<!--<repository>
 			<id>central</id>
 			<name>Maven Central</name>
 			<url>http://repo.maven.apache.org/maven2</url>
-		</repository>
-    <repository>
+		</repository>-->
+    <!--<repository>
 			<id>xtext</id>
 			<layout>p2</layout>
 			<url>http://download.eclipse.org/modeling/tmf/xtext/updates/composite/milestones/</url>
-		</repository>
-    <repository>
+		</repository>-->
+    <!--<repository>
 			<id>incquery.update</id>
 			<layout>p2</layout>
 			<url>http://download.eclipse.org/incquery/updates/integration</url>
-		</repository>
+		</repository>-->
     <repository>
 			<id>viatra.update</id>
 			<layout>p2</layout>
@@ -105,50 +110,50 @@
     <repository>
 			<id>mondo.collaboration</id>
 			<layout>p2</layout>
-			<url>https://build.inf.mit.bme.hu/jenkins/view/All/job/MONDO-Collaboration/lastSuccessfulBuild/artifact/releng/org.mondo.collaboration.security.updatesite/target/repository/</url>
+			<url>https://build.incquerylabs.com/jenkins/job/MONDO-Collaboration/lastSuccessfulBuild/artifact/releng/org.mondo.collaboration.security.updatesite/target/repository/</url>
 		</repository>
     <repository>
 			<id>mondo.collaboration.merge</id>
 			<layout>p2</layout>
-			<url>https://build.inf.mit.bme.hu/jenkins/view/All/job/MONDO-DSE-Merge/lastSuccessfulBuild/artifact/releng/org.eclipse.viatra.dse.merge.update/target/repository/</url>
+			<url>https://build.incquerylabs.com/jenkins/job/MONDO-DSE-Merge/lastSuccessfulBuild/artifact/releng/org.eclipse.viatra.dse.merge.update/target/repository/</url>
 		</repository>
     <repository>
 			<id>viatra.obfuscator</id>
 			<layout>p2</layout>
 			<url>https://hudson.eclipse.org/viatra/job/viatra-modelobfuscator-master/lastSuccessfulBuild/artifact/releng/org.eclipse.viatra.modelobfuscator.update/target/repository/</url>
 		</repository>
-    <repository>
+    <!--<repository>
 			<id>dsl.tao</id>
 			<layout>p2</layout>
 			<url>http://jdelara.github.io/DSL-tao/update-site/</url>
-		</repository>
-    <repository>
+		</repository>-->
+    <!--<repository>
 			<id>emf.splitter</id>
 			<layout>p2</layout>
 			<url>http://antoniogarmendia.github.io/EMF-Splitter/update-site/</url>
-		</repository>
-    <repository>
+		</repository>-->
+    <!--<repository>
       <id>mars</id>
       <layout>p2</layout>
       <url>http://download.eclipse.org/releases/mars</url>
-    </repository>
-    <repository>
+    </repository>-->
+    <!--<repository
       <id>eclipse.update</id>
       <layout>p2</layout>
       <url>http://download.eclipse.org/eclipse/updates/4.5</url>
-    </repository>
-    <repository>
+    </repository>-->
+    <!--<repository>
 			<id>incquery-snapshots</id>
 			<url>https://repo.eclipse.org/content/repositories/emf-incquery-snapshots/</url>
 			<snapshots>
 				<enabled>true</enabled>
 				<updatePolicy>always</updatePolicy>
 			</snapshots>
-		</repository>
-		<repository>
+		</repository>-->
+		<!--<repository>
 			<id>incquery-releases</id>
 			<url>https://repo.eclipse.org/content/repositories/emf-incquery-releases/</url>
-		</repository>
+		</repository>-->
 	</repositories>
 
   <build>
@@ -161,6 +166,20 @@
         <compilerVersion>${java.version}</compilerVersion>
         <source>${java.version}</source>
         <target>${java.version}</target>
+      </configuration>
+    </plugin>
+    <plugin>
+      <groupId>org.eclipse.tycho</groupId>
+      <artifactId>target-platform-configuration</artifactId>
+      <version>${tycho-version}</version>
+      <configuration>
+        <target>
+          <artifact>
+            <groupId>org.mondo.wt.cstudy</groupId>
+            <artifactId>org.mondo.wt.cstudy.targetplatform</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+          </artifact>
+        </target>
       </configuration>
     </plugin>
     <plugin>
