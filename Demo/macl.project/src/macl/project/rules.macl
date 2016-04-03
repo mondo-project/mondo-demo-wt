@@ -4,21 +4,22 @@ user aManager user anotherManager
 user anSSManager user anotherSSManager
 user Peter user Mary user John
 user aServiceEngineer user anotherServiceEngineer
+user alice user bob user cecil
 
 group PrincipalEngineer {
 	admin
 }
 
 group IOManager {
-	anIOManager, anotherIOManager
+	anIOManager, anotherIOManager, alice
 }
 
 group Manager {
-	aManager, anotherManager
+	aManager, anotherManager, bob
 }
 
 group SubSystemManager {
-	anSSManager, anotherSSManager
+	anSSManager, anotherSSManager, cecil
 }
 
 group SpecSubSystemManager {
@@ -30,43 +31,67 @@ group ServiceEngineer {
 }
 
 policy DemoPolicy first-applicable {
-	
-	rule restrictRoot deny W to IOManager, Manager, SubSystemManager, SpecSubSystemManager, ServiceEngineer {
+
+	rule restrictRoot permit RW to IOManager, Manager, SubSystemManager, SpecSubSystemManager, ServiceEngineer {
 		query "macl.project.objectRoot"
 	}
-	
-    rule allowIO permit RW to IOManager {
+
+	rule restrictRoot1 deny W to Manager, SubSystemManager, SpecSubSystemManager, ServiceEngineer {
+		query "macl.project.referenceitsInputs"
+	}
+
+	rule restrictRoot2 deny W to Manager, SubSystemManager, SpecSubSystemManager, ServiceEngineer {
+		query "macl.project.referenceitsOutputs"
+	}
+
+	rule restrictRoot3 deny W to IOManager, Manager, SubSystemManager, SpecSubSystemManager, ServiceEngineer {
+		query "macl.project.referenceitsParams"
+	}
+
+	rule restrictRoot4 deny W to IOManager, Manager, SubSystemManager, SpecSubSystemManager, ServiceEngineer {
+		query "macl.project.referenceitsTimers"
+	}
+
+	rule restrictRoot5 deny W to IOManager, Manager, SubSystemManager, SpecSubSystemManager, ServiceEngineer {
+		query "macl.project.referenceitsFaults"
+	}
+
+	rule restrictRoot6 deny W to IOManager, Manager, SubSystemManager, SpecSubSystemManager, ServiceEngineer {
+		query "macl.project.referenceitsVariables"
+	}
+
+  rule allowIO permit RW to IOManager {
 		query "macl.project.objectIO"
 	}
-	
+
 	rule denyAllNotIO deny RW to IOManager {
 		query "macl.project.objectNotIO"
 	}
-	
+
 	rule disableIO deny W to Manager {
 		query "macl.project.objectIO"
 	}
-	
+
 	rule disableIOFaultTimerVariable deny W to SubSystemManager {
 		query "macl.project.objectIOFaultTimerVariable"
 	}
-	
+
 	/*
 	rule enableGenerator permit RW to Peter {
 		query "macl.project.objectSubsystemWithName"
 		bind name value "Generator"
 	}
-	
+
 	rule enableConverter permit RW to Mary {
 		query "macl.project.objectSubsystemWithName"
 		bind name value "Converter"
 	}
-	
+
 	rule enablePitch permit RW to John {
 		query "macl.project.objectSubsystemWithName"
 		bind name value "Pitch"
 	}
-	
+
 	rule denyAll deny W to SpecSubSystemManager {
 		query "macl.project.objectAllObject"
 	}
