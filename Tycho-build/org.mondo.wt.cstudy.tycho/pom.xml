@@ -38,6 +38,7 @@
     <module>../../Tycho-build/org.mondo.wt.cstudy.targetplatform</module>
     <module>../../MONDO-Collab/org.mondo.wt.cstudy.lens</module>
     <module>../../MONDO-Collab/org.mondo.wt.cstudy.metamodel</module>
+    <module>../../MONDO-Collab/org.mondo.wt.cstudy.metamodel.validation</module>
     <module>../../MONDO-Collab/org.mondo.wt.cstudy.metamodel.edit</module>
     <module>../../MONDO-Collab/org.mondo.wt.cstudy.metamodel.editor</module>
     <module>../../MONDO-Collab/org.mondo.wt.cstudy.metamodel.merge</module>

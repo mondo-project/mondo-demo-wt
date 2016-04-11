@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="application"
+         point="org.eclipse.core.runtime.applications">
+      <application>
+         <run
+               class="WTSpec4M.presentation.WTSpec4MEditorAdvisor$Application">
+         </run>
+      </application>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="WTSpec4M.presentation.WTSpec4MEditorAdvisor$Perspective"
+            icon="icons/bricks.png"
+            id="TestApp.perspective"
+            name="Perspective">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.rap.ui.entrypoint">
+      <entrypoint
+            applicationId="org.mondo.wt.cstudy.online.rap.application"
+            id="org.mondo.wt.cstudy.online.rap.application.rap.entrypoint"
+            path="/rap">
+      </entrypoint>
+   </extension>
+
+</plugin>

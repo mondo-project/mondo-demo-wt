@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: MONDO Online WT CStudy RAP Application
+Bundle-SymbolicName: org.mondo.wt.cstudy.online.rap;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Import-Package: javax.servlet
+Require-Bundle: org.mondo.wt.cstudy.metamodel.editor
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: Eclipse Modeling Framework
