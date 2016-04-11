@@ -15,6 +15,7 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -109,6 +110,7 @@ import org.eclipse.ui.IMemento;
 import org.eclipse.ui.IPartListener;
 import org.eclipse.ui.IPersistableEditor;
 import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.IWorkbenchPartConstants;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.internal.WorkbenchMessages;
 import org.eclipse.ui.part.MultiPageEditorPart;
@@ -129,7 +131,9 @@ import org.mondo.collaboration.online.rap.widgets.CommitMessageDialog;
 import org.mondo.collaboration.online.rap.widgets.ModelExplorer;
 import org.mondo.collaboration.online.rap.widgets.ModelLogView;
 import org.mondo.collaboration.security.lens.bx.AbortReason.DenialReason;
+import org.mondo.collaboration.security.lens.bx.online.OnlineCollaborationSession.Leg;
 
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.util.concurrent.FutureCallback;
 
@@ -596,6 +600,41 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 		initializeEditingDomain();
 	}
 
+	public static class SpecificCommandStack extends BasicCommandStack {
+		
+		WTSpec4MEditor editor;
+		public void setEditor(WTSpec4MEditor editor) {
+			this.editor = editor;
+		}
+		
+		@Override
+		public void saveIsDone() {
+			saveIsDoneSuper();
+			for(Leg leg : editor.leg.getOnlineCollaborationSession().getLegs()) {
+				if (leg instanceof OnlineLeg) {
+					OnlineLeg onlineLeg = (OnlineLeg) leg;
+					SpecificCommandStack stack = (SpecificCommandStack) onlineLeg.getEditingDomain().getCommandStack();
+					if(stack != this) {
+						stack.saveIsDoneSuper();
+						if(stack.editor != null)
+							stack.editor.getContainer().getDisplay().asyncExec(new Runnable() {
+								
+								@Override
+								public void run() {
+									stack.editor.firePropertyChange(IEditorPart.PROP_DIRTY);
+								}
+							});
+					}
+				}
+			}
+		}
+		
+		public void saveIsDoneSuper() {
+			super.saveIsDone();
+		}
+		
+	}
+	
 	/**
 	 * This sets up the editing domain for the model editor. <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
@@ -613,7 +652,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 
 		this.adapterFactory = adapterFactory;
 		
-		commandStack = new BasicCommandStack();
+		commandStack = new SpecificCommandStack();
 
 		// Add a listener to set the most recent command's affected objects to
 		// be the selection of the viewer with focus.
@@ -681,7 +720,8 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 			}
 		};
 		
-		editingDomain.getCommandStack().addCommandStackListener(refreshListener);
+		commandStack = editingDomain.getCommandStack();
+		commandStack.addCommandStackListener(refreshListener);
 
 	}
 
@@ -959,6 +999,8 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 			initializeEditingDomain(leg.getEditingDomain());
 			legsForUser.put(userName, legsForUser.get(userName)+1);
 		}
+		((SpecificCommandStack)editingDomain.getCommandStack()).setEditor(this);
+		
 		UISessionManager.register(resourceURI, userName, RWT.getUISession());
 		UINotifierManager.register(OnlineLeg.EVENT_UPDATE, RWT.getUISession(), new UpdateOnModification());
 		UINotifierManager.register(OnlineLeg.EVENT_SAVE, RWT.getUISession(), new UpdateOnSave());
@@ -1015,14 +1057,20 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 					if(!(mostRecentCommand instanceof LegCommand)){
 						DenialReason result = leg.trySubmitModification();
 						if(result != null) {
-							MessageBox messageBox = new MessageBox(getSite().getShell(), SWT.ABORT | SWT.ICON_WARNING);
-							messageBox.setMessage(result.prettyPrintProblem());
-							messageBox.setText(DENIED_MODIFICATION_ON_MODEL);
-							messageBox.open();
-							
-							isAborted = true;
-							editingDomain.getCommandStack().undo();
-							isAborted = false;
+							getSite().getShell().getDisplay().asyncExec(new Runnable() {
+								
+								@Override
+								public void run() {
+									MessageBox messageBox = new MessageBox(getSite().getShell(), SWT.ABORT | SWT.ICON_WARNING);
+									messageBox.setMessage(result.prettyPrintProblem());
+									messageBox.setText(DENIED_MODIFICATION_ON_MODEL);
+									messageBox.open();
+									
+									isAborted = true;
+									editingDomain.getCommandStack().undo();
+									isAborted = false;
+								}
+							});
 							
 							return;
 						}
@@ -1929,9 +1977,11 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	 */
 	@Override
 	public void dispose() {
+		
 		updateProblemIndication = false;
 		
 		editingDomain.getCommandStack().removeCommandStackListener(refreshListener);
+		((SpecificCommandStack)editingDomain.getCommandStack()).setEditor(null);
 //		editingDomain.getCommandStack().removeCommandStackListener(editorActionListener);
 		
 		getSite().getPage().removePartListener(partListener);
