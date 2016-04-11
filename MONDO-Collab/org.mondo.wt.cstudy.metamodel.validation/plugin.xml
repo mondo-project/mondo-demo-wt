@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.startup">
+      <startup
+            class="WTSpec4M.validation.WTSpec4MStartup">
+      </startup>
+   </extension>
+   <extension
+         id="org.mondo.wt.cstudy.metamodel.validator"
+         name="Validator for WTSpec4M"
+         point="org.eclipse.emf.validation.constraintProviders">
+      <category
+            id="org.mondo.wt.cstudy.metamodel.category"
+            name="WTSpec4M validators">
+      </category>
+      <constraintProvider
+            cache="true">
+         <package
+               namespaceUri="http://WTSpec4M/5.0M">
+         </package>
+         <constraints
+               categories="org.mondo.wt.cstudy.metamodel.category">
+            <constraint
+                  class="WTSpec4M.constraint.NonEmptyIdentifierConstraint"
+                  id="org.mondo.wt.cstudy.metamodel.nonemptyidentifier"
+                  isEnabledByDefault="true"
+                  lang="java"
+                  mode="Batch"
+                  name="Non Empty Identifier Constraint"
+                  severity="ERROR"
+                  statusCode="201">
+               <message>
+                  The &quot;{0}&quot; element&apos;s id attribute is not filled
+               </message>
+               <target
+                     class="EObject"></target>
+               <description>
+                  Identifiers have to be filled.
+               </description>
+            </constraint>
+         </constraints>
+      </constraintProvider>
+    </extension>
+   <extension
+         point="org.eclipse.emf.validation.constraintBindings">
+      <clientContext
+            default="true"
+            id="org.mondo.wt.cstudy.metamodel.clientContext">
+         <selector
+               class="WTSpec4M.validation.ValidationDelegateClientSelector">
+         </selector>
+      </clientContext>
+      <binding
+            category="org.mondo.wt.cstudy.metamodel.category"
+            context="org.mondo.wt.cstudy.metamodel.clientContext">
+      </binding>
+   </extension>
+</plugin>
