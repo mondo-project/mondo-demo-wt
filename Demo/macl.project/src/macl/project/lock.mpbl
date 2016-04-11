@@ -1,0 +1,21 @@
+user admin
+user anIOManager user anotherIOManager
+user aManager user anotherManager
+user anSSManager user anotherSSManager
+user Peter user Mary user John
+user aServiceEngineer user anotherServiceEngineer
+user alice user bob user cecil
+
+locks {
+	alice lock {
+		query "macl.project.lockIO"
+	}
+
+	/*bob lock {
+		query "macl.project.lockIOReferredByCtrlUnderSubSystem"
+	}*/
+
+	cecil lock {
+		query "macl.project.lockParameterValues"
+	}
+}

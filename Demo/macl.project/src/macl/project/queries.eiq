@@ -7,6 +7,30 @@ pattern objectRoot(root : WT) {
 	WT(root);
 }
 
+pattern referenceitsInputs(root : WT, input : SystemInput) {
+	WT.itsInputs(root,input);
+}
+
+pattern referenceitsOutputs(root : WT, output : SystemOutput) {
+	WT.itsOutputs(root,output);
+}
+
+pattern referenceitsParams(root : WT, param : SystemParam) {
+	WT.itsParams(root,param);
+}
+
+pattern referenceitsTimers(root : WT, timer : SystemTimer) {
+	WT.itsTimers(root,timer);
+}
+
+pattern referenceitsFaults(root : WT, fault : SystemFault) {
+	WT.itsFaults(root,fault);
+}
+
+pattern referenceitsVariables(root : WT, variable : SystemVariable) {
+	WT.itsVariables(root,variable);
+}
+
 pattern objectAllObject(object : EObject) {
 	EObject(object);
 }
@@ -40,4 +64,235 @@ pattern objectIOFaultTimerVariable(object : EObject) {
 
 pattern attributeenabled(wtc : wtc, value) {
 	wtc.enabled(wtc, value);
+}
+
+pattern lockParameterValues(param : SystemParam, value) {
+	SystemParam.value(param,value);
+}
+
+pattern lockIO(eObject : EObject) {
+	SystemInput(eObject);
+} or {
+	SystemOutput(eObject);
+} or {
+	find lockIOReferredByCtrl(_,eObject);
+}
+
+pattern lockIOReferredByCtrlUnderSubSystem(subSystem : Subsystem, ctrl : wtc, eObject : EObject) {
+	Subsystem.itsWTCs(subSystem,ctrl);
+	find lockIOReferredByCtrl(ctrl,eObject);
+} or {
+	find allSubsystemInSubsystems+(subSystem,subSubSystem);
+	Subsystem.itsWTCs(subSubSystem,ctrl);
+	find lockIOReferredByCtrl(ctrl,eObject);
+}
+
+private pattern allSubsystemInSubsystems(parent : Subsystem, child : Subsystem) {
+	Subsystem.itsSubsystems(parent,child);
+}
+
+pattern lockIOReferredByCtrl(ctrl : wtc, eObject : EObject) {
+	CtrlUnit80.Input__iInput3(ctrl, eObject);
+} or {
+	CtrlUnit80.Input__iInput2(ctrl, eObject);
+} or {
+	CtrlUnit80.Input__iInput5(ctrl, eObject);
+} or {
+	CtrlUnit80.Input__iInput1(ctrl, eObject);
+} or {
+	CtrlUnit80.Input__iInput4(ctrl, eObject);
+} or {
+	CtrlUnit80.Output__oOutput1(ctrl, eObject);
+} or {
+	CtrlUnit18.Input__iInput6(ctrl, eObject);
+} or {
+	CtrlUnit18.Input__iInput1(ctrl, eObject);
+} or {
+	CtrlUnit18.Input__iInput5(ctrl, eObject);
+} or {
+	CtrlUnit18.Input__iInput2(ctrl, eObject);
+} or {
+	CtrlUnit18.Input__iInput4(ctrl, eObject);
+} or {
+	CtrlUnit18.Input__iInput3(ctrl, eObject);
+} or {
+	CtrlUnit18.Output__oOutput1(ctrl, eObject);
+} or {
+	CtrlUnit65.Output__oOutput1(ctrl, eObject);
+} or {
+	CtrlUnit73.Input__iInput1(ctrl, eObject);
+} or {
+	CtrlUnit73.Output__oOutput1(ctrl, eObject);
+} or {
+	CtrlUnit10.Input__iInput1(ctrl, eObject);
+} or {
+	CtrlUnit10.Output__oOutput1(ctrl, eObject);
+} or {
+	CtrlUnit9.Input__iInput2(ctrl, eObject);
+} or {
+	CtrlUnit9.Input__iInput4(ctrl, eObject);
+} or {
+	CtrlUnit9.Input__iInput3(ctrl, eObject);
+} or {
+	CtrlUnit9.Input__iInput1(ctrl, eObject);
+} or {
+	CtrlUnit9.Output__oOutput1(ctrl, eObject);
+} or {
+	CtrlUnit94.Input__iInput1(ctrl, eObject);
+} or {
+	CtrlUnit94.Output__oOutput1(ctrl, eObject);
+} or {
+	CtrlUnit47.Input__iInput1(ctrl, eObject);
+} or {
+	CtrlUnit39.Input__iInput1(ctrl, eObject);
+} or {
+	CtrlUnit39.Input__iInput2(ctrl, eObject);
+} or {
+	CtrlUnit13.Input__iInput2(ctrl, eObject);
+} or {
+	CtrlUnit13.Input__iInput1(ctrl, eObject);
+} or {
+	CtrlUnit13.Input__iInput3(ctrl, eObject);
+} or {
+	CtrlUnit13.Output__oOutput1(ctrl, eObject);
+} or {
+	CtrlUnit102.Input__iInput1(ctrl, eObject);
+} or {
+	CtrlUnit102.Input__iInput2(ctrl, eObject);
+} or {
+	CtrlUnit102.Output__oOutput1(ctrl, eObject);
+} or {
+	CtrlUnit125.Input__iInput1(ctrl, eObject);
+} or {
+	CtrlUnit125.Output__oOutput1(ctrl, eObject);
+} or {
+	CtrlUnit15.Input__iInput1(ctrl, eObject);
+} or {
+	CtrlUnit15.Output__oOutput1(ctrl, eObject);
+} or {
+	CtrlUnit5.Input__iInput1(ctrl, eObject);
+} or {
+	CtrlUnit5.Input__iInput2(ctrl, eObject);
+} or {
+	CtrlUnit5.Output__oOutput1(ctrl, eObject);
+} or {
+	CtrlUnit27.Input__iInput1(ctrl, eObject);
+} or {
+	CtrlUnit27.Input__iInput2(ctrl, eObject);
+} or {
+	CtrlUnit27.Output__oOutput2(ctrl, eObject);
+} or {
+	CtrlUnit27.Output__oOutput1(ctrl, eObject);
+} or {
+	CtrlUnit58.Input__iInput1(ctrl, eObject);
+} or {
+	CtrlUnit58.Output__oOutput1(ctrl, eObject);
+} or {
+	CtrlUnit36.Input__iInput1(ctrl, eObject);
+} or {
+	CtrlUnit36.Output__oOutput1(ctrl, eObject);
+} or {
+	CtrlUnit31.Input__iInput1(ctrl, eObject);
+} or {
+	CtrlUnit31.Output__oOutput1(ctrl, eObject);
+} or {
+	CtrlUnit40.Input__iInput1(ctrl, eObject);
+} or {
+	CtrlUnit40.Output__oOutput1(ctrl, eObject);
+} or {
+	CtrlUnit34.Input__iInput2(ctrl, eObject);
+} or {
+	CtrlUnit34.Input__iInput1(ctrl, eObject);
+} or {
+	CtrlUnit34.Output__oOutput2(ctrl, eObject);
+} or {
+	CtrlUnit34.Output__oOutput1(ctrl, eObject);
+} or {
+	CtrlUnit124.Input__iInput1(ctrl, eObject);
+} or {
+	CtrlUnit124.Input__iInput2(ctrl, eObject);
+} or {
+	CtrlUnit124.Output__oOutput1(ctrl, eObject);
+} or {
+	CtrlUnit49.Input__iInput4(ctrl, eObject);
+} or {
+	CtrlUnit49.Input__iInput1(ctrl, eObject);
+} or {
+	CtrlUnit49.Input__iInput3(ctrl, eObject);
+} or {
+	CtrlUnit49.Input__iInput2(ctrl, eObject);
+} or {
+	CtrlUnit49.Output__oOutput2(ctrl, eObject);
+} or {
+	CtrlUnit49.Output__oOutput1(ctrl, eObject);
+} or {
+	CtrlUnit29.Input__iInput2(ctrl, eObject);
+} or {
+	CtrlUnit29.Input__iInput1(ctrl, eObject);
+} or {
+	CtrlUnit59.Input__iInput1(ctrl, eObject);
+} or {
+	CtrlUnit59.Output__oOutput1(ctrl, eObject);
+} or {
+	CtrlUnit78.Input__iInput1(ctrl, eObject);
+} or {
+	CtrlUnit78.Input__iInput2(ctrl, eObject);
+} or {
+	CtrlUnit78.Output__oOutput1(ctrl, eObject);
+} or {
+	CtrlUnit44.Input__iInput1(ctrl, eObject);
+} or {
+	CtrlUnit44.Output__oOutput1(ctrl, eObject);
+} or {
+	CtrlUnit37.Input__iInput1(ctrl, eObject);
+} or {
+	CtrlUnit37.Input__iInput3(ctrl, eObject);
+} or {
+	CtrlUnit37.Input__iInput2(ctrl, eObject);
+} or {
+	CtrlUnit37.Output__oOutput1(ctrl, eObject);
+} or {
+	CtrlUnit11.Input__iInput2(ctrl, eObject);
+} or {
+	CtrlUnit11.Input__iInput1(ctrl, eObject);
+} or {
+	CtrlUnit11.Output__oOutput1(ctrl, eObject);
+} or {
+	CtrlUnit68.Input__iInput1(ctrl, eObject);
+} or {
+	CtrlUnit68.Input__iInput2(ctrl, eObject);
+} or {
+	CtrlUnit68.Output__oOutput1(ctrl, eObject);
+} or {
+	CtrlUnit92.Input__iInput1(ctrl, eObject);
+} or {
+	CtrlUnit92.Input__iInput2(ctrl, eObject);
+} or {
+	CtrlUnit71.Input__iInput6(ctrl, eObject);
+} or {
+	CtrlUnit71.Input__iInput3(ctrl, eObject);
+} or {
+	CtrlUnit71.Input__iInput2(ctrl, eObject);
+} or {
+	CtrlUnit71.Input__iInput5(ctrl, eObject);
+} or {
+	CtrlUnit71.Input__iInput1(ctrl, eObject);
+} or {
+	CtrlUnit71.Input__iInput4(ctrl, eObject);
+} or {
+	CtrlUnit71.Output__oOutput1(ctrl, eObject);
+} or {
+	CtrlUnit71.Output__oOutput2(ctrl, eObject);
+} or {
+	CtrlUnit126.Input__iInput2(ctrl, eObject);
+} or {
+	CtrlUnit126.Input__iInput1(ctrl, eObject);
+} or {
+	CtrlUnit126.Output__oOutput2(ctrl, eObject);
+} or {
+	CtrlUnit126.Output__oOutput1(ctrl, eObject);
+} or {
+	CtrlUnit50.Output__oOutput1(ctrl, eObject);
+} or {
+	CtrlUnit46.Output__oOutput1(ctrl, eObject);
 }
