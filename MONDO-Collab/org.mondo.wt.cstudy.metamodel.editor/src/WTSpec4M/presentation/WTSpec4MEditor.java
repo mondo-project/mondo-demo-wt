@@ -1079,6 +1079,9 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 						Date now = new Date();
 						String strDate = ModelExplorer.DATE_FORMAT.format(now);
 						
+						if(mostRecentCommand == null)
+							return;
+						
 						String commandLabel = mostRecentCommand.getLabel();
 						
 						String logMessage = commandLabel;
