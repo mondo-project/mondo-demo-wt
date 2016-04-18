@@ -2,6 +2,7 @@ package org.mondo.wt.cstudy.lens;
 
 import java.util.Set;
 
+import org.apache.log4j.Logger;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.mondo.collaboration.security.lens.correspondence.ComposableIDFunction;
@@ -20,10 +21,13 @@ import WTSpec4M.WT;
 import WTSpec4M.wtc;
 
 public class UniqueIdSchemeFactory implements UniqueIDSchemeFactory {
+	
+	public static Logger LOGGER = Logger.getLogger(UniqueIDSchemeFactory.class);
 
 	@Override
 	public UniqueIDScheme apply(URI input) {
-		System.out.println(getClass().getSimpleName() + " on " + input);
+		if (LOGGER.isDebugEnabled()) 
+			LOGGER.debug(getClass().getSimpleName() + " instantiated for resource URI " + input);
 		return ComposableIDFunction.dispatchTo(WTUniqueID.INSTANCE, DefaultEMFUniqueIDFunctions.forBaseURI(input));
 	}
 

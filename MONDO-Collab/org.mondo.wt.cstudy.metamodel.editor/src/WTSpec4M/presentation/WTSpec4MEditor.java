@@ -1082,6 +1082,10 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 						if(mostRecentCommand == null)
 							return;
 						
+						if(mostRecentCommand == null){
+							return;
+						}
+						
 						String commandLabel = mostRecentCommand.getLabel();
 						
 						String logMessage = commandLabel;
@@ -1205,7 +1209,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 		//
 		createModel();
 		
-		WorkbenchMessages.get().EditorManager_saveChangesQuestion = "The model has uncommitted changes. Commit now?";
+		WorkbenchMessages.get().EditorManager_saveChangesQuestion = "There are uncommitted changes. Commit now?";
 
 		// Only creates the other pages if there is something that can be edited
 		//
