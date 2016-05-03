@@ -472,6 +472,8 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	private String passWord;
 
 	private StorageAccess storageAccess;
+
+	private String repository;
 	/**
 	 * Handles activation of the editor or it's associated views. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
@@ -2027,15 +2029,17 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	public void saveState(IMemento memento) {
 		memento.putString(ModelExplorer.USERNAME, userName);
 		memento.putString(ModelExplorer.PASSWORD, passWord);
+		memento.putString(ModelExplorer.REPOSITORY, repository);
 	}
 
 	@Override
 	public void restoreState(IMemento memento) {
 		userName = memento.getString(ModelExplorer.USERNAME);
 		passWord = memento.getString(ModelExplorer.PASSWORD);
+		repository = memento.getString(ModelExplorer.REPOSITORY);
 		
 		try {
-			storageAccess = StorageAccessFactory.createStorageAccess(userName, passWord);
+			storageAccess = StorageAccessFactory.createStorageAccess(userName, passWord, repository);
 			RWT.getUISession().setAttribute(ModelExplorer.STORAGEACCESS, storageAccess);
 		} catch (Exception e) {
 			e.printStackTrace();
