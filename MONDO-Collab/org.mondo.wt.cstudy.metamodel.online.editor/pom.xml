@@ -11,7 +11,7 @@
     <relativePath>../../Tycho-build/org.mondo.wt.cstudy.tycho/pom.xml</relativePath>
   </parent>
   <groupId>org.mondo.wt.cstudy</groupId>
-  <artifactId>org.mondo.wt.cstudy.metamodel.editor</artifactId>
+  <artifactId>org.mondo.wt.cstudy.metamodel.online.editor</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <packaging>eclipse-plugin</packaging>
 </project>
