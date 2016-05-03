@@ -3,15 +3,15 @@
     <configuration class="org.mondo.wt.cstudy.metamodel.merge.DSEMergeConfigurator" epackageURI="http://WTSpec4M/5.0M"/>
   </extension>
   <extension id="org.mondo.wt.cstudy.metamodel.merge.contentMergeViewer.generated" point="org.eclipse.compare.contentMergeViewers">
-    <viewer class="org.eclipse.viatra.dse.merge.ui.DSEContentMergeViewerCreator" extensions="wtspec4m50m" id="org.eclipse.viatra.dse.merge.ui.contentMergeViewer" label="DSE Content Merge Viewer"/>
-    <contentTypeBinding contentMergeViewerId="org.eclipse.viatra.dse.merge.ui.contentMergeViewer" contentTypeId="org.mondo.wt.cstudy.metamodel.merge.wtspec4m50m"/>
+    <viewer class="org.eclipse.viatra.dse.merge.ui.DSEContentMergeViewerCreator" extensions="wtspec4m" id="org.eclipse.viatra.dse.merge.ui.contentMergeViewer" label="DSE Content Merge Viewer"/>
+    <contentTypeBinding contentMergeViewerId="org.eclipse.viatra.dse.merge.ui.contentMergeViewer" contentTypeId="org.mondo.wt.cstudy.metamodel.merge.wtspec4m"/>
   </extension>
   <extension id="org.mondo.wt.cstudy.metamodel.merge.contentType.generated" point="org.eclipse.core.contenttype.contentTypes">
-    <content-type base-type="org.eclipse.emf.ecore.xmi" file-extensions="wtspec4m50m" id="org.mondo.wt.cstudy.metamodel.merge.wtspec4m50m" name="(wtspec4m50m)org.mondo.wt.cstudy.metamodel.merge.wtspec4m50m" priority="high"/>
+    <content-type base-type="org.eclipse.emf.ecore.xmi" file-extensions="wtspec4m" id="org.mondo.wt.cstudy.metamodel.merge.wtspec4m" name="(wtspec4m)org.mondo.wt.cstudy.metamodel.merge.wtspec4m" priority="high"/>
   </extension>
   <extension id="org.mondo.wt.cstudy.metamodel.merge.structureMergeViewer.generated" point="org.eclipse.compare.structureMergeViewers">
-    <viewer class="org.eclipse.viatra.dse.merge.ui.DSEStructureMergeViewerCreator" extensions="wtspec4m50m" id="org.eclipse.viatra.dse.merge.ui.structureMergeViewer" label="DSE Structure Merge Viewer"/>
-    <contentTypeBinding contentTypeId="org.mondo.wt.cstudy.metamodel.merge.wtspec4m50m" structureMergeViewerId="org.eclipse.viatra.dse.merge.ui.structureMergeViewer"/>
+    <viewer class="org.eclipse.viatra.dse.merge.ui.DSEStructureMergeViewerCreator" extensions="wtspec4m" id="org.eclipse.viatra.dse.merge.ui.structureMergeViewer" label="DSE Structure Merge Viewer"/>
+    <contentTypeBinding contentTypeId="org.mondo.wt.cstudy.metamodel.merge.wtspec4m" structureMergeViewerId="org.eclipse.viatra.dse.merge.ui.structureMergeViewer"/>
   </extension>
   <extension id="org.mondo.wt.cstudy.metamodel.merge.Helpers" point="org.eclipse.incquery.runtime.queryspecification">
     <group group="org.eclipse.incquery.runtime.extensibility.SingletonExtensionFactory:org.mondo.wt.cstudy.metamodel.merge.Helpers" id="org.mondo.wt.cstudy.metamodel.merge.Helpers"/>
