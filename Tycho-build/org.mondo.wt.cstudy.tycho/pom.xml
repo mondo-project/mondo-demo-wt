@@ -111,12 +111,12 @@
     <repository>
 			<id>mondo.collaboration</id>
 			<layout>p2</layout>
-			<url>https://build.incquerylabs.com/jenkins/job/MONDO-Collaboration/lastSuccessfulBuild/artifact/releng/org.mondo.collaboration.security.updatesite/target/repository/</url>
+			<url>http://mondo.inf.mit.bme.hu/web/mondo-collaboration/update/</url>
 		</repository>
     <repository>
 			<id>mondo.collaboration.merge</id>
 			<layout>p2</layout>
-			<url>https://build.incquerylabs.com/jenkins/job/MONDO-DSE-Merge/lastSuccessfulBuild/artifact/releng/org.eclipse.viatra.dse.merge.update/target/repository/</url>
+			<url>http://mondo.inf.mit.bme.hu/web/mondo-dse-merge/update/</url>
 		</repository>
     <repository>
 			<id>viatra.obfuscator</id>
