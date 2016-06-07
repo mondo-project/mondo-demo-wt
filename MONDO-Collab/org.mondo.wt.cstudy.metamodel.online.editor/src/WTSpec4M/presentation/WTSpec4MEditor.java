@@ -124,6 +124,7 @@ import org.mondo.collaboration.online.core.LensSessionManager;
 import org.mondo.collaboration.online.core.OnlineLeg;
 import org.mondo.collaboration.online.core.OnlineLeg.LegCommand;
 import org.mondo.collaboration.online.core.StorageAccess;
+import org.mondo.collaboration.online.core.StorageAccess.FileStatus;
 import org.mondo.collaboration.online.core.StorageAccessFactory;
 import org.mondo.collaboration.online.rap.UINotifierManager;
 import org.mondo.collaboration.online.rap.UISessionManager;
@@ -142,7 +143,7 @@ import WTSpec4M.provider.WTSpec4MItemProviderAdapterFactory;
 /**
  * This is an example of a WTSpec4M model editor. <!-- begin-user-doc --> <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 @SuppressWarnings("serial")
@@ -153,7 +154,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	/**
 	 * The filters for file extensions supported by the editor. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public static final List<String> FILE_EXTENSION_FILTERS = prefixExtensions(WTSpec4MModelWizard.FILE_EXTENSIONS,
@@ -163,7 +164,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	 * Returns a new unmodifiable list containing prefixed versions of the
 	 * extensions in the given list. <!-- begin-user-doc --> <!-- end-user-doc
 	 * -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private static List<String> prefixExtensions(List<String> extensions, String prefix) {
@@ -177,7 +178,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	/**
 	 * This keeps track of the editing domain that is used to track all changes
 	 * to the model. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected AdapterFactoryEditingDomain editingDomain;
@@ -185,7 +186,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	/**
 	 * This is the one adapter factory used for providing views of the model.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected AdapterFactory adapterFactory;
@@ -193,14 +194,14 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	/**
 	 * This is the content outline page. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected IContentOutlinePage contentOutlinePage;
 
 	/**
 	 * This is a kludge... <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected IStatusLineManager contentOutlineStatusLineManager;
@@ -208,7 +209,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	/**
 	 * This is the content outline page's viewer. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected TreeViewer contentOutlineViewer;
@@ -216,7 +217,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	/**
 	 * This is the property sheet page. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected List<PropertySheetPage> propertySheetPages = new ArrayList<PropertySheetPage>();
@@ -225,7 +226,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	 * This is the viewer that shadows the selection in the content outline. The
 	 * parent relation must be correctly defined for this to work. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected TreeViewer selectionViewer;
@@ -233,7 +234,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	/**
 	 * This inverts the roll of parent and child in the content provider and
 	 * show parents as a tree. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected TreeViewer parentViewer;
@@ -241,7 +242,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	/**
 	 * This shows how a tree view works. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected TreeViewer treeViewer;
@@ -249,7 +250,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	/**
 	 * This shows how a list view works. A list viewer doesn't support icons.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected ListViewer listViewer;
@@ -257,7 +258,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	/**
 	 * This shows how a table view works. A table can be used as a list with
 	 * icons. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected TableViewer tableViewer;
@@ -265,7 +266,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	/**
 	 * This shows how a tree view with columns works. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected TreeViewer treeViewerWithColumns;
@@ -273,7 +274,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	/**
 	 * This keeps track of the active viewer pane, in the book. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected ViewerPane currentViewerPane;
@@ -282,7 +283,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	 * This keeps track of the active content viewer, which may be either one of
 	 * the viewers in the pages or the content outline viewer. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected Viewer currentViewer;
@@ -290,7 +291,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	/**
 	 * This listens to which ever viewer is active. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected ISelectionChangedListener selectionChangedListener;
@@ -299,7 +300,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	 * This keeps track of all the
 	 * {@link org.eclipse.jface.viewers.ISelectionChangedListener}s that are
 	 * listening to this editor. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected Collection<ISelectionChangedListener> selectionChangedListeners = new ArrayList<ISelectionChangedListener>();
@@ -307,7 +308,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	/**
 	 * This keeps track of the selection of the editor as a whole. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected ISelection editorSelection = StructuredSelection.EMPTY;
@@ -315,7 +316,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	/**
 	 * This listens for when the outline becomes active <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	protected IPartListener partListener = new IPartListener() {
@@ -339,7 +340,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 		public void partBroughtToTop(IWorkbenchPart p) {
 			// Ignore.
 		}
-		
+
 		public void partClosed(IWorkbenchPart p) {
 			// TODO dispose leg only when it was the last open front model editor for the current user
 			if(leg != null){
@@ -362,7 +363,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	/**
 	 * Resources that have been removed since last activation. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected Collection<Resource> removedResources = new ArrayList<Resource>();
@@ -370,7 +371,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	/**
 	 * Resources that have been changed since last activation. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected Collection<Resource> changedResources = new ArrayList<Resource>();
@@ -378,7 +379,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	/**
 	 * Resources that have been saved. <!-- begin-user-doc --> <!-- end-user-doc
 	 * -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected Collection<Resource> savedResources = new ArrayList<Resource>();
@@ -386,7 +387,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	/**
 	 * Map to store the diagnostic associated with a resource. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected Map<Resource, Diagnostic> resourceToDiagnosticMap = new LinkedHashMap<Resource, Diagnostic>();
@@ -394,7 +395,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	/**
 	 * Controls whether the problem indication should be updated. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected boolean updateProblemIndication = true;
@@ -402,7 +403,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	/**
 	 * Adapter used to update the problem indication when resources are demanded
 	 * loaded. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected EContentAdapter problemIndicationAdapter = new EContentAdapter() {
@@ -474,13 +475,25 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	private StorageAccess storageAccess;
 
 	private String repository;
+
+	private FileStatus fileStatus;
 	/**
 	 * Handles activation of the editor or it's associated views. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	protected void handleActivate() {
+		if(fileStatus == FileStatus.Modified) {
+			getContainer().getDisplay().asyncExec(new Runnable() {
+
+				@Override
+				public void run() {
+					firePropertyChange(IEditorPart.PROP_DIRTY);
+				}
+			});
+		}
+		
 		// Recompute the read only state.
 		//
 		if (editingDomain.getResourceToReadOnlyMap() != null) {
@@ -510,7 +523,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	/**
 	 * Handles what to do with changed resources on activation. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void handleChangedResources() {
@@ -546,7 +559,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	/**
 	 * Updates the problems indication with the information described in the
 	 * specified diagnostic. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void updateProblemIndication() {
@@ -583,7 +596,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	/**
 	 * Shows a dialog that asks if conflicting changes should be discarded. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected boolean handleDirtyConflict() {
@@ -594,7 +607,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	/**
 	 * This creates a model editor. <!-- begin-user-doc --> <!-- end-user-doc
 	 * -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public WTSpec4MEditor() {
@@ -603,12 +616,12 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	}
 
 	public static class SpecificCommandStack extends BasicCommandStack {
-		
+
 		WTSpec4MEditor editor;
 		public void setEditor(WTSpec4MEditor editor) {
 			this.editor = editor;
 		}
-		
+
 		@Override
 		public void saveIsDone() {
 			saveIsDoneSuper();
@@ -620,7 +633,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 						stack.saveIsDoneSuper();
 						if(stack.editor != null)
 							stack.editor.getContainer().getDisplay().asyncExec(new Runnable() {
-								
+
 								@Override
 								public void run() {
 									stack.editor.firePropertyChange(IEditorPart.PROP_DIRTY);
@@ -630,17 +643,17 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 				}
 			}
 		}
-		
+
 		public void saveIsDoneSuper() {
 			super.saveIsDone();
 		}
-		
+
 	}
-	
+
 	/**
 	 * This sets up the editing domain for the model editor. <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	protected void initializeEditingDomain() {
@@ -653,13 +666,13 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 		adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 
 		this.adapterFactory = adapterFactory;
-		
+
 		commandStack = new SpecificCommandStack();
 
 		// Add a listener to set the most recent command's affected objects to
 		// be the selection of the viewer with focus.
 		//
-		
+
 		refreshListener = new CommandStackListener() {
 			public void commandStackChanged(final EventObject event) {
 				getContainer().getDisplay().asyncExec(new Runnable() {
@@ -684,19 +697,19 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 				});
 			}
 		};
-		
+
 		commandStack.addCommandStackListener(refreshListener);
 
 		// Create the editing domain with a special command stack.
 		//
 		editingDomain = new AdapterFactoryEditingDomain(adapterFactory, commandStack, new HashMap<Resource, Boolean>());
 	}
-	
+
 	protected void initializeEditingDomain(AdapterFactoryEditingDomain editingDomain) {
 
 		this.editingDomain = editingDomain;
 		this.adapterFactory = editingDomain.getAdapterFactory();
-		
+
 		refreshListener = new CommandStackListener() {
 			public void commandStackChanged(final EventObject event) {
 				getContainer().getDisplay().asyncExec(new Runnable() {
@@ -721,7 +734,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 				});
 			}
 		};
-		
+
 		commandStack = editingDomain.getCommandStack();
 		commandStack.addCommandStackListener(refreshListener);
 
@@ -730,7 +743,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	/**
 	 * This is here for the listener to be able to call it. <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -741,7 +754,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	/**
 	 * This sets the selection into whichever viewer is active. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setSelectionToViewer(Collection<?> collection) {
@@ -769,7 +782,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	 * implementing the static methods of {@link AdapterFactoryEditingDomain}
 	 * and for supporting {@link org.eclipse.emf.edit.ui.action.CommandAction}.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EditingDomain getEditingDomain() {
@@ -783,7 +796,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 
 		@Override
 		public void onSuccess(Object obj) {
-			
+
 			if(!isItMe) {
 				System.out.println("other user");
 				selectionViewer.getControl().getDisplay().asyncExec( new Runnable() {
@@ -792,11 +805,11 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 				    	if(selectionViewer != null)
 				    		selectionViewer.refresh();
 				    	System.out.println("finished");
-				    	
+
 				    }
 				});
 			}
-			
+
 		}
 	}
 
@@ -808,24 +821,24 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 		@Override
 		public void onSuccess(Object obj) {
 			getContainer().getDisplay().asyncExec(new Runnable() {
-				
+
 				@Override
 				public void run() {
-					firePropertyChange(IEditorPart.PROP_DIRTY);			
+					firePropertyChange(IEditorPart.PROP_DIRTY);
 				}
 			});
 		}
 	}
-	
+
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public class ReverseAdapterFactoryContentProvider extends AdapterFactoryContentProvider {
 		/**
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		public ReverseAdapterFactoryContentProvider(AdapterFactory adapterFactory) {
@@ -834,7 +847,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 
 		/**
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		@Override
@@ -845,7 +858,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 
 		/**
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		@Override
@@ -856,7 +869,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 
 		/**
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		@Override
@@ -867,7 +880,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 
 		/**
 		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * 
+		 *
 		 * @generated
 		 */
 		@Override
@@ -878,7 +891,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setCurrentViewerPane(ViewerPane viewerPane) {
@@ -895,7 +908,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	 * This makes sure that one content viewer, either for the current page or
 	 * the outline view, if it has focus, is the current one. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setCurrentViewer(Viewer viewer) {
@@ -941,7 +954,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	/**
 	 * This returns the viewer as required by the {@link IViewerProvider}
 	 * interface. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Viewer getViewer() {
@@ -952,7 +965,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	 * This creates a context menu for the viewer and adds a listener as well
 	 * registering the menu for extension. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void createContextMenuFor(StructuredViewer viewer) {
@@ -975,7 +988,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	 * This is the method called to load a resource into the editing domain's
 	 * resource set based on the editor's input. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	public void createModel() {
@@ -989,7 +1002,9 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 		if(userName == null) {
 			userName = storageAccess.getUsername();
 			passWord = storageAccess.getPassword();
+			repository = storageAccess.getRepository();
 		}
+
 		leg = LensSessionManager.getExistingLeg(userName, RWT.getUISession().getHttpSession(), resourceURI);
 		boolean isNewUser = false;
 		if(leg == null) {
@@ -1002,31 +1017,31 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 			legsForUser.put(userName, legsForUser.get(userName)+1);
 		}
 		((SpecificCommandStack)editingDomain.getCommandStack()).setEditor(this);
-		
+
 		UISessionManager.register(resourceURI, userName, RWT.getUISession());
 		UINotifierManager.register(OnlineLeg.EVENT_UPDATE, RWT.getUISession(), new UpdateOnModification());
 		UINotifierManager.register(OnlineLeg.EVENT_SAVE, RWT.getUISession(), new UpdateOnSave());
-		
+
 		resource = leg.getFrontResourceSet().getResources().get(0);
 		Diagnostic diagnostic = analyzeResourceProblems(resource, exception);
 		if (diagnostic.getSeverity() != Diagnostic.OK) {
 			resourceToDiagnosticMap.put(resource, analyzeResourceProblems(resource, exception));
 		}
 		editingDomain.getResourceSet().eAdapters().add(problemIndicationAdapter);
-		
+
 		// Submit changes for lens
 		if(isNewUser){
-			
+
 			editorActionListener = new CommandStackListener() {
-				
+
 				boolean isAborted = false;
-				
+
 				@Override
 				public void commandStackChanged(EventObject event) {
-					
+
 					if(isAborted)
 						return;
-					
+
 					Command mostRecentCommand = editingDomain.getCommandStack().getMostRecentCommand();
 					//We have to change the create command to a customized one that set the ID attribute of the child
 					if(mostRecentCommand instanceof CreateChildCommand && !(mostRecentCommand instanceof OnlineLeg.CreateCommand)) {
@@ -1060,38 +1075,34 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 						DenialReason result = leg.trySubmitModification();
 						if(result != null) {
 							getSite().getShell().getDisplay().asyncExec(new Runnable() {
-								
+
 								@Override
 								public void run() {
 									MessageBox messageBox = new MessageBox(getSite().getShell(), SWT.ABORT | SWT.ICON_WARNING);
 									messageBox.setMessage(result.prettyPrintProblem());
 									messageBox.setText(DENIED_MODIFICATION_ON_MODEL);
 									messageBox.open();
-									
+
 									isAborted = true;
 									editingDomain.getCommandStack().undo();
 									isAborted = false;
 								}
 							});
-							
+
 							return;
 						}
-						
+
 						// Log the event
 						Date now = new Date();
 						String strDate = ModelExplorer.DATE_FORMAT.format(now);
-						
+
 						if(mostRecentCommand == null)
 							return;
-						
-						if(mostRecentCommand == null){
-							return;
-						}
-						
+
 						String commandLabel = mostRecentCommand.getLabel();
-						
+
 						String logMessage = commandLabel;
-						
+
 						if ("Delete".equals(commandLabel)) {
 							String effectString = "Deleted object(s): ";
 							logMessage = commandResultExtraction(mostRecentCommand, logMessage, effectString);
@@ -1102,21 +1113,21 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 							String effectString = "Copied object(s): ";
 							logMessage = commandResultExtraction(mostRecentCommand, logMessage, effectString);
 						} else {
-	
+
 							Collection<?> affectedObjects = mostRecentCommand.getAffectedObjects();
 							String affectedObjectLabels = "";
 							affectedObjectLabels = collectLabels(affectedObjects, affectedObjectLabels, mostRecentCommand);
 							logMessage = logMessage + ". " + "Affected object(s): " + affectedObjectLabels;
 						}
-						logMessage=  strDate + " " + userName + ": " + logMessage;  
-						
+						logMessage=  strDate + " " + userName + ": " + logMessage;
+
 						ModelLogView.addMessage(logMessage, leg.getOnlineCollaborationSession().getGoldConfinementURI());
 					}
 				}
 
 				private String commandResultExtraction(Command mostRecentCommand, String logMessage, String effectString) {
 					Collection<?> commandResult = mostRecentCommand.getResult();
-					
+
 					String affectedObjectLabels = "";
 					affectedObjectLabels = collectLabels(commandResult, affectedObjectLabels, mostRecentCommand);
 					logMessage = logMessage + ". " + effectString + affectedObjectLabels;
@@ -1129,7 +1140,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 						// the reason for this is unknown, but the workaround is to obtain the label manually
 						// TODO collect more details here about the executed command
 //						if(treeViewer.getLabelProvider() instanceof LabelProvider){
-//									affectedObjectLabels += ((LabelProvider) treeViewer.getLabelProvider()).getText(object);								
+//									affectedObjectLabels += ((LabelProvider) treeViewer.getLabelProvider()).getText(object);
 							if(object instanceof EObject){
 								EList<EStructuralFeature> eAllStructuralFeatures = ((EObject) object).eClass().getEAllStructuralFeatures();
 								String id = null;
@@ -1142,7 +1153,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 												EStructuralFeature eStrucFeature = (EStructuralFeature) getProtectedField(currentCommand, "feature");
 												Object oldValue = getProtectedField(currentCommand, "oldValue");
 												Object value = getProtectedField(currentCommand, "value");
-												String addition = "feature name: \"" + eStrucFeature.getName() + "\" old value: " + oldValue + ", new value: " + value + " "; 
+												String addition = "feature name: \"" + eStrucFeature.getName() + "\" old value: " + oldValue + ", new value: " + value + " ";
 												id += addition;
 											} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e) {
 											}
@@ -1172,14 +1183,19 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 			};
 			editingDomain.getCommandStack().addCommandStackListener(editorActionListener);
 		}
-		
+
+		try {
+			fileStatus = storageAccess.checkFileStatus(resourceURI.toFileString());
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
 	}
 
 	/**
 	 * Returns a diagnostic describing the errors and warnings listed in the
 	 * resource and the specified exception (if any). <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public Diagnostic analyzeResourceProblems(Resource resource, Exception exception) {
@@ -1202,7 +1218,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	/**
 	 * This is the method used by the framework to install your own controls.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -1210,7 +1226,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 		// Creates the model from the editor input
 		//
 		createModel();
-		
+
 		WorkbenchMessages.get().EditorManager_saveChangesQuestion = "There are uncommitted changes. Commit now?";
 
 		// Only creates the other pages if there is something that can be edited
@@ -1451,7 +1467,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	/**
 	 * If there is just one page in the multi-page editor part, this hides the
 	 * single tab at the bottom. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void hideTabs() {
@@ -1468,7 +1484,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	/**
 	 * If there is more than one page in the multi-page editor part, this shows
 	 * the tabs at the bottom. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void showTabs() {
@@ -1485,7 +1501,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	/**
 	 * This is used to track the active viewer. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -1500,7 +1516,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	/**
 	 * This is how the framework determines which interfaces we implement. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("rawtypes")
@@ -1518,7 +1534,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	/**
 	 * This accesses a cached version of the content outliner. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public IContentOutlinePage getContentOutlinePage() {
@@ -1583,7 +1599,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	/**
 	 * This accesses a cached version of the property sheet. <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public IPropertySheetPage getPropertySheetPage() {
@@ -1609,7 +1625,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	/**
 	 * This deals with how we want selection in the outliner to affect the other
 	 * views. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void handleContentOutlineSelection(ISelection selection) {
@@ -1648,18 +1664,18 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	/**
 	 * This is for implementing {@link IEditorPart} and simply tests the command
 	 * stack. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
 	public boolean isDirty() {
-		return ((BasicCommandStack) editingDomain.getCommandStack()).isSaveNeeded();
+		return ((BasicCommandStack) editingDomain.getCommandStack()).isSaveNeeded() || fileStatus == FileStatus.Modified;
 	}
 
 	/**
 	 * This is for implementing {@link IEditorPart} and simply saves the model
 	 * file. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	@Override
@@ -1669,14 +1685,13 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 		CommitMessageDialog dialog = new CommitMessageDialog(Display.getCurrent().getActiveShell());
 		dialog.create();
 		if (dialog.open() == Window.OK) {
-		
 			
 			// Save only resources that have actually changed.
 			//
 			final Map<Object, Object> saveOptions = new HashMap<Object, Object>();
 			saveOptions.put(Resource.OPTION_SAVE_ONLY_IF_CHANGED, Resource.OPTION_SAVE_ONLY_IF_CHANGED_MEMORY_BUFFER);
 			saveOptions.put(Resource.OPTION_LINE_DELIMITER, Resource.OPTION_LINE_DELIMITER_UNSPECIFIED);
-	
+
 			// Do the work within an operation because this is a long running
 			// activity that modifies the workbench.
 			//
@@ -1701,7 +1716,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 							first = false;
 						}
 					}
-					
+
 					String commitMessage = dialog.getCommitMessage();
 
 					URIEditorInput editorInput = (URIEditorInput) getEditorInput();
@@ -1723,17 +1738,19 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 				// Something went wrong that shouldn't.
 				//
 				WTSpec4MEditorPlugin.INSTANCE.log(exception);
-			}		
-			
+			}
+
 			updateProblemIndication = true;
 			updateProblemIndication();
+			
+			fileStatus = FileStatus.Normal;
 		} else {
 			return;
 		}
-		
-		
-	
-		
+
+
+
+
 	}
 
 	/**
@@ -1741,7 +1758,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	 * specified resource. The implementation uses the URI converter from the
 	 * editor's resource set to try to open an input stream. <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected boolean isPersisted(Resource resource) {
@@ -1761,7 +1778,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	/**
 	 * This always returns true because it is not currently supported. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -1772,7 +1789,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	/**
 	 * This also changes the editor's input. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -1799,7 +1816,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void doSaveAs(URI uri, IEditorInput editorInput) {
@@ -1814,7 +1831,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	/**
 	 * This is called during startup. <!-- begin-user-doc --> <!-- end-user-doc
 	 * -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -1828,7 +1845,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -1843,7 +1860,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	/**
 	 * This implements {@link org.eclipse.jface.viewers.ISelectionProvider}.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void addSelectionChangedListener(ISelectionChangedListener listener) {
@@ -1853,7 +1870,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	/**
 	 * This implements {@link org.eclipse.jface.viewers.ISelectionProvider}.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void removeSelectionChangedListener(ISelectionChangedListener listener) {
@@ -1864,7 +1881,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	 * This implements {@link org.eclipse.jface.viewers.ISelectionProvider} to
 	 * return this editor's overall selection. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public ISelection getSelection() {
@@ -1875,7 +1892,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	 * This implements {@link org.eclipse.jface.viewers.ISelectionProvider} to
 	 * set this editor's overall selection. Calling this result will notify the
 	 * listeners. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setSelection(ISelection selection) {
@@ -1889,7 +1906,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void setStatusLineManager(ISelection selection) {
@@ -1924,7 +1941,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	/**
 	 * This looks up a string in the plugin's plugin.properties file. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private static String getString(String key) {
@@ -1934,7 +1951,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	/**
 	 * This looks up a string in plugin.properties, making a substitution. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private static String getString(String key, Object s1) {
@@ -1945,7 +1962,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	 * This implements {@link org.eclipse.jface.action.IMenuListener} to help
 	 * fill the context menus with contributions from the Edit menu. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public void menuAboutToShow(IMenuManager menuManager) {
@@ -1954,7 +1971,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public EditingDomainActionBarContributor getActionBarContributor() {
@@ -1963,7 +1980,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public IActionBars getActionBars() {
@@ -1972,7 +1989,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public AdapterFactory getAdapterFactory() {
@@ -1981,18 +1998,18 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	@Override
 	public void dispose() {
-		
+
 		updateProblemIndication = false;
-		
+
 		editingDomain.getCommandStack().removeCommandStackListener(refreshListener);
 		((SpecificCommandStack)editingDomain.getCommandStack()).setEditor(null);
 //		editingDomain.getCommandStack().removeCommandStackListener(editorActionListener);
-		
+
 		getSite().getPage().removePartListener(partListener);
 
 //		adapterFactory.dispose();
@@ -2009,10 +2026,8 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 			contentOutlinePage.dispose();
 		}
 
-//		URI resourceURI = EditUIUtil.getURI(getEditorInput());
-//		leg
-//		if(LensSessionManager.getUsersForURI(resourceURI))
-//		UISessionManager.remove(resourceURI, userName, RWT.getUISession());
+		URI resourceURI = EditUIUtil.getURI(getEditorInput());
+		LensSessionManager.close(userName, RWT.getUISession().getHttpSession(), resourceURI, leg);
 
 		super.dispose();
 	}
@@ -2020,14 +2035,14 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	/**
 	 * Returns whether the outline view should be presented to the user. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected boolean showOutlineView() {
 		return true;
 	}
-	
-	 
+
+
 
 	@Override
 	public void saveState(IMemento memento) {
@@ -2041,7 +2056,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 		userName = memento.getString(ModelExplorer.USERNAME);
 		passWord = memento.getString(ModelExplorer.PASSWORD);
 		repository = memento.getString(ModelExplorer.REPOSITORY);
-		
+
 		try {
 			storageAccess = StorageAccessFactory.createStorageAccess(userName, passWord, repository);
 			RWT.getUISession().setAttribute(ModelExplorer.STORAGEACCESS, storageAccess);
