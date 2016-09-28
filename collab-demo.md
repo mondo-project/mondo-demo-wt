@@ -32,9 +32,11 @@ In the following, we assume that a MONDO Server product is installed, as describ
 
 ### Installation addendum / errata
 
-**TODO** note on UNIX users
+Note on UNIX users: make sure that both the MONDO Server product and the Apache webserver behind Subversion are executed in the name of the same user (www-data by default) that has RW permissions on all relevant folders (both the repositories and the collaboration framework installation).
 
-
+```
+sudo -u www-data ./run-server.sh
+```
 
 ### Quick links
 
@@ -42,6 +44,69 @@ In the following, we assume that a MONDO Server product is installed, as describ
 * Access point for the management UI: http://127.0.0.1:8080/thrift/offline-collaboration
 * Online collaboration web UI: http://127.0.0.1:8080/rap
 
+### SVN users for the demo
+
+The Wind Turbine demo operates with the following users and passwords:
+ * admin admin
+ * alice alice
+ * bob bob
+
+Do not forget the "artificial users" to propagate commits:
+ * wt-demo admin
+ * wt-demo-alice alice
+ * wt-demo-bob bob
+
+Use the following commands to manipulate users:
+
+```
+sudo htpasswd -m /etc/subversion/svn.users [username] 	     // felhasználó készítése
+sudo echo "[username] = rw" > /etc/subversion/access.authz   // hozzáférés beállítása
+sudo service apache2 restart 				     // Apache újraindítása
+```
+
+See also /etc/subversion/svn.users and /etc/subversion/access.authz.
+
+### Script for initializing demo repositories:
+
+```sh
+#!/bin/bash
+
+echo "Restart WT-Demo"
+
+rm /etc/mondo/lock/.lock-gold -rf
+rm /etc/mondo/lock/.lock-front -rf
+
+cd /etc/mondo/scripts
+./wipe-repositories.sh wt-demo --force
+./init-repository.sh wt-demo
+./add-front-repository.sh wt-demo wt-demo-alice alice
+./add-front-repository.sh wt-demo wt-demo-bob bob
+./add-front-repository.sh wt-demo wt-demo-cecile cecile
+
+rm /etc/mondo/workspace/* -rf
+
+echo "Repositories re-created"
+
+svn co http://127.0.0.1/svn/wt-demo /home/mondo/Desktop/wt-demo-files/temp --username admin --password admin --non-interactive --quiet
+cp -r /home/mondo/Desktop/wt-demo-files/demo.project /home/mondo/Desktop/wt-demo-files/temp/
+cp -r /home/mondo/Desktop/wt-demo-files/macl.project /home/mondo/Desktop/wt-demo-files/temp/
+
+echo "Projects copied to temp folder"
+
+cd /home/mondo/Desktop/wt-demo-files/temp
+svn add --force * --auto-props --parents --depth infinity -q
+
+echo "Commit is under execution"
+svn commit -m "Initial commit to wt-demo" --username admin --password admin --non-interactive --quiet
+
+rm /home/mondo/Desktop/wt-demo-files/temp -rf
+rm /etc/mondo/lock/.lock-gold -rf
+rm /etc/mondo/lock/.lock-front -rf
+
+echo "Done"
+
+exit 0
+```
 
 
 ### Enabling authentication for the (optional) remote management
