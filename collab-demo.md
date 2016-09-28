@@ -24,8 +24,12 @@ The following external repositories are code dependencies:
  * The [MONDO Collaboration Framework](https://github.com/FTSRG/mondo-collab-framework) is a required core component of the demonstrator. 
  * The optional management interface plugs into the MONDO Server and MONDO Clients of the [MONDO Integrated Platform](https://github.com/mondo-project/mondo-integration).
  
+## Screencast
+
+A [screencast is available](https://www.youtube.com/watch?v=WJZOascRMno) that showcases the capabilities of the MONDO Collaboration Framework, demonstrated on the Wind Turbine industrial case study of the MONDO project.
+
 ## Demo setup
- 
+
 Please follow the guidelines of the MONDO report [D4.4 "Prototype Tool for Collaborative Modeling"](http://api.ning.com/files/zxy*xRp5iQ6LLKU5M6eSyBVlaao5Ny7RJkjcW3*jy-ifXPp-aEnLUWxO0vhL4-FC*HDkG0tp33xFcGZAGT5MBBhg49QwWiB2/D4.4Prototypetoolforcollaboration.pdf).
  
 In the following, we assume that a MONDO Server product is installed, as described in MONDO deliverables. 
@@ -56,17 +60,19 @@ Do not forget the "artificial users" to propagate commits:
  * wt-demo-alice alice
  * wt-demo-bob bob
 
-Use the following commands to manipulate users:
+Use commands similar to the following to manipulate users:
 
 ```
-sudo htpasswd -m /etc/subversion/svn.users [username] 	     // felhasználó készítése
-sudo echo "[username] = rw" > /etc/subversion/access.authz   // hozzáférés beállítása
-sudo service apache2 restart 				     // Apache újraindítása
+sudo htpasswd -m /etc/subversion/svn.users [username] 	     // create user
+sudo echo "[username] = rw" > /etc/subversion/access.authz   // set access rules
+sudo service apache2 restart 				     // required afterwards
 ```
 
 See also /etc/subversion/svn.users and /etc/subversion/access.authz.
 
 ### Script for initializing demo repositories:
+
+(Change paths, etc. to fit your demo environment.)
 
 ```sh
 #!/bin/bash
@@ -112,7 +118,8 @@ exit 0
 ### Enabling authentication for the (optional) remote management
 
 ```
-Thrift commands that should be executed:
+Connect to the MONDO Server remote management URL using the MONDO client product.
+Commands that should be executed:
 
 # phase 1: no authentication on the server
 
