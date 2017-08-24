@@ -15,7 +15,6 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Logger;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -110,7 +109,6 @@ import org.eclipse.ui.IMemento;
 import org.eclipse.ui.IPartListener;
 import org.eclipse.ui.IPersistableEditor;
 import org.eclipse.ui.IWorkbenchPart;
-import org.eclipse.ui.IWorkbenchPartConstants;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.internal.WorkbenchMessages;
 import org.eclipse.ui.part.MultiPageEditorPart;
@@ -129,12 +127,12 @@ import org.mondo.collaboration.online.core.StorageAccessFactory;
 import org.mondo.collaboration.online.rap.UINotifierManager;
 import org.mondo.collaboration.online.rap.UISessionManager;
 import org.mondo.collaboration.online.rap.widgets.CommitMessageDialog;
+import org.mondo.collaboration.online.rap.widgets.DefaultPerspectiveAdvisor;
 import org.mondo.collaboration.online.rap.widgets.ModelExplorer;
 import org.mondo.collaboration.online.rap.widgets.ModelLogView;
 import org.mondo.collaboration.security.lens.bx.AbortReason.DenialReason;
 import org.mondo.collaboration.security.lens.bx.online.OnlineCollaborationSession.Leg;
 
-import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.util.concurrent.FutureCallback;
 
@@ -988,10 +986,11 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	 * This is the method called to load a resource into the editing domain's
 	 * resource set based on the editor's input. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 * @throws InterruptedException 
 	 *
 	 * @generated NOT
 	 */
-	public void createModel() {
+	public void createModel() throws InterruptedException {
 		URI resourceURI = EditUIUtil.getURI(getEditorInput());
 		Exception exception = null;
 		Resource resource = null;
@@ -1005,6 +1004,8 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 			repository = storageAccess.getRepository();
 		}
 
+		while(LensSessionManager.LOADING) Thread.sleep(10);
+		LensSessionManager.LOADING = true;
 		leg = LensSessionManager.getExistingLeg(userName, RWT.getUISession().getHttpSession(), resourceURI);
 		boolean isNewUser = false;
 		if(leg == null) {
@@ -1016,6 +1017,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 			initializeEditingDomain(leg.getEditingDomain());
 			legsForUser.put(userName, legsForUser.get(userName)+1);
 		}
+		LensSessionManager.LOADING = false;
 		((SpecificCommandStack)editingDomain.getCommandStack()).setEditor(this);
 
 		UISessionManager.register(resourceURI, userName, RWT.getUISession());
@@ -1225,7 +1227,11 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	public void createPages() {
 		// Creates the model from the editor input
 		//
-		createModel();
+		try {
+			createModel();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 
 		WorkbenchMessages.get().EditorManager_saveChangesQuestion = "There are uncommitted changes. Commit now?";
 
@@ -1462,6 +1468,11 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 				updateProblemIndication();
 			}
 		});
+		try {
+			DefaultPerspectiveAdvisor.openModelRelatedViews();
+		} catch (PartInitException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -2029,6 +2040,8 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 		URI resourceURI = EditUIUtil.getURI(getEditorInput());
 		LensSessionManager.close(userName, RWT.getUISession().getHttpSession(), resourceURI, leg);
 
+		DefaultPerspectiveAdvisor.hideModelRelatedViews();
+		
 		super.dispose();
 	}
 

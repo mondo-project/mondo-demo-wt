@@ -4,7 +4,7 @@ Bundle-Name: MONDO Online WT CStudy RAP Application
 Bundle-SymbolicName: org.mondo.wt.cstudy.online.rap;singleton:=true
 Bundle-Version: 1.7.0.qualifier
 Import-Package: javax.servlet
-Require-Bundle: org.mondo.wt.cstudy.metamodel.editor
+Require-Bundle: org.mondo.wt.cstudy.metamodel.online.editor
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-Vendor: Eclipse Modeling Framework

@@ -7,8 +7,9 @@
 <plugin>
 
    <extension
-         point="org.eclipse.core.runtime.applications"
-         id="WTSpec4MEditorAdvisorApplication">
+         id="WTSpec4MEditorAdvisorApplication"
+         name="WTSpec4MEditorAdvisorApplication"
+         point="org.eclipse.core.runtime.applications">
       <!-- @generated WTSpec4M -->
       <application>
          <run class="WTSpec4M.presentation.WTSpec4MEditorAdvisor$Application"/>
@@ -78,6 +79,14 @@
             class="WTSpec4M.presentation.WTSpec4MEditor"
             contributorClass="WTSpec4M.presentation.WTSpec4MActionBarContributor">
       </editor>
+   </extension>
+   <extension
+         point="org.eclipse.rap.ui.entrypoint">
+      <entrypoint
+            applicationId="org.mondo.wt.cstudy.metamodel.online.editor.WTSpec4MEditorAdvisorApplication"
+            id="org.mondo.wt.cstudy.metamodel.online.editor.entrypoint"
+            path="/online">
+      </entrypoint>
    </extension>
 
 </plugin>

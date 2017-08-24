@@ -3,9 +3,13 @@
 package WTSpec4M.presentation;
 
 
+import org.eclipse.emf.common.ui.URIEditorInput;
+import org.eclipse.emf.common.ui.action.WorkbenchWindowActionDelegate;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.edit.ui.action.LoadResourceAction;
+import org.eclipse.emf.edit.ui.util.EditUIUtil;
 import org.eclipse.equinox.app.IApplication;
 import org.eclipse.equinox.app.IApplicationContext;
-
 import org.eclipse.jface.action.GroupMarker;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IMenuManager;
@@ -13,13 +17,13 @@ import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.window.Window;
-import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorDescriptor;
 import org.eclipse.ui.IFolderLayout;
 import org.eclipse.ui.IPageLayout;
 import org.eclipse.ui.IPerspectiveFactory;
+import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.IWorkbenchPage;
@@ -34,16 +38,10 @@ import org.eclipse.ui.application.IWorkbenchWindowConfigurer;
 import org.eclipse.ui.application.WorkbenchAdvisor;
 import org.eclipse.ui.application.WorkbenchWindowAdvisor;
 import org.mondo.collaboration.online.rap.widgets.CurrentUserView;
+import org.mondo.collaboration.online.rap.widgets.DefaultPerspectiveAdvisor;
 import org.mondo.collaboration.online.rap.widgets.ModelExplorer;
 import org.mondo.collaboration.online.rap.widgets.ModelLogView;
 import org.mondo.collaboration.online.rap.widgets.WhiteboardChatView;
-import org.eclipse.emf.common.ui.URIEditorInput;
-import org.eclipse.emf.common.ui.action.WorkbenchWindowActionDelegate;
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.edit.ui.action.LoadResourceAction;
-import org.eclipse.emf.edit.ui.util.EditUIUtil;
-
-import WTSpec4M.presentation.WTSpec4MEditorPlugin;
 
 
 /**
@@ -152,7 +150,7 @@ public final class WTSpec4MEditorAdvisor extends WorkbenchAdvisor {
 			right.addView(ModelLogView.ID);
 			IFolderLayout bottomRight = layout.createFolder("bottomRight", IPageLayout.BOTTOM, (float)0.60, "right");
 			bottomRight.addView(IPageLayout.ID_PROP_SHEET);
-		}
+					}
 	}
 	
 	/**
@@ -184,6 +182,8 @@ public final class WTSpec4MEditorAdvisor extends WorkbenchAdvisor {
 		public void postWindowOpen() {
 			super.postWindowOpen();
 			shell.setMaximized(true);
+			
+			DefaultPerspectiveAdvisor.hideDefaultViews();
 		}
 		
 		/**

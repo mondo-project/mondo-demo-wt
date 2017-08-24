@@ -10,9 +10,9 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated WTSpec4M -->
       <package
+            uri="http://WTSpec4M/5.0M"
             class="WTSpec4M.WTSpec4MPackage"
-            genModel="WTSpec4M.genmodel"
-            uri="http://WTSpec4M/5.0M"/>
+            genModel="WTSpec4M.genmodel"/>
    </extension>
    
 </plugin>

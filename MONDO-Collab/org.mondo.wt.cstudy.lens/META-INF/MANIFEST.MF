@@ -7,5 +7,6 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: org.mondo.collaboration.security.lens;bundle-version="1.0.0",
  org.mondo.wt.cstudy.metamodel;bundle-version="1.0.0",
  org.apache.log4j
-Import-Package: com.google.common.base
+Import-Package: WTSpec4M,
+ com.google.common.base
 Export-Package: org.mondo.wt.cstudy.lens
