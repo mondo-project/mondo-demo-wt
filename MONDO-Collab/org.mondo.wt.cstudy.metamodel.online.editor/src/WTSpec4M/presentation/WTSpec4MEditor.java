@@ -1468,11 +1468,17 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 				updateProblemIndication();
 			}
 		});
-		try {
-			DefaultPerspectiveAdvisor.openModelRelatedViews();
-		} catch (PartInitException e) {
-			e.printStackTrace();
-		}
+		
+		getSite().getShell().getDisplay().asyncExec(new Runnable() {
+			public void run() {
+				try {
+					DefaultPerspectiveAdvisor.openModelRelatedViews();
+				} catch (PartInitException e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		
 	}
 
 	/**
@@ -2052,7 +2058,7 @@ public class WTSpec4MEditor extends MultiPageEditorPart
 	 * @generated
 	 */
 	protected boolean showOutlineView() {
-		return true;
+		return false;
 	}
 
 
