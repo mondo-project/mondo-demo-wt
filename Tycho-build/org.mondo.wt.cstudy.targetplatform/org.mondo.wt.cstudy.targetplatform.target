@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?pde version="3.8"?><target includeMode="feature" name="MONDO Integration Target Platform" sequenceNumber="343">
+<?pde version="3.8"?><target includeMode="feature" name="MONDO Integration Target Platform" sequenceNumber="345">
 <locations>
 <location includeAllPlatforms="true" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.team.svn.feature.group" version="3.0.1.I20150722-1700"/>
@@ -14,6 +14,10 @@
 <location includeAllPlatforms="true" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.platform.sdk" version="4.5.1.M20150904-0015"/>
 <repository location="http://download.eclipse.org/releases/mars/"/>
+</location>
+<location includeAllPlatforms="true" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.viatra.dse.merge.feature.feature.group" version="1.0.0.201602291257"/>
+<repository location="http://mondo.inf.mit.bme.hu/web/mondo-dse-merge/update/"/>
 </location>
 <location includeAllPlatforms="true" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.emf.rap.sdk.feature.group" version="2.11.1.v20150806-0404"/>
@@ -139,15 +143,8 @@
 <repository location="http://download.eclipse.org/releases/mars/"/>
 </location>
 <location includeAllPlatforms="true" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
-<unit id="org.mondo.collaboration.security.mpbl.feature.feature.group" version="1.0.0.201612011331"/>
-<unit id="org.mondo.collaboration.security.online.server.feature.feature.group" version="1.0.0.201612011331"/>
-<unit id="org.mondo.collaboration.security.macl.feature.feature.group" version="1.0.0.201612011331"/>
-<unit id="org.mondo.collaboration.security.lens.offline.server.feature.feature.group" version="1.0.0.201612011331"/>
-<repository location="http://mondo.inf.mit.bme.hu/web/mondo-collaboration/update/"/>
-</location>
-<location includeAllPlatforms="true" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.viatra.dse.merge.feature.feature.group" version="1.0.0.201602291257"/>
-<repository location="http://mondo.inf.mit.bme.hu/web/mondo-dse-merge/update/"/>
+<unit id="org.apache.commons.lang" version="2.6.0.v201404270220"/>
+<repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20150124073747/repository/"/>
 </location>
 </locations>
 <targetJRE path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
